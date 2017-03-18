@@ -1,6 +1,6 @@
 # PathToPerformance
 
-Logs!
+__SHIT I'VE LEARNED__ Scientific Day Logger
 17/03/2017
 0. Read Jeff's PhD thesis. Julia's heart/subtyping algorithm still freakin' hyerogliphical.
 Will return.
@@ -18,7 +18,11 @@ i.e. one test is setting a value that changes another test.
 
 3. The fantastic @ChrisRackaukas post on [Software Engineering practices](http://www.stochasticlifestyle.com/finalizing-julia-package-documentation-testing-coverage-publishing/) for Julia.
 
+4. [Github hooks](http://biorxiv.org/content/biorxiv/early/2016/05/13/048744.full.pdf) (in Rule 5) are scripts that run everytime a push happens, so that Continuous Integration and Testing can happen. Travis CI for UNIX, Appveyor for UNIX.
 
+5. Use Digital Object Identifiers to cite source code/databases. Zenodo is recommended, or Figshare.
+
+6. Use Gists that are secret from search engines!
 
 
 
