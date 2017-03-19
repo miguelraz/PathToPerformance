@@ -2,6 +2,48 @@
 
 __SHIT I'VE LEARNED__ Scientific Day Logger
 
+19/03/17
+
+12. @KristofferC says
+For bisecting, you can write a small script that passes / fails depending on what you are testing for, and then let git automatically bisect the whole way to the correct commit, see https://lwn.net/Articles/317154/
+
+13.  Tuple types are covariant in their parameters: Tuple{Int} is a subtype of Tuple{Any}.
+julia> typeof((1, 0.1)) <: NTuple{2}
+false
+
+julia> typeof((1, 0.1)) <: NTuple{2,Any}
+true
+
+julia> typeof([1,2]) <: Vector
+true
+
+julia> typeof([1,2]) <: Vector{Any}
+false
+
+julia> Tuple{Int,Int} <: NTuple{2}
+true
+
+julia> Tuple{Int,Float64} <: NTuple{2}
+false
+
+julia> Tuple{Int,Float64} <: NTuple{2,Any}
+true
+
+14. Function inputs are tuple types, so they have to be covariant
+e.g. if you have f(::Int, ::Any) and call f(1, 2), dispatch happens based on whether Tuple{Int, Int} <: Tuple{Int, Any}
+
+15. Typevars always get "filled" with concrete types when subtyping, which is another way of saying that {T,T} where T asserts that both type parameters are equal
+Otherwise, f(x::T, y::T) where T would be the same as f(x::Any, y::Any)
+Since you could have T = Any
+
+16./ [Subnormals are the devil](https://discourse.julialang.org/t/50x-speed-difference-in-gemv-for-different-values-in-vector/2755)
+
+17. [Help out CUDANative.jl](https://github.com/JuliaGPU/CUDAnative.jl/blob/master/TODO.md)
+[Help out Dagger.](https://github.com/JuliaParallel/Dagger.jl)
+[Help out TensorOperations](
+
+
+
 18/03/17
 7. Got Git Kraken. Told sister about it.
 
