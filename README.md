@@ -1,6 +1,35 @@
 # PathToPerformance
 
 __SHIT I'VE LEARNED__ Scientific Day Logger
+
+18/03/17
+7. Got Git Kraken. Told sister about it.
+
+8. Gitter says 
+`function f(x)
+    function g()
+        if is(x, Int)
+            1
+        elseif 
+            0
+        end        
+    end
+    g()
+end`
+
+is the same as `type G{T} x::T end; g = G(x)` and defining call on `::G` ... @MikeInnes
+
+9. @testnowarn @example
+
+10. @mbauman says NTuple{N} is now the same as NTuple{N,T} where T (this means where T <: Any)
+
+11. [git bisecting](https://git-scm.com/docs/git-bisect) finds an offending commit.
+Builds may take time. Beware...
+
+
+
+
+
 17/03/2017
 0. Read Jeff's PhD thesis. Julia's heart/subtyping algorithm still freakin' hyerogliphical.
 Will return.
