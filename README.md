@@ -33,7 +33,7 @@ Econ/Finance
 2. http://aviks.github.io/Ito.jl/process.html
 
 Pkgs to Know.
-1. 
+1.
 2. https://github.com/JuliaParallel/Dagger.jl
 3.https://github.com/IntelLabs/ParallelAccelerator.jl
 4.https://github.com/pluskid/Mocha.jl
@@ -45,13 +45,23 @@ Spark
 3. [Workshop 3]
 
 __SHIT I'VE LEARNED__ Scientific Day Logger
+23/03/17
+19.Haswells are new chip design methodologies to improve efficiency of computation and power savings?
+21. Skylake is an even better version.
+22. Clock multiplying is basically doing more instructions within the same clock cycle
+23. Randall Leveque made amazing Claw software for Hyperbolic systems
+24. `ack` is old school tool for refactoring code = reformatting so as to facilitate everything.
+
 
 22/03/17
 18. Added this to my to dos... [some MIT book Jeff and gitter really like](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start)
 [Julia manual](https://upload.wikimedia.org/wikipedia/commons/2/2e/Julia.pdf)
 [Julia for HPC]
 
-19. 
+19. `@edit` takes you to the definition of the source code ! :D
+20. 27:41 `...` after a tuple means extract those arguments and call function again on those arguments.
+21. 44:21 - a generated function acts on the typed AST!
+
 
 19/03/17
 
@@ -98,12 +108,12 @@ Since you could have T = Any
 18/03/17
 7. Got Git Kraken. Told sister about it.
 
-8. Gitter says 
+8. Gitter says
 `function f(x)
     function g()
         if is(x, Int)
             1
-        elseif 
+        elseif
             0
         end        
     end
@@ -165,7 +175,7 @@ Julia to do's
 8. promotion rules
 9. splatting = pass a structure of n values as n separate args to a function
 10. linear algebra matrix type definitions andreas noack
-11. Introducing Julia/types 
+11. Introducing Julia/types
 12. 100 julia exercises
 13. numerical recipes in Julia
 14. distributed recipes in Julia
@@ -182,7 +192,7 @@ A. Help Sanders
 B. Help Benet
 c. Help Mendezsdf
   matrix playground - subtypes(AbstractArray)
-  
+
 
 d. read floating point standard 754 and exercicses
 e read 1788 standard and exercicses
