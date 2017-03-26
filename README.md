@@ -45,6 +45,36 @@ Spark
 3. [Workshop 3]
 
 __SHIT I'VE LEARNED__ Scientific Day Logger
+
+25/03/17
+28. Julia Multithreading in the works but is kept secret.
+29. `_foo` makes a handy internal implementation that uses dispatch. it means don't rely on it.
+30. FINALLY solved Hackerank 2. 
+```
+readline(STDIN)
+array = [parse(Int,s) for s in split(string(readline(STDIN)))]
+print(mapreduce(x -> x, +, array))
+```
+31. Chat says Julia is slow at strings and dynamic operations. 
+32. Aliasing - @mbauman says
+""" Yes, two objects alias each other when they point to the same memory region. In general, compilers must pessimistically assume that a write to object A may affect object B.
+So after writing to object B, it must re-load anything from object A before going on
+since it might have changed
+What @mbauman said, with the corollary that this forced assumption inhibits a great many optimizations with regards to reordering code, vectorizing, etc.
+33. Run time library Julep - BIG deal if you can setup a native Float. GPUs use 
+Float16 - order of magnitude difference.
+
+
+
+
+24/03/17
+25. [Method of Lines](https://en.wikipedia.org/wiki/Method_of_lines) discretize one dimension in a PDE, solve.
+26. Julia's GC makes ultra-low-latency a non-starter.
+27. Juleps are big big development projects - Julia enhancement proposals.
+
+
+
+
 23/03/17
 19.Haswells are new chip design methodologies to improve efficiency of computation and power savings?
 21. Skylake is an even better version.
