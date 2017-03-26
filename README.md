@@ -46,6 +46,11 @@ Spark
 
 __SHIT I'VE LEARNED__ Scientific Day Logger
 
+34. `whos()` tells you what is in memory.
+35. `join([string arrays], "delim") is my friend
+36. Hackerrank: 211,207
+
+
 25/03/17
 28. Julia Multithreading in the works but is kept secret.
 29. `_foo` makes a handy internal implementation that uses dispatch. it means don't rely on it.
