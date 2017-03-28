@@ -46,6 +46,38 @@ Spark
 
 __SHIT I'VE LEARNED__ Scientific Day Logger
 
+28/03/17
+41. Grammar/style fixes go in a separate PR.
+42. sample() from StatsBase is awesome.
+43. [Custom allocators](https://en.wikipedia.org/wiki/Allocator_(C%2B%2B)) sound like a damn good idea. You basically allow memory pools, and optimize GC or shared memory.
+44. Rackaukas says about Sundials.jl:
+>Sundials is good because it's the modern Petzold algorithm
+i.e. it's the multistep algorithm
+I say "the"
+because they are literally all the same algorithm
+Gear made it in the 70's, then that became vode, then Petzold did a bunch of stuff to make it lsode, modified it for DAEs to get DASSL and DASPK, then it was translated to C as cvode/ida
+all these years, the same code though
+there are definitely many things that can be done better, and Sundials is actually quite slow in many cases
+which is why I plan to at some point make a full adaptive order+timestep multistep method myself... but it's a huge undertaking
+but... multistep methods minimize function evaluations, so if your PDE is really large, Sundials is the best there is.
+and since it handles stiff equations, they generally handle most equations (they don't handle large complex eigenvalues well, but still, ehhh)
+so they are a workhorse of scientific computing for that reason: it may be slow, but it'll always work, no matter how big the problem is, and scales better than other algorithms
+>
+
+45. @dextorius says about custom allocators:
+>Any heap allocation you do from Julia (whenever you create, for instance, a new Vector) is handled by whichever version of malloc Julia uses internally. When I say "a custom allocator" I refer to the ability to instead use a different allocator from the default. In my case, that would mostly be for the purposes of introducing specific memory alignment in some data structures for performance reasons.
+This is a very common practice in languages like C/C++/D, especially when it comes to numerical code and GPGPU computing.
+
+46.
+
+
+27/03/17
+37. doing A & 1 will give you booleans
+38. Oracle machine is used for complexity proofs in CS
+39. Intel new Optane memory announced - SSD killer?
+40. * No mode(A) in base Julia?
+
+
 34. `whos()` tells you what is in memory.
 35. `join([string arrays], "delim") is my friend
 36. Hackerrank: 211,207
@@ -53,20 +85,20 @@ __SHIT I'VE LEARNED__ Scientific Day Logger
 
 25/03/17
 28. Julia Multithreading in the works but is kept secret.
-29. `_foo` makes a handy internal implementation that uses dispatch. it means don't rely on it.
-30. FINALLY solved Hackerank 2. 
+29. _foo` makes a handy internal implementation that uses dispatch. it means don't rely on it.
+30. FINALLY solved Hackerank 2. sdasdfff
 ```
 readline(STDIN)
 array = [parse(Int,s) for s in split(string(readline(STDIN)))]
 print(mapreduce(x -> x, +, array))
 ```
-31. Chat says Julia is slow at strings and dynamic operations. 
+31. Chat says Julia is slow at strings and dynamic operations.
 32. Aliasing - @mbauman says
 """ Yes, two objects alias each other when they point to the same memory region. In general, compilers must pessimistically assume that a write to object A may affect object B.
 So after writing to object B, it must re-load anything from object A before going on
 since it might have changed
 What @mbauman said, with the corollary that this forced assumption inhibits a great many optimizations with regards to reordering code, vectorizing, etc.
-33. Run time library Julep - BIG deal if you can setup a native Float. GPUs use 
+33. Run time library Julep - BIG deal if you can setup a native Float. GPUs use
 Float16 - order of magnitude difference.
 
 
@@ -86,6 +118,7 @@ Float16 - order of magnitude difference.
 22. Clock multiplying is basically doing more instructions within the same clock cycle
 23. Randall Leveque made amazing Claw software for Hyperbolic systems
 24. `ack` is old school tool for refactoring code = reformatting so as to facilitate everything.
+25. AVX are super compiler magics to super speed up compiler instructions. Basically SIMD.
 
 
 22/03/17
