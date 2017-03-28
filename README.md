@@ -68,7 +68,9 @@ so they are a workhorse of scientific computing for that reason: it may be slow,
 >Any heap allocation you do from Julia (whenever you create, for instance, a new Vector) is handled by whichever version of malloc Julia uses internally. When I say "a custom allocator" I refer to the ability to instead use a different allocator from the default. In my case, that would mostly be for the purposes of introducing specific memory alignment in some data structures for performance reasons.
 This is a very common practice in languages like C/C++/D, especially when it comes to numerical code and GPGPU computing.
 
-46.
+46. Chris and the gang say that Shampine is the boss and that I should read about the [Matlab ODE suite](http://people.eecs.berkeley.edu/~wkahan/Math128/ODEsuite.pdf), [Solving DDes in Matlab](http://www.radford.edu/~thompson/RP/dde23.pdf), [IRKC and IMEX solver for stiff blah balh](http://faculty.smu.edu/shampine/IRKC.pdf).
+Duly noted.
+
 
 
 27/03/17
