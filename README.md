@@ -71,6 +71,10 @@ This is a very common practice in languages like C/C++/D, especially when it com
 46. Chris and the gang say that Shampine is the boss and that I should read about the [Matlab ODE suite](http://people.eecs.berkeley.edu/~wkahan/Math128/ODEsuite.pdf), [Solving DDes in Matlab](http://www.radford.edu/~thompson/RP/dde23.pdf), [IRKC and IMEX solver for stiff blah balh](http://faculty.smu.edu/shampine/IRKC.pdf).
 Duly noted.
 
+47. First attempt at a PR. [#21208](https://github.com/JuliaLang/julia/pull/21208)
+Github hurts. Remember to add tests. skip CI until last PR.
+48. [Wong-Zakai theorem](http://www.hairer.org/papers/WongZakai.pdf) for PDEs - 57 page paper.
+
 
 
 27/03/17
