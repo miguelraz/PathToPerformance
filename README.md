@@ -74,6 +74,24 @@ Duly noted.
 47. First attempt at a PR. [#21208](https://github.com/JuliaLang/julia/pull/21208)
 Github hurts. Remember to add tests. skip CI until last PR.
 48. [Wong-Zakai theorem](http://www.hairer.org/papers/WongZakai.pdf) for PDEs - 57 page paper.
+49. This is cool code from base/test/linalg/generic.jl
+> # test ops on Numbers
+for elty in [Float32,Float64,Complex64,Complex128]
+    a = rand(elty)
+    @test trace(a)         == a
+    @test rank(zero(elty)) == 0
+    @test rank(one(elty))  == 1
+    @test !isfinite(cond(zero(elty)))
+    @test cond(a)          == one(elty)
+    @test cond(a,1)        == one(elty)
+    @test issymmetric(a)
+    @test ishermitian(one(elty))
+    @test det(a) == a
+end
+
+50. @KristofferC did an [awesome talk](https://www.youtube.com/watch?v=30TUEhbGmuc) on the FEM landscape. Take note of storing plots at 20mins in.
+PETSc holy grail of what?
+51. [Jeff B](https://www.youtube.com/watch?v=JoRn4ryMclc) basic talk 2013 on Julia parallelism
 
 
 
