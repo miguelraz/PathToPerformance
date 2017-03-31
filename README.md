@@ -56,7 +56,9 @@ Duly noted.
 47. First attempt at a PR. [#21208](https://github.com/JuliaLang/julia/pull/21208)
 Github hurts. Remember to add tests. skip CI until last PR.
 48. [Wong-Zakai theorem](http://www.hairer.org/papers/WongZakai.pdf) for PDEs - 57 page paper.
-49. This is cool code from base/test/linalg/generic.jl
+49.
+```
+This is cool code from base/test/linalg/generic.jl
 > # test ops on Numbers
 for elty in [Float32,Float64,Complex64,Complex128]
     a = rand(elty)
@@ -70,70 +72,93 @@ for elty in [Float32,Float64,Complex64,Complex128]
     @test ishermitian(one(elty))
     @test det(a) == a
 end
+```
 
 50. @KristofferC did an [awesome talk](https://www.youtube.com/watch?v=30TUEhbGmuc) on the FEM landscape. Take note of storing plots at 20mins in.
 PETSc holy grail of what?
+
 51. [Jeff B](https://www.youtube.com/watch?v=JoRn4ryMclc) basic talk 2013 on Julia parallelism
+
 52. [ERMAGERD cluster manager and parallel julia!](https://www.youtube.com/watch?v=XJAQ24NS458)
 
 
 27/03/17
+
 37. doing A & 1 will give you booleans
+
 38. Oracle machine is used for complexity proofs in CS
+
 39. Intel new Optane memory announced - SSD killer?
+
 40. * No mode(A) in base Julia?
 
 
 34. `whos()` tells you what is in memory.
+
 35. `join([string arrays], "delim") is my friend
+
 36. Hackerrank: 211,207
 
 
 25/03/17
+
 28. Julia Multithreading in the works but is kept secret.
+
 29. _foo` makes a handy internal implementation that uses dispatch. it means don't rely on it.
-30. FINALLY solved Hackerank 2. sdasdfff
+
+30. FINALLY solved Hackerank 2. FINALLY!
+
 ```
 readline(STDIN)
 array = [parse(Int,s) for s in split(string(readline(STDIN)))]
 print(mapreduce(x -> x, +, array))
 ```
+
 31. Chat says Julia is slow at strings and dynamic operations.
+
 32. Aliasing - @mbauman says
 """ Yes, two objects alias each other when they point to the same memory region. In general, compilers must pessimistically assume that a write to object A may affect object B.
 So after writing to object B, it must re-load anything from object A before going on
 since it might have changed
 What @mbauman said, with the corollary that this forced assumption inhibits a great many optimizations with regards to reordering code, vectorizing, etc.
-33. Run time library Julep - BIG deal if you can setup a native Float. GPUs use
-Float16 - order of magnitude difference.
+
+33. Run time library Julep - BIG deal if you can setup a native Float. GPUs use Float16 - order of magnitude difference or greater.
 
 
 
 
 24/03/17
+
 25. [Method of Lines](https://en.wikipedia.org/wiki/Method_of_lines) discretize one dimension in a PDE, solve.
+
 26. Julia's GC makes ultra-low-latency a non-starter.
+
 27. Juleps are big big development projects - Julia enhancement proposals.
 
-
-
-
 23/03/17
-19.Haswells are new chip design methodologies to improve efficiency of computation and power savings?
+
+19. Haswells are new chip design methodologies to improve efficiency of computation and power savings?
+
 21. Skylake is an even better version.
+
 22. Clock multiplying is basically doing more instructions within the same clock cycle
+
 23. Randall Leveque made amazing Claw software for Hyperbolic systems
+
 24. `ack` is old school tool for refactoring code = reformatting so as to facilitate everything.
+
 25. AVX are super compiler magics to super speed up compiler instructions. Basically SIMD.
 
 
 22/03/17
-18. Added this to my to dos... [some MIT book Jeff and gitter really like](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start)
-[Julia manual](https://upload.wikimedia.org/wikipedia/commons/2/2e/Julia.pdf)
+
+18. Added this to my to dos... [some MIT book Jeff and gitter really like](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start), [Julia manual](https://upload.wikimedia.org/wikipedia/commons/2/2e/Julia.pdf)
 [Julia for HPC]
 
 19. `@edit` takes you to the definition of the source code ! :D
+
 20. 27:41 `...` after a tuple means extract those arguments and call function again on those arguments.
+
 21. 44:21 - a generated function acts on the typed AST!
 
 
@@ -143,6 +168,7 @@ Float16 - order of magnitude difference.
 For bisecting, you can write a small script that passes / fails depending on what you are testing for, and then let git automatically bisect the whole way to the correct commit, see https://lwn.net/Articles/317154/
 
 13.  Tuple types are covariant in their parameters: Tuple{Int} is a subtype of Tuple{Any}.
+```
 julia> typeof((1, 0.1)) <: NTuple{2}
 false
 
@@ -163,6 +189,7 @@ false
 
 julia> Tuple{Int,Float64} <: NTuple{2,Any}
 true
+```
 
 14. Function inputs are tuple types, so they have to be covariant
 e.g. if you have f(::Int, ::Any) and call f(1, 2), dispatch happens based on whether Tuple{Int, Int} <: Tuple{Int, Any}
@@ -171,16 +198,15 @@ e.g. if you have f(::Int, ::Any) and call f(1, 2), dispatch happens based on whe
 Otherwise, f(x::T, y::T) where T would be the same as f(x::Any, y::Any)
 Since you could have T = Any
 
-16./ [Subnormals are the devil](https://discourse.julialang.org/t/50x-speed-difference-in-gemv-for-different-values-in-vector/2755)
+16. [Subnormals are the devil](https://discourse.julialang.org/t/50x-speed-difference-in-gemv-for-different-values-in-vector/2755)
 
 17. [Help out CUDANative.jl](https://github.com/JuliaGPU/CUDAnative.jl/blob/master/TODO.md)
 [Help out Dagger.](https://github.com/JuliaParallel/Dagger.jl)
 [Help out TensorOperations](
 
-
-
 18/03/17
-7. Got Git Kraken. Told sister about it.
+
+7. Got Git Kraken. Told sister about it. Edit: 30/03 / [ohshitgit.com](ohshitgit.com)
 
 8. Gitter says
 `function f(x)
@@ -200,25 +226,20 @@ is the same as `type G{T} x::T end; g = G(x)` and defining call on `::G` ... @Mi
 
 10. @mbauman says NTuple{N} is now the same as NTuple{N,T} where T (this means where T <: Any)
 
-11. [git bisecting](https://git-scm.com/docs/git-bisect) finds an offending commit.
-Builds may take time. Beware...
-
-
-
-
+11. [git bisecting](https://git-scm.com/docs/git-bisect) finds an offending commit. Builds may take time. Beware...
 
 17/03/2017
-0. Read Jeff's PhD thesis. Julia's heart/subtyping algorithm still freakin' hyerogliphical.
-Will return.
 
- 0.5 Ran Valgrind on all Julia, ValidatedNumerics.jl, and TaylorSeries.jl source code.
- No memleaks. Nice.
+0. Read Jeff's PhD thesis. Julia's heart/subtyping algorithm still freakin' hyerogliphical. Will return. Edit: 30/03/17 - subtyping algo explained a bit more in his Julia Internals Juliacon 2015 talk.
 
-#1. @ChrisRackaukas Bikeshedding - arguing about syntax
+ 0.5.  Ran Valgrind on all Julia, ValidatedNumerics.jl, and TaylorSeries.jl source code. No memleaks. Nice.
+
+1. @ChrisRackaukas Bikeshedding - arguing about syntax
 
 """
 #The term was coined as a metaphor to illuminate Parkinson’s Law of Triviality. Parkinson observed that a committee whose job is to approve plans for a nuclear power plant may spend the majority of its time on relatively unimportant but easy-to-grasp issues, such as what materials to use for the staff bikeshed, while neglecting the design of the power plant itself, which is far more important but also far more difficult to criticize constructively. It was popularized in the Berkeley Software Distribution community by Poul-Henning Kamp[1] and has spread from there to the software industry at large.
 """
+
 2. tests might be "bleeding"
 i.e. one test is setting a value that changes another test.
 
