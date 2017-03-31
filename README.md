@@ -1,50 +1,15 @@
-# PathToPerformance
-__TO DOS__
 
-CS Courses
-1. [Stanford SQL](https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about)
-2. [Numerical Analysis - Homer Reid](http://homerreid.dyndns.org/teaching/18.330/#Programming)
-3. [IEEE 754 FLOP arithmetic](http://sistemas.fciencias.unam.mx/~gcontreras/joomla15/tmp/Numerical_Computing_with_IEEE_Floating_Point_Arithmetic.pdf) with exercises!
-4. Geometric Numerical Integration - Ernst Hairer et al
-5. Numerical Linear Algebra - Trefethen
+__Stuff I'VE LEARNED__ Scientific Day Logger
 
-CS Papers and books
-1. [Avoid false sharing - Intel](https://software.intel.com/sites/default/files/m/d/4/1/d/8/3-4-MemMgt_-_Avoiding_and_Identifying_False_Sharing_Among_Threads.pdf)
-2. [Geometric Numerical Integration - Hairer]
-3. [PDF scheduling and multithreading bonanza as per #21017](http://www.cs.cmu.edu/~chensm/papers/ConstructiveCacheSharing_spaa07.pdf)
-4. [Deep Learning MIT]
-5. [some MIT book Jeff and gitter really like](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start)
+30/03/17
+59. Enumerate generate a lot of types.
 
-Julia!
-1. [Tony Kelman's](https://www.youtube.com/watch?v=XKdKdfHB2KM) talk on CI, and his [notebook](https://nbviewer.jupyter.org/github/tkelman/JuliaCon2016workshop/blob/master/Workshop.ipynb)
-2. [Chris Rackauckas](www.stochasticlifestyle.com/finalizing-julia-package-documentation-testing-coverage-publishing/) full CI tips implementation on thesis.
-3. [His other awesome post](http://www.stochasticlifestyle.com/modular-algorithms-scientific-computing-julia/) and [this one](www.juliabloggers.com/7-julia-gotchas-and-how-to-handle-them/)
-4. [Dear lord Chris you are a machine](http://www.stochasticlifestyle.com/finalizing-julia-package-documentation-testing-coverage-publishing/)
-5. [To Lisp or not to lisp - Stefan Karpinski](https://www.youtube.com/watch?v=dK3zRXhrFZY)
-6. [CUDA, Julia, and Deep Learning](https://devblogs.nvidia.com/parallelforall/mocha-jl-deep-learning-julia/)
-7. [Julia - HPC book]
-
-Parallel Julia
-1. [Workshop 1](https://www.youtube.com/watch?v=euZkvgx0fG8)
-    update to Arch Robinson?
-
-Econ/Finance
-1. https://lectures.quantecon.org/jl/finite_markov.html
-2. http://aviks.github.io/Ito.jl/process.html
-
-Pkgs to Know.
-1.
-2. https://github.com/JuliaParallel/Dagger.jl
-3.https://github.com/IntelLabs/ParallelAccelerator.jl
-4.https://github.com/pluskid/Mocha.jl
-5. https://github.com/IntelLabs/HPAT.jl
-6. https://juliaplots.github.io/
-Spark
-1. [Workshops 1 ](https://www.youtube.com/watch?v=OheiUl_uXwo&index=1&list=PL-x35fyliRwhDv3g1dae8v2F6-_bzBfGK)
-2. [Workshop 2](https://www.youtube.com/watch?v=VWeWViFCzzg)
-3. [Workshop 3]
-
-__SHIT I'VE LEARNED__ Scientific Day Logger
+29/03/2017
+54. Turns out @frederikekre and @KristofferC are behind JuaFEM.jl. Chris says I should consider applying for the DiffEqs.jl project on GSoC. Whelp, let's do it gang!
+55. fixed spacing in Chris PR. perhaps a prettyfying script is in order.
+56. Read about efficient laziness in the story [The tale of the man who has too lazy to fail](http://emilkirkegaard.dk/en/wp-content/uploads/Robert-A.-Heinlein-Time-enough-for-love_-the-lives-of-Lazarus-Long.pdf)
+57. @ararslan made a kick as commit
+58. chris says MXNet > Mocha.jl
 
 28/03/17
 41. Grammar/style fixes go in a separate PR.
@@ -92,7 +57,7 @@ end
 50. @KristofferC did an [awesome talk](https://www.youtube.com/watch?v=30TUEhbGmuc) on the FEM landscape. Take note of storing plots at 20mins in.
 PETSc holy grail of what?
 51. [Jeff B](https://www.youtube.com/watch?v=JoRn4ryMclc) basic talk 2013 on Julia parallelism
-
+52. [ERMAGERD cluster manager and parallel julia!](https://www.youtube.com/watch?v=XJAQ24NS458)
 
 
 27/03/17
@@ -249,6 +214,51 @@ i.e. one test is setting a value that changes another test.
 6. Use Gists that are secret from search engines!
 
 
+# PathToPerformance
+__TO DOS__
+
+CS Courses
+1. [Stanford SQL](https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about)
+2. [Numerical Analysis - Homer Reid](http://homerreid.dyndns.org/teaching/18.330/#Programming)
+3. [IEEE 754 FLOP arithmetic](http://sistemas.fciencias.unam.mx/~gcontreras/joomla15/tmp/Numerical_Computing_with_IEEE_Floating_Point_Arithmetic.pdf) with exercises!
+4. Geometric Numerical Integration - Ernst Hairer et al
+5. Numerical Linear Algebra - Trefethen
+
+CS Papers and books
+1. [Avoid false sharing - Intel](https://software.intel.com/sites/default/files/m/d/4/1/d/8/3-4-MemMgt_-_Avoiding_and_Identifying_False_Sharing_Among_Threads.pdf)
+2. [Geometric Numerical Integration - Hairer]
+3. [PDF scheduling and multithreading bonanza as per #21017](http://www.cs.cmu.edu/~chensm/papers/ConstructiveCacheSharing_spaa07.pdf)
+4. [Deep Learning MIT]
+5. [some MIT book Jeff and gitter really like](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start)
+
+Julia!
+1. [Tony Kelman's](https://www.youtube.com/watch?v=XKdKdfHB2KM) talk on CI, and his [notebook](https://nbviewer.jupyter.org/github/tkelman/JuliaCon2016workshop/blob/master/Workshop.ipynb)
+2. [Chris Rackauckas](www.stochasticlifestyle.com/finalizing-julia-package-documentation-testing-coverage-publishing/) full CI tips implementation on thesis.
+3. [His other awesome post](http://www.stochasticlifestyle.com/modular-algorithms-scientific-computing-julia/) and [this one](www.juliabloggers.com/7-julia-gotchas-and-how-to-handle-them/)
+4. [Dear lord Chris you are a machine](http://www.stochasticlifestyle.com/finalizing-julia-package-documentation-testing-coverage-publishing/)
+5. [To Lisp or not to lisp - Stefan Karpinski](https://www.youtube.com/watch?v=dK3zRXhrFZY)
+6. [CUDA, Julia, and Deep Learning](https://devblogs.nvidia.com/parallelforall/mocha-jl-deep-learning-julia/)
+7. [Julia - HPC book]
+
+Parallel Julia
+1. [Workshop 1](https://www.youtube.com/watch?v=euZkvgx0fG8)
+    update to Arch Robinson?
+
+Econ/Finance
+1. https://lectures.quantecon.org/jl/finite_markov.html
+2. http://aviks.github.io/Ito.jl/process.html
+
+Pkgs to Know.
+1.
+2. https://github.com/JuliaParallel/Dagger.jl
+3.https://github.com/IntelLabs/ParallelAccelerator.jl
+4.https://github.com/pluskid/Mocha.jl
+5. https://github.com/IntelLabs/HPAT.jl
+6. https://juliaplots.github.io/
+Spark
+1. [Workshops 1 ](https://www.youtube.com/watch?v=OheiUl_uXwo&index=1&list=PL-x35fyliRwhDv3g1dae8v2F6-_bzBfGK)
+2. [Workshop 2](https://www.youtube.com/watch?v=VWeWViFCzzg)
+3. [Workshop 3]
 
 
 
