@@ -1,5 +1,11 @@
 
-__Stuff I'VE LEARNED__ Scientific Day Logger
+__Stuff I'VE LEARNED__
+======================
+
+Scientific Day Logger
+---------------------
+
+A trillion points of altruism to Julia's Gitter chat and its benign and helpful netizens
 
 30/03/17
 
