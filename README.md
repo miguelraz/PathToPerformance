@@ -1,15 +1,14 @@
 
-__Stuff I'VE LEARNED__
+__Stuff I've learned: Annotations on the path to Julia Nirvana__
 ======================
-
 Scientific Day Logger
 ---------------------
 
-A trillion points of altruism to Julia's Gitter chat and its benign and helpful netizens
+A trillion points of altruism to Julia's Gitter chat and its benign and helpful netizens.
 
 30/03/17
 
-59. Enumerate generate a lot of types.
+59. Enumerate generate a lot of types, says Chris. Use this if you want tons of types for dispatch --> parallelization. Also, Chris says to handle distributed computing via multiple dispatch. Much pro, very wow.
 
 60. Jeff gives [a good overview](https://www.youtube.com/watch?v=osdeT-tWjzk) on how and why internals of Julia work the way they do.
 
@@ -20,6 +19,8 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 63. [Miletus.jl DEMO IS FINALLY ONLINE!](https://www.youtube.com/watch?time_continue=4&v=e8h1ZVaeIus)
 
 64. Downloaded free copy of JuliaFIN. Let-s hope beta access means future access for a while, as well as BLPAPI integration.
+
+65. Ctrl-R in REPL helps you find code says KristofferC.
 
 29/03/2017
 
