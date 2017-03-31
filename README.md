@@ -3,6 +3,11 @@ __Stuff I'VE LEARNED__ Scientific Day Logger
 
 30/03/17
 59. Enumerate generate a lot of types.
+60. Jeff gives [a good overview](https://www.youtube.com/watch?v=osdeT-tWjzk) on how and why internals of Julia work the way they do.
+61. [Jameson Nash](https://www.youtube.com/watch?v=ErGi9sNgUjw) explains future avenues of research for Statically compiling Julia and getting a mini hackable version going. 
+62. Amit Murthy explains [a little of how to sping up your own cluster](https://www.youtube.com/watch?v=XJAQ24NS458)
+63. [Miletus.jl DEMO IS FINALLY ONLINE!](https://www.youtube.com/watch?time_continue=4&v=e8h1ZVaeIus)
+64. Downloaded free copy of JuliaFIN. Let-s hope beta access means future access for a while, as well as BLPAPI integration.
 
 29/03/2017
 54. Turns out @frederikekre and @KristofferC are behind JuaFEM.jl. Chris says I should consider applying for the DiffEqs.jl project on GSoC. Whelp, let's do it gang!
