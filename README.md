@@ -2,21 +2,33 @@
 __Stuff I'VE LEARNED__ Scientific Day Logger
 
 30/03/17
+
 59. Enumerate generate a lot of types.
+
 60. Jeff gives [a good overview](https://www.youtube.com/watch?v=osdeT-tWjzk) on how and why internals of Julia work the way they do.
-61. [Jameson Nash](https://www.youtube.com/watch?v=ErGi9sNgUjw) explains future avenues of research for Statically compiling Julia and getting a mini hackable version going. 
+
+61. [Jameson Nash](https://www.youtube.com/watch?v=ErGi9sNgUjw) explains future avenues of research for Statically compiling Julia and getting a mini hackable version going.
+
 62. Amit Murthy explains [a little of how to sping up your own cluster](https://www.youtube.com/watch?v=XJAQ24NS458)
+
 63. [Miletus.jl DEMO IS FINALLY ONLINE!](https://www.youtube.com/watch?time_continue=4&v=e8h1ZVaeIus)
+
 64. Downloaded free copy of JuliaFIN. Let-s hope beta access means future access for a while, as well as BLPAPI integration.
 
 29/03/2017
+
 54. Turns out @frederikekre and @KristofferC are behind JuaFEM.jl. Chris says I should consider applying for the DiffEqs.jl project on GSoC. Whelp, let's do it gang!
+
 55. fixed spacing in Chris PR. perhaps a prettyfying script is in order.
+
 56. Read about efficient laziness in the story [The tale of the man who has too lazy to fail](http://emilkirkegaard.dk/en/wp-content/uploads/Robert-A.-Heinlein-Time-enough-for-love_-the-lives-of-Lazarus-Long.pdf)
-57. @ararslan made a kick as commit
+
+57. @ararslan made a kick as commit explaining how to [manage the zip function via a recursive algo. Awesome dude](https://github.com/JuliaLang/julia/pull/21208)
+
 58. chris says MXNet > Mocha.jl
 
 28/03/17
+
 41. Grammar/style fixes go in a separate PR.
 42. sample() from StatsBase is awesome.
 43. [Custom allocators](https://en.wikipedia.org/wiki/Allocator_(C%2B%2B)) sound like a damn good idea. You basically allow memory pools, and optimize GC or shared memory.
