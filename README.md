@@ -6,6 +6,32 @@ Scientific Day Logger
 
 A trillion points of altruism to Julia's Gitter chat and its benign and helpful netizens.
 
+
+03/04/2017
+
+67. Submitted GSoC proposal. Chat was invaluable. Remember Chris' advice about not building a compiler yourself - focus on your thing, let experts do theirs. Balance will be interesting.
+
+68. Read a gazillion Kahan papers. [That man is a beast](http://people.eecs.berkeley.edu/~wkahan/) Julia needs a FLOP debugger. Can Gallium pull it off? Also, Gustafson is misguided as heck, UNUMS are not coming anytime soon. Ever. For anything.
+
+69. Classical papers in numerical analysis by Trefethen [are here](http://web.stanford.edu/class/cme324/classics/)
+
+70. Miletus bug resolved. Properly reported. now use support+juliafin@juliacomputing.com 
+
+
+31/03/2017
+
+66. Never use a darn push array to plot - use array comprehension! Props to Simon Byrne and the Miletus.jl manual.
+>
+function payoff_curve(c, d::Date, prices)
+payoff = [value(GeomBMModel(d, x, 0.0, 0.0, 0.0), c) for x in prices]
+p = [x.val for x in payoff]
+r = [x.val for x in prices]
+return r, p
+end
+
+67. [PArallel accelerator talk](https://www.youtube.com/watch?v=Ti9qqAe_NF4). Awesome talk. Possibility of Julia compiler, and of running awesome parallelization stuff. Announced multithreading. Jeeeeeeeeeeeeeeeeeeeeeeeeefffffffffff...
+
+
 30/03/17
 
 59. Enumerate generate a lot of types, says Chris. Use this if you want tons of types for dispatch --> parallelization. Also, Chris says to handle distributed computing via multiple dispatch. Much pro, very wow.

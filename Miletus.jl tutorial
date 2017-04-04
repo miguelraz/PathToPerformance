@@ -1,0 +1,517 @@
+using Miletus
+using Base.Dates
+using Miletus.TermStructure
+using Miletus.DayCounts
+using BusinessDays
+using Miletus
+
+import Miletus: When, Give, Pay, Buy, Both, At, Either, Zero
+import Miletus: YieldModel, maturitydate
+
+x = Receive(100)
+
+x = Pay(100)
+
+x = Pay(100USD)
+
+s = SingleStock()
+
+x = Both(s, Pay(100USD))
+
+x = Buy(s,100USD)
+
+x
+
+x = When(At(Date("2016-12-25")), Receive(100USD))
+
+typeof(x)
+
+z = ZCB(Date("2016-12-25"), 100USD)
+
+methods(z)
+
+typeof(z)
+
+x = Either(SingleStock(), Zero())
+
+x = When(At(Date("2016-12-25")), Either(Buy(SingleStock(), 100USD), Zero()))
+
+eucall = EuropeanCall(Date("2016-12-25"), SingleStock(), 100USD)
+
+gbmm = GeomBMModel(Date("2016-01-01"), 100.0USD, 0.1, 0.05, .15)
+
+typeof(gbmm)
+
+typeof(GeomBMModel)
+
+@which GeomBMModel
+
+function module_functions(modname)
+    list = Symbol[]
+    for nm in names(modname)
+        typeof(eval(nm)) == push!(list,nm)
+    end
+    return list
+end
+
+whos(Miletus)
+
+@doc GeomBMModel
+
+value(gbmm,eucall)
+
+Zero()
+
+Amount(100USD::Observable)
+
+using Miletus : DateObs, Amount
+
+DateObs() <: Observable{Date}
+
+x = When(At(Date("2016-12-25")), Receive(100USD))
+
+#Constructing Observables and Contracts
+
+z = ZCB(Date("2016-12-25"),100USD)
+
+typealias AtObs LiftObs{typeof(==),Tuple{DateObs,ConstObs{Date}},Bool}
+
+AtObs(t::Date) = LiftObs(==,DateObs(),ConstObs(t))
+typealias At AtObs
+
+x = When(At(Date("2016-12-25")), Either(Both(SingleStock(), Pay(100USD)), Zero()))
+
+eucall = EuropeanCall(Date("2016-12-25"),SingleStock(), 100USD)
+
+Receive(x::Union{Real,CurrencyQuantity}) = Amount(ConstObs(x))
+
+Pay(x::Union{Real,CurrencyQuantity}) = Give(Receive(x))
+
+Buy(c::Contract, x::Union{Real,CurrencyQuantity}) = Both(c, Pay(x))
+
+Options(c::Contract) = Either(c, Zero())
+
+@doc Actual360
+
+@doc Actual365
+
+@doc Process
+
+using Miletus, Gadfly, Colors
+import Miletus
+import Base.strip
+
+expirydate = Date("2016-12-25")
+startdate = Date("2016-12-1")
+interestrate = 0.05
+carryrate = 0.1
+volatility = 0.15
+K₁ = 98.0USD
+K₂ = 100.0USD
+K₃ = 102.0USD
+L = 11 # Layers in the binomial lattice / Number of time steps
+
+Κᵩ
+
+price = K₁-1USD:0.1USD:K₃+1USD
+
+gbmm = GeomBMModel(startdate, K₂, interestrate, carryrate, volatility)
+crr = CRRModel(startdate, expirydate, L, K₂, interestrate, carryrate, volatility)
+mcm = Miletus.montecarlo(gbmm, startdate:expirydate, 10_000)
+
+function payoff_curve(c, d::Date, prices)
+payoff = [value(GeomBMModel(d, x, 0.0, 0.0, 0.0), c) for x in prices]
+p = [x.val for x in payoff]
+r = [x.val for x in prices]
+return r, p
+end
+
+
+Vanilla Call Opঞon
+
+call₁ = EuropeanCall(expirydate, SingleStock(), K₁)
+call₂ = EuropeanCall(expirydate, SingleStock(), K₂)
+call₃ = EuropeanCall(expirydate, SingleStock(), K₃)
+s₁,cp₁ = payoff_curve(call₁, expirydate, price)
+s₂,cp₂ = payoff_curve(call₂, expirydate, price)
+s₃,cp₃ = payoff_curve(call₃, expirydate, price)
+plot(x = s₂, y = cp₂, Geom.line,
+Theme(default_color=colorant"blue", line_width = 1.0mm),
+Guide.title("Vanilla Call Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+using Miletus: ConstObs
+
+value(gbmm, call₂)
+value(crr, call₂)
+value(mcm, call₂)
+
+
+Vanilla Put Option
+put₁ = EuropeanPut(expirydate, SingleStock(), K₁)
+put₂ = EuropeanPut(expirydate, SingleStock(), K₂)
+put₃ = EuropeanPut(expirydate, SingleStock(), K₃)
+s₁,pp₁ = payoff_curve(put₁, expirydate, price)
+s₂,pp₂ = payoff_curve(put₂, expirydate, price)
+s₃,pp₃ = payoff_curve(put₃, expirydate, price)
+plot(x = s₂, y = pp₂, Geom.line,
+Theme(default_color=colorant"blue", line_width = 1.0mm),
+Guide.title("Vanilla Put Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, put₂)
+value(crr, put₂)
+value(mcm, put₂)
+
+
+
+
+Butterfly Call Spread
+# Buy two calls at the high and low strikes
+# Sell two calls at the middle strike
+function butterfly_call(expiry::Date, K₁, K₂, K₃)
+@assert K₁ < K₂ < K₃
+c₁ = EuropeanCall(expiry, SingleStock(), K₁)
+c₂ = EuropeanCall(expiry, SingleStock(), K₂)
+c₃ = EuropeanCall(expiry, SingleStock(), K₃)
+Both(Both(c₁,c₃), Give(Both(c₂,c₂)))
+end
+bfly₁ = butterfly_call(expirydate, K₁, K₂, K₃)
+s,p_bfly₁ = payoff_curve(bfly₁, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+grn = colorant"green"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_bfly₁,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y= cp₁ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₃,y= cp₃ ,Geom.line,Theme(default_color=grn,line_width=1.0mm)),
+layer( x=s₂,y=-2cp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Butterfly Call", "call₁", "call₃", "-2call₂"],
+["black", "red", "green", "blue"]),
+Guide.title("Butterfly Call Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, bfly₁)
+value(crr, bfly₁)
+value(mcm, bfly₁)
+
+Butterfly Put Spread
+# Buy two puts at the high and low strikes
+# Sell two puts at the middle strike
+function butterfly_put(expiry::Date, K₁, K₂, K₃)
+@assert K₁ < K₂ < K₃
+p₁ = EuropeanPut(expiry, SingleStock(), K₁)
+p₂ = EuropeanPut(expiry, SingleStock(), K₂)
+p₃ = EuropeanPut(expiry, SingleStock(), K₃)
+Both(Both(p₁,p₃), Give(Both(p₂,p₂)))
+end
+bfly₂ = butterfly_put(expirydate, K₁, K₂, K₃)
+s,p_bfly₂ = payoff_curve(bfly₂, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+grn = colorant"green"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_bfly₂,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y= pp₁ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₃,y= pp₃ ,Geom.line,Theme(default_color=grn,line_width=1.0mm)),
+layer( x=s₂,y=-2pp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("black",["Butterfly Put", "put₁", "put₃", "-2put₂"],
+["black", "red", "green", "blue"]),
+Guide.title("Butterfly Put Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, bfly₂)
+value(crr, bfly₂)
+value(mcm, bfly₂)
+
+Bear Call Spread
+# Buy a call at the high strike
+# Sell a call at the low strike
+function bear_call(expiry::Date, K₁, K₂)
+@assert K₁ != K₂
+c₁ = EuropeanCall(expiry, SingleStock(), K₁)
+c₂ = EuropeanCall(expiry, SingleStock(), K₂)
+Both(Give(c₁), c₂)
+end
+bear₁ = bear_call(expirydate, K₁, K₂)
+s,p_bear₁ = payoff_curve(bear₁, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s, y=p_bear₁,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y=-cp₁ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂,y= cp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Bear Call", "-call₁", "call₂"],
+["black", "red", "blue"]),
+Guide.title("Bear Call Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, bear₁)
+value(crr, bear₁)
+value(mcm, bear₁)
+
+
+Bear Put Spread
+# Buy a put at the low strike
+# Sell a put at the high strike
+function bear_put(expiry::Date, K₁, K₂)
+@assert K₁ != K₂
+p₁ = EuropeanPut(expiry, SingleStock(), K₁)
+p₂ = EuropeanPut(expiry, SingleStock(), K₂)
+Both(p₁, Give(p₂))
+end
+bear₂ = bear_put(expirydate, K₁, K₂)
+r,p_bear₂ = payoff_curve(bear₂, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s, y=p_bear₂,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁, y= pp₁ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂, y=-pp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Bear Put", "call₁", "-call₂"],
+["black", "red", "blue"]),
+Guide.title("Bear Put Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, bear₂)
+value(crr, bear₂)
+value(mcm, bear₂)
+
+
+
+Bull Call Spread
+# Buy a call at the low strike
+# Sell a call at the high strike
+function bull_call(expiry::Date, K₁, K₂)
+@assert K₁ != K₂
+c₁ = EuropeanCall(expiry, SingleStock(), K₁)
+c₂ = EuropeanCall(expiry, SingleStock(), K₂)
+Both(c₁, Give(c₂))
+end
+bull₁ = bull_call(expirydate, K₁, K₂)
+r,p_bull₁ = payoff_curve(bull₁, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_bull₁,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y= cp₁ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂,y=-cp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Bull Call", "call₁", "-call₂"],
+["black", "red", "blue"]),
+Guide.title("Bull Call Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, bull₁)
+value(crr, bull₁)
+value(mcm, bull₁)
+
+
+Bull Put Spread
+# Buy a put at the high strike
+# Sell a put at the low strike
+function bull_put(expiry::Date, K₁, K₂)
+@assert K₁ != K₂
+p₁ = EuropeanPut(expiry, SingleStock(), K₁)
+p₂ = EuropeanPut(expiry, SingleStock(), K₂)
+Both(Give(p₁), p₂)
+end
+bull₂ = bull_put(expirydate, K₁, K₂)
+r,p_bull₂ = payoff_curve(bull₂, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_bull₂,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y=-pp₁ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂,y= pp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Bear Put", "-put₁", "put₂"],
+["black", "red", "blue"]),
+Guide.title("Bear Put Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, bull₂)
+value(crr, bull₂)
+value(mcm, bull₂)
+
+
+Straddle Spread
+# Buy a put and a call at the same strike
+function straddle(expiry::Date, K)
+p = EuropeanPut(expiry, SingleStock(), K)
+c = EuropeanCall(expiry, SingleStock(), K)
+Both(p, c)
+end
+strd₁ = straddle(expirydate, K₂)
+r,p_strd₁ = payoff_curve(strd₁, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_strd₁,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y=cp₂ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂,y=pp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Straddle", "call₂", "put₂"],
+["black", "red", "blue"]),
+Guide.title("Straddle Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, strd₁)
+value(crr, strd₁)
+value(mcm, strd₁)
+
+
+
+Strip Spread
+# Buy one call and two puts at the same strike
+function strip(expiry::Date, K)
+p = EuropeanPut(expiry, SingleStock(), K)
+c = EuropeanCall(expiry, SingleStock(), K)
+Both(c, Both(p, p))
+end
+strip₁ = strip(expirydate, K₂)
+r,p_strip = payoff_curve(strip₁, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_strip,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y=cp₂ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂,y=2pp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Strip", "call₂", "2put₂"],
+["black", "red", "blue"]),
+Guide.title("Strip Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, strip₁)
+value(crr, strip₁)
+value(mcm, strip₁)
+
+using Miletus: Observable
+
+Strap Spread
+# Buy one put and two calls at the same strike
+function strap(expiry::Date, K)
+p = EuropeanPut(expiry, SingleStock(), K)
+c = EuropeanCall(expiry, SingleStock(), K)
+Both(p, Both(c, c))
+end
+strap₁ = strap(expirydate, K₂)
+r,p_strap = payoff_curve(strap₁, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_strap,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y=2cp₂ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂,y=pp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Strap", "2call₂", "put₂"],
+["black", "red", "blue"]),
+Guide.title("Strap Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+
+Strap Spread
+# Buy one put and two calls at the same strike
+function strap(expiry::Date, K)
+p = EuropeanPut(expiry, SingleStock(), K)
+c = EuropeanCall(expiry, SingleStock(), K)
+Both(p, Both(c, c))
+end
+strap₁ = strap(expirydate, K₂)
+r,p_strap = payoff_curve(strap₁, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_strap,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y=2cp₂ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂,y=pp₂ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Strap", "2call₂", "put₂"],
+["black", "red", "blue"]),
+Guide.title("Strap Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, strap₁)
+value(crr, strap₁)
+value(mcm, strap₁)
+
+
+
+Strangle Spread
+# Buy a put at the low strike and a call at the high strike
+function strangle(expiry::Date, K₁, K₂)
+p = EuropeanPut(expiry, SingleStock(), K₁)
+c = EuropeanCall(expiry, SingleStock(), K₂)
+Both(p, c)
+end
+strangle₁ = strangle(expirydate, K₁, K₃)
+r,p_strangle = payoff_curve(strangle₁, expirydate, price)
+blk = colorant"black"
+red = colorant"red"
+blu = colorant"blue"
+plot(layer( x=s ,y=p_strangle,Geom.line,Theme(default_color=blk,line_width=1.5mm)),
+layer( x=s₁,y=cp₃ ,Geom.line,Theme(default_color=red,line_width=1.0mm)),
+layer( x=s₂,y=pp₁ ,Geom.line,Theme(default_color=blu,line_width=1.0mm)),
+Guide.manual_color_key("",["Strangle", "call₃", "put₁"],
+["black", "red", "blue"]),
+Guide.title("Strangle Payoff Curve at Expiry"),
+Guide.xlabel("Stock Price"), Guide.ylabel("Payoff"))
+
+value(gbmm, strangle₁)
+value(crr, strangle₁)
+value(mcm, strangle₁)
+
+=========================
+4.2 Coupon Bearing Bonds
+
+using Miletus, BusinessDays
+using Miletus.TermStructure
+using Miletus.DayCounts
+import Miletus: Both, Receive, Contract, When, AtObs, value
+import Miletus: YieldModel
+import BusinessDays: USGovernmentBond
+import Base.Dates: today, days, Day, Year
+
+zcb = When(AtObs(today()+Day(360)), Receive(100USD))
+
+function couponbond(par,coupon,periods::Int,start::Date,expiry::Date)
+duration = expiry - start
+bond = When(AtObs(expiry), Receive(par))
+for p = periods-1:-1:1
+coupondate = start + duration*p/periods
+bond = Both(bond,When(AtObs(coupondate), Receive(coupon)))
+end
+return bond
+end
+
+
+par = 100USD
+coupon = 1USD
+periods = 12
+startdate = today()
+expirydate = today() + Day(360)
+
+import Miletus: AtObs
+
+cpb = couponbond(par,coupon,periods,startdate,expirydate)
+yc = ConstantYieldCurve(Actual360(), .1, :Continuous, :NoFrequency, Dates.today())
+ym = YieldModel(yc, ModFollowing(), USGovernmentBond())
+
+value(ym,cpb)
+
+
+================================
+4.3 Asian Option Pricing
+using Miletus
+using Gadfly
+using Colors
+d1 = Dates.today()
+d2 = d1 + Dates.Day(120)
+
+m = GeomBMModel(d1, 100.00, 0.05, 0.0, 0.3)
+mcm = montecarlo(m, d1:d2, 100_000)
+
+theme=Theme(default_color=Colors.RGBA{Float32}(0.1, 0.1, 0.7, 0.1))
+p = plot([layer(x=mcm.dates,y=mcm.paths[i,:],Geom.line,theme) for i = 1:200]...)
+
+o = EuropeanCall(d2, SingleStock(), 100.00)
+value(m, o)
+value(mcm, o)
+
+oa1 = AsianFixedStrikeCall(d2, SingleStock(), Dates.Month(1), 100.00)
+
+oa2 = AsianFloatingStrikeCall(d2, SingleStock(), Dates.Month(1), 100.00)
