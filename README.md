@@ -15,7 +15,15 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 69. Classical papers in numerical analysis by Trefethen [are here](http://web.stanford.edu/class/cme324/classics/)
 
-70. Miletus bug resolved. Properly reported. now use support+juliafin@juliacomputing.com 
+70. Miletus bug resolved. Properly reported. now use support+juliafin@juliacomputing.com
+
+71. "Mathematics is the art of giving the same name to different things.10
+by noted mathematician Henri Poincar´e." - from the [Julia paper ](https://julialang.org/publications/julia-fresh-approach-BEKS.pdf)
+
+72. [Basic assembler commands](https://docs.oracle.com/cd/E36784_01/pdf/E36859.pdf)
+
+73. Julia parallelism method on page 95 of [paper](https://julialang.org/publications/julia-fresh-approach-BEKS.pdf)
+
 
 
 31/03/2017
