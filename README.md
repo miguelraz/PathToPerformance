@@ -7,6 +7,18 @@ Scientific Day Logger
 A trillion points of altruism to Julia's Gitter chat and its benign and helpful netizens.
 
 
+04/04/2017
+
+74. Miletus is based on [this paper 1](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/contracts-icfp.pdf) and [and this paper](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=2427D016B409720B4C0520B2D325E4B3?doi=10.1.1.14.7885&rep=rep1&type=pdf) by SL Peyton James and J-M Eber et al.
+
+75. Today in chat we talked about the case of Sage - I remember Felix Lawrence talking about it. Sad days. Academia does not take into account CI or software maintenance, just shitty scripts into pushing papers.
+
+Fight or flight?
+:/
+New bucketlist goal: make tears [of academic pride](http://www.walkingrandomly.com/?p=6275) flow off a fellow HPCer from proper development practices.
+
+76.
+
 03/04/2017
 
 67. Submitted GSoC proposal. Chat was invaluable. Remember Chris' advice about not building a compiler yourself - focus on your thing, let experts do theirs. Balance will be interesting.
