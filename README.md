@@ -8,7 +8,7 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
-05/04/2017
+###05/04/2017
 
 76. Organized some PathToPerformance stuff wrt courses and links and bibliography. Happily, Arch D. Robison's course on parallelism is based on Cilk+ - which Julia is based on. The cosmos smiles at me... Quote of the day: "Your computer school was weak - I learned from the streets!"
 
