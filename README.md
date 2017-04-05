@@ -330,6 +330,8 @@ Julia!
 5. [To Lisp or not to lisp - Stefan Karpinski](https://www.youtube.com/watch?v=dK3zRXhrFZY)
 6. [CUDA, Julia, and Deep Learning](https://devblogs.nvidia.com/parallelforall/mocha-jl-deep-learning-julia/)
 7. [Julia - HPC book]
+8. Arch D robison parallel computing book
+
 
 Parallel Julia
 1. [Workshop 1](https://www.youtube.com/watch?v=euZkvgx0fG8)
