@@ -8,7 +8,7 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
-###05/04/2017
+### 05/04/2017
 
 76. Organized some PathToPerformance stuff wrt courses and links and bibliography. Happily, Arch D. Robison's course on parallelism is based on Cilk+ - which Julia is based on. The cosmos smiles at me... Quote of the day: "Your computer school was weak - I learned from the streets!"
 
@@ -25,7 +25,7 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 82. @ScottPJones says that strings have not been priority for devs in Julia, but is uniquely suited to handle them in future - delaying this is a problem for data handling.
 
 
-04/04/2017
+### 04/04/2017
 
 74. Miletus is based on [this paper 1](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/07/contracts-icfp.pdf) and [and this paper](http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=2427D016B409720B4C0520B2D325E4B3?doi=10.1.1.14.7885&rep=rep1&type=pdf) by SL Peyton James and J-M Eber et al.
 
