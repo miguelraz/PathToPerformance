@@ -35,7 +35,7 @@ Fight or flight?
 :/
 New bucketlist goal: make tears [of academic pride](http://www.walkingrandomly.com/?p=6275) flow off a fellow HPCer from proper development practices.
 
-03/04/2017
+### 03/04/2017
 
 67. Submitted GSoC proposal. Chat was invaluable. Remember Chris' advice about not building a compiler yourself - focus on your thing, let experts do theirs. Balance will be interesting.
 
@@ -52,9 +52,7 @@ by noted mathematician Henri Poincar´e." - from the [Julia paper ](https://juli
 
 73. Julia parallelism method on page 95 of [paper](https://julialang.org/publications/julia-fresh-approach-BEKS.pdf)
 
-
-
-31/03/2017
+### 31/03/2017
 
 66. Never use a darn push array to plot - use array comprehension! Props to Simon Byrne and the Miletus.jl manual.
 >
@@ -67,8 +65,7 @@ end
 
 67. [PArallel accelerator talk](https://www.youtube.com/watch?v=Ti9qqAe_NF4). Awesome talk. Possibility of Julia compiler, and of running awesome parallelization stuff. Announced multithreading. Jeeeeeeeeeeeeeeeeeeeeeeeeefffffffffff...
 
-
-30/03/17
+### 30/03/17
 
 59. Enumerate generate a lot of types, says Chris. Use this if you want tons of types for dispatch --> parallelization. Also, Chris says to handle distributed computing via multiple dispatch. Much pro, very wow.
 
@@ -84,7 +81,7 @@ end
 
 65. Ctrl-R in REPL helps you find code says KristofferC.
 
-29/03/2017
+### 29/03/2017
 
 54. Turns out @frederikekre and @KristofferC are behind JuaFEM.jl. Chris says I should consider applying for the DiffEqs.jl project on GSoC. Whelp, let's do it gang!
 
@@ -96,7 +93,7 @@ end
 
 58. chris says MXNet > Mocha.jl
 
-28/03/17
+### 28/03/17
 
 41. Grammar/style fixes go in a separate PR.
 42. sample() from StatsBase is awesome.
@@ -124,7 +121,9 @@ Duly noted.
 
 47. First attempt at a PR. [#21208](https://github.com/JuliaLang/julia/pull/21208)
 Github hurts. Remember to add tests. skip CI until last PR.
+
 48. [Wong-Zakai theorem](http://www.hairer.org/papers/WongZakai.pdf) for PDEs - 57 page paper.
+
 49.
 ```
 This is cool code from base/test/linalg/generic.jl
@@ -150,8 +149,7 @@ PETSc holy grail of what?
 
 52. [ERMAGERD cluster manager and parallel julia!](https://www.youtube.com/watch?v=XJAQ24NS458)
 
-
-27/03/17
+### 27/03/17
 
 37. doing A & 1 will give you booleans
 
@@ -164,16 +162,15 @@ PETSc holy grail of what?
 
 34. `whos()` tells you what is in memory.
 
-35. `join([string arrays], "delim") is my friend
+35. `join([string arrays], "delim")` is my friend
 
 36. Hackerrank: 211,207
 
-
-25/03/17
+### 25/03/17
 
 28. Julia Multithreading in the works but is kept secret.
 
-29. _foo` makes a handy internal implementation that uses dispatch. it means don't rely on it.
+29. `_foo` makes a handy internal implementation that uses dispatch. it means don't rely on it.
 
 30. FINALLY solved Hackerank 2. FINALLY!
 
@@ -193,10 +190,7 @@ What @mbauman said, with the corollary that this forced assumption inhibits a gr
 
 33. Run time library Julep - BIG deal if you can setup a native Float. GPUs use Float16 - order of magnitude difference or greater.
 
-
-
-
-24/03/17
+### 24/03/17
 
 25. [Method of Lines](https://en.wikipedia.org/wiki/Method_of_lines) discretize one dimension in a PDE, solve.
 
@@ -204,7 +198,7 @@ What @mbauman said, with the corollary that this forced assumption inhibits a gr
 
 27. Juleps are big big development projects - Julia enhancement proposals.
 
-23/03/17
+### 23/03/17
 
 19. Haswells are new chip design methodologies to improve efficiency of computation and power savings?
 
@@ -218,8 +212,7 @@ What @mbauman said, with the corollary that this forced assumption inhibits a gr
 
 25. AVX are super compiler magics to super speed up compiler instructions. Basically SIMD.
 
-
-22/03/17
+### 22/03/17
 
 18. Added this to my to dos... [some MIT book Jeff and gitter really like](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start), [Julia manual](https://upload.wikimedia.org/wikipedia/commons/2/2e/Julia.pdf)
 [Julia for HPC]
@@ -230,8 +223,7 @@ What @mbauman said, with the corollary that this forced assumption inhibits a gr
 
 21. 44:21 - a generated function acts on the typed AST!
 
-
-19/03/17
+### 19/03/17
 
 12. @KristofferC says
 For bisecting, you can write a small script that passes / fails depending on what you are testing for, and then let git automatically bisect the whole way to the correct commit, see https://lwn.net/Articles/317154/
@@ -273,7 +265,7 @@ Since you could have T = Any
 [Help out Dagger.](https://github.com/JuliaParallel/Dagger.jl)
 [Help out TensorOperations](
 
-18/03/17
+### 18/03/17
 
 7. Got Git Kraken. Told sister about it. Edit: 30/03 / [ohshitgit.com](ohshitgit.com)
 
@@ -297,7 +289,7 @@ is the same as `type G{T} x::T end; g = G(x)` and defining call on `::G` ... @Mi
 
 11. [git bisecting](https://git-scm.com/docs/git-bisect) finds an offending commit. Builds may take time. Beware...
 
-17/03/2017
+### 17/03/2017
 
 0. Read Jeff's PhD thesis. Julia's heart/subtyping algorithm still freakin' hyerogliphical. Will return. Edit: 30/03/17 - subtyping algo explained a bit more in his Julia Internals Juliacon 2015 talk.
 
@@ -324,21 +316,21 @@ i.e. one test is setting a value that changes another test.
 # PathToPerformance
 __TO DOS__
 
-CS Courses
+## CS Courses
 1. [Stanford SQL](https://lagunita.stanford.edu/courses/DB/2014/SelfPaced/about)
 2. [Numerical Analysis - Homer Reid](http://homerreid.dyndns.org/teaching/18.330/#Programming)
 3. [IEEE 754 FLOP arithmetic](http://sistemas.fciencias.unam.mx/~gcontreras/joomla15/tmp/Numerical_Computing_with_IEEE_Floating_Point_Arithmetic.pdf) with exercises!
 4. Geometric Numerical Integration - Ernst Hairer et al
 5. Numerical Linear Algebra - Trefethen
 
-CS Papers and books
+## CS Papers and books
 1. [Avoid false sharing - Intel](https://software.intel.com/sites/default/files/m/d/4/1/d/8/3-4-MemMgt_-_Avoiding_and_Identifying_False_Sharing_Among_Threads.pdf)
 2. [Geometric Numerical Integration - Hairer]
 3. [PDF scheduling and multithreading bonanza as per #21017](http://www.cs.cmu.edu/~chensm/papers/ConstructiveCacheSharing_spaa07.pdf)
 4. [Deep Learning MIT]
 5. [some MIT book Jeff and gitter really like](https://mitpress.mit.edu/sicp/full-text/book/book-Z-H-4.html#%_toc_start)
 
-Julia!
+## Julia!
 1. [Tony Kelman's](https://www.youtube.com/watch?v=XKdKdfHB2KM) talk on CI, and his [notebook](https://nbviewer.jupyter.org/github/tkelman/JuliaCon2016workshop/blob/master/Workshop.ipynb)
 2. [Chris Rackauckas](www.stochasticlifestyle.com/finalizing-julia-package-documentation-testing-coverage-publishing/) full CI tips implementation on thesis.
 3. [His other awesome post](http://www.stochasticlifestyle.com/modular-algorithms-scientific-computing-julia/) and [this one](www.juliabloggers.com/7-julia-gotchas-and-how-to-handle-them/)
@@ -347,9 +339,9 @@ Julia!
 6. [CUDA, Julia, and Deep Learning](https://devblogs.nvidia.com/parallelforall/mocha-jl-deep-learning-julia/)
 7. [Julia - HPC book]
 8. Arch D robison parallel computing book
+9. Study Julia source code from Plots.jl and DifferentialEquations.jl
 
-
-Parallel Julia
+## Parallel Julia
 1. [Workshop 1](https://www.youtube.com/watch?v=euZkvgx0fG8)
     update to Arch Robinson?
 
@@ -357,8 +349,8 @@ Econ/Finance
 1. https://lectures.quantecon.org/jl/finite_markov.html
 2. http://aviks.github.io/Ito.jl/process.html
 
-Pkgs to Know.
-1.
+## Pkgs to Know.
+1. Plots.jl
 2. https://github.com/JuliaParallel/Dagger.jl
 3.https://github.com/IntelLabs/ParallelAccelerator.jl
 4.https://github.com/pluskid/Mocha.jl
@@ -392,19 +384,11 @@ Julia to do's
 14. distributed recipes in Julia
 15. metaprogramming exercises - https://discourse.julialang.org/t/simple-metaprogramming-exercises-challenges/731
 
-
-
-
-
-
-
-
+## Altruism
 A. Help Sanders
 B. Help Benet
-c. Help Mendezsdf
+c. Help Mendezs
   matrix playground - subtypes(AbstractArray)
-
-
 d. read floating point standard 754 and exercicses
 e read 1788 standard and exercicses
 f. splatting
