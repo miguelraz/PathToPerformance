@@ -6,6 +6,24 @@ Scientific Day Logger
 
 A trillion points of altruism to Julia's Gitter chat and its benign and helpful netizens.
 
+:shipit:
+
+05/04/2017
+
+76. Organized some PathToPerformance stuff wrt courses and links and bibliography. Happily, Arch D. Robison's course on parallelism is based on Cilk+ - which Julia is based on. The cosmos smiles at me... Quote of the day: "Your computer school was weak - I learned from the streets!"
+
+77. Helped Chris out with some PyCall stuff that they broke. Submitted a PR for a CONTRIBUTING.md to eschnetter/FunHPC.jl
+
+78. TODO: 100 Julia array comprehensions, 100 metaprogramming, 100 problems, blog comparing MATLAB and julia before and after codes.
+
+79. Almost done configuring Frankie. Investigate [Pachyderm.io](http://www.pachyderm.io/) and [Kubernets.io](https://kubernetes.io/)
+
+80. Get my ass on DiffEqs before Chris' Seminar!
+
+81. [Must read physics papers](https://www.reddit.com/r/Physics/comments/1xeobv/what_are_classic_papers_every_physicist_should/) includes Alfven, Nobel Prize 1941, made it in a page.
+
+82. @ScottPJones says that strings have not been priority for devs in Julia, but is uniquely suited to handle them in future - delaying this is a problem for data handling.
+
 
 04/04/2017
 
@@ -16,8 +34,6 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 Fight or flight?
 :/
 New bucketlist goal: make tears [of academic pride](http://www.walkingrandomly.com/?p=6275) flow off a fellow HPCer from proper development practices.
-
-76.
 
 03/04/2017
 
