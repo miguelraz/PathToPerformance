@@ -24,6 +24,11 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 82. @ScottPJones says that strings have not been priority for devs in Julia, but is uniquely suited to handle them in future - delaying this is a problem for data handling.
 
+> You can make parameterized string types, that (using traits) deal with all the sorts of encoding issues (big vs. little endian, linear indexed or not, possibly mutable vs. immutable, code unit size, code point range, validated or not, whether it is possible to go backwards (single byte character sets, UTF-8, UTF-16, UTF-32 can, but most legacy multibyte character sets you can't), and have optimized code generated for different string encodings, writing only pretty generic code.
+(take a look at @nalimilan's https://github.com/nalimilan/StringEncodings.jl for how that might look)
+
+
+
 
 ### 04/04/2017
 
