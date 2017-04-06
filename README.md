@@ -385,11 +385,11 @@ Julia to do's
 15. metaprogramming exercises - https://discourse.julialang.org/t/simple-metaprogramming-exercises-challenges/731
 
 ## Altruism
-A. Help Sanders
-B. Help Benet
-c. Help Mendezs
+1. Help Sanders
+2. Help Benet
+3. Help Mendezs
   matrix playground - subtypes(AbstractArray)
-d. read floating point standard 754 and exercicses
-e read 1788 standard and exercicses
-f. splatting
-g. matrix playground
+4. read floating point standard 754 and exercicses
+5. read 1788 standard and exercicses
+6. splatting
+7. matrix playground
