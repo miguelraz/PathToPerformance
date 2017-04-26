@@ -8,6 +8,110 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
+### 07/04/2017
+
+88. Chris gives us an awesome lecture on mathematical history of numerial methods
+> yeah, might as well be
+it's like LSODA
+people like it because of history, and the idea
+in reality, Sundials decended from the Petzold algorithms (LSODA)
+early Sundials had stiffness detection and switching, because the code was essentially LSODA
+they took it out because it slowed things down
+(the detection on multistep methods can be costly)
+
+>[Since Shampine wrote this, the authors of NR have consulted a worker active in the field. Unfortunately, a great many other experts in the field consider the advice they got to be very poor indeed -- extrapolation methods are almost always substantially inferior to Runge-Kutta, Taylor's series, or multistep methods.]
+There's a better way of thinking about extrapolation techniques
+essentially, they are a bad arbitrary order Runge-Kutta method
+If you pick an order
+then at that order
+it actually is an Runge-Kutta method
+if you check the number of steps, there are far more steps than optimal.
+And if you check the coefficient of the highest order error term, its really bad
+so it's essentially just a series of bad RK methods.
+however, if your necessary tolerance is really low, then a higher order RK method will always do better
+but the definition of "low" seems to be really low
+like, 5th order does well until like 1e-5, then something like 8th order does well until you need sub 1e-16 accuracy, 14th order still beats extrapolation even at accuracies like 1e-40
+
+> a recent result by Gyongy is a BS technique for parabolic SPDEs
+which shows that higher order methods can achieve arbitrary accuracy
+(easy way to prove that)
+but it still doesn't break the Kloeden computational barrier.
+(accuracy vs computational cost metric in SPDEs)
+
+> Random Differential Equations - wait for Kloeden's book.
+
+> • Davie & Gaines (2000) showed that any numerical scheme applied to the SPDE
+(6) with f = 0 which uses only values of the noise Wt cannot converge faster than
+the rate of 1/6 with respect to the computational cost
+
+> https://www.researchgate.net/publication/314242937_Random_Ordinary_Differential_Equations_and_their_Numerical_Solution
+you can find the thesis if you look hard enough
+it's online
+it has a bunch of methods for higher order RODEs
+and I'll get around to implementing it
+Oh, I stored the reference in the issue discussing RODEs in diffeq
+JuliaDiffEq/DifferentialEquations.jl#145
+http://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/docId/40146
+
+> if you want the most modern "book" on the subject, this is it: http://www.math.uni-luebeck.de/mitarbeiter/roessler/publikationen-e.php
+http://epubs.siam.org/doi/10.1137/09076636X  that being the main article I think
+or this review: http://www.math.uni-hamburg.de/research/papers/prst/prst2010-02.pdf
+with the latest development of course being http://chrisrackauckas.com/assets/Papers/ChrisRackauckas-AdaptiveSRK.pdf
+
+> the field diverged a bit
+essentially because it is really hard to beat Euler's method
+and so mathematicians still study it a little bit
+but pushed forward to new equations
+like RODEs and SPDEs
+where some semblance of "better than Euler" is just coming out
+while the more applied communities went to solving discrete stochastic (Gillespie) methods
+ftp://www.cs.toronto.edu/na/reports/NA.Bio.Kin.Survey.rev1.pdf
+(pst! If anyone wants to join in with implementing these algorithms... JuliaDiffEq/DiffEqJump.jl#8 )
+
+> where if you estimate "lots of proteins", you have ODEs
+"a good amount" you have SDEs
+"very small", then you don't have concentrations any more, but discrete numbers
+but you can still write out stochastic simulations (Gillespie's algorithm)
+but the breakthrough was the convergence results to SDEs
+and then Burrage's Poisson Runge-Kutta methods (and Gillespie+ Petzold's tau-leaping)
+essentially, a type of Runge-Kutta that works in the case where the numbers of things are discrete and stochastic.
+There's still a shit ton to work out there
+but Kloeden's RODE work is interesting, because technically those discrete stochastic equations are RODEs
+so higher order methods for RODEs work even with discrete variables and other nonsense.
+
+89. [Why not to use Numerical Recipes](https://www.stat.uchicago.edu/~lekheng/courses/302/wnnr/nr.html)
+
+90. [Chris gives homework!](https://github.com/JuliaDiffEq/DiffEqJump.jl/issues/8)
+
+91.
+
+
+
+
+### 06/04/2017
+
+83. Added a whole bunch of parallel/distributed/performance resources.
+* [Arch's slides](http://www.blonzonics.us/julia/juliacon-2016), [huge comment](https://github.com/JuliaLang/julia/issues/1790) and [recommended reading](http://supertech.csail.mit.edu/papers/tushara-meng-thesis.pdf)
+* Loop [fusion notebook](https://github.com/JuliaLang/julialang.github.com/blob/master/blog/_posts/moredots/More-Dots.ipynb) [and blog post](https://julialang.org/blog/2017/01/moredots)
+* Cache management
+* Multidimensional [arrays and iteration](https://julialang.org/blog/2016/02/iteration)
+* Do the damn manual
+* v0.5 [Highlights](https://julialang.org/blog/2016/10/julia-0.5-highlights)
+* Parallel [Accelerator](https://julialang.org/blog/2016/03/parallelaccelerator)
+
+84. OK, turns out Wonseok Shin is a Numerical Electromagnetism Beast. Casually asked him for a numerical analysis course notes. Casual. Sweet.
+
+85. John Myles White is [THE MAN](https://github.com/johnmyleswhite/SimpleAintEasy) for statistics and hopefully know a bit more about cache management in Julia.
+* Simple [ain't easy - Real-World statistics pitfalls.](https://github.com/johnmyleswhite/SimpleAintEasy/raw/master/book.pdf)
+and his [Github looks like the bomb](https://github.com/johnmyleswhite?tab=repositories)
+
+86. Read through [the monster issue on multithreading](https://github.com/JuliaLang/julia/issues/1790). Looks like Cilk is the way to go :D
+> I am not fond of the barrier-style of programming made popular by OpenMP for writing resuable components, because barriers introduce composability issues. The problem is that the barrier style fundamentally assumes that you know how many parallel threads of execution you have at the point of starting parallel work. Finding out the answer to that question at any moment in a large system (where other components vie for threads) is exactly the sort of global question that programmers learn not to ask in a scalable parallel program.
+Put another way, the "control freak" style of parallel programming ("I totally control the machine") delivers great benchmark results. But you can't marry two control freaks.
+-- Arch D Robison, 2014
+
+87. Arch Robison is a legend and aswers emails like a boss.
+
 ### 05/04/2017
 
 76. Organized some PathToPerformance stuff wrt courses and links and bibliography. Happily, Arch D. Robison's course on parallelism is based on Cilk+ - which Julia is based on. The cosmos smiles at me... Quote of the day: "Your computer school was weak - I learned from the streets!"
@@ -26,9 +130,6 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 > You can make parameterized string types, that (using traits) deal with all the sorts of encoding issues (big vs. little endian, linear indexed or not, possibly mutable vs. immutable, code unit size, code point range, validated or not, whether it is possible to go backwards (single byte character sets, UTF-8, UTF-16, UTF-32 can, but most legacy multibyte character sets you can't), and have optimized code generated for different string encodings, writing only pretty generic code.
 (take a look at @nalimilan's https://github.com/nalimilan/StringEncodings.jl for how that might look)
-
-
-
 
 ### 04/04/2017
 
