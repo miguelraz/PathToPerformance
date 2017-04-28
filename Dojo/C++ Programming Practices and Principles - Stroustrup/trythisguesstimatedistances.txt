@@ -1,0 +1,7 @@
+// Try this - estimate driving times from NY to Denver and London to Nice.
+NY to Denver is less than 2500km. -- actual is about 2880km
+2500 / 120 = 20.8333hrs
+flight is 4 hrs
+London to Nice is about 1600km - actual is 1400km
+1600/120 = 13.333
+flight is 2hrs according to google

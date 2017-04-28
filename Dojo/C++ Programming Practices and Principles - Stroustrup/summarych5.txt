@@ -1,0 +1,173 @@
+Review
+1. Name four major types of errors and briefly define each one.
+ - Compiler: Your program does not have the right sintax, or variables are not declared appropriately.
+ - Linker: Your functions and variables are not where the compiler can find them.
+ - Logical: Your program does something different than what you wanted.
+ - Run time errors: It is doing stuff you do not want, like division by zero or negative areas.
+ Other errors are range errors, OBOB errors, bad arguments, bad input, narrowing errors, non-errors
+
+2. What kinds of errors can we ignore in student programs?
+changing hardware,software. Exiting with no faults.
+
+3. What guarantees should every completed project offer?
+Catch run-time errors.
+1. Produce good results for good inputs.
+2. Reasonable error messages for bad inputs.
+3. Need not worry about bad hardware.
+4. Need not worry about bad system software.
+5. Allowed to terminate after finding an error.
+
+So just go for 1 and 2.
+
+4. List three approaches we can take to eliminate errors in programs and produce acceptable software.
+THREE APPROACHES:
+1. Organize your software to minimize errors.
+2. Eliminate most of the errors through debug and testing.
+3. Make sure the remaining errors are not serious.
+
+5. Why do we hate debugging?
+Because we attempt it randomly and do not take proper steps to preempt it.
+
+int main()
+try{
+foo()
+} catch(out_of_range) {
+bar()
+return 1;
+} catch(...) {
+cerr << "Exception";
+return 2
+}
+
+6. What is a syntax error? Give five examples.
+Where Compiler cannot understand what you coded.
+Cout, < , vec(4), int i:, cin <<, for(i = 0;)
+
+7. What is a type error? Give five examples.
+sqrt(-1.3), pow(2,cout), area("s",3), area(s[3],3), square(bool)
+
+8. What is a linker error? Give three examples.
+Functions are defined once, declared with same type in each translation unit.
+int area(int l, int w); double area(double x, double y) { }, int area(int x, int y, char unit) { }, int x =2; int x=3;, int area(); int area)();
+
+9. What is a logic error? Give three examples.
+i<=v.size(), if (1 == 1), while(true), min=temp;max=temp; 1/0;
+
+10. List four potential sources of program errors discussed in the text.
+SOURCES:
+- Poor specification - Do you solve the problem in every case?
+- Incomplete Programs - Do your tests cover all possible cases?
+- Unexpected arguments - Do you know you can handle the input types?
+- Unexpected inputs - Do you know what you are feeding it?
+- Unexpected state - Do you know your data isn't wrong?
+- Logical Errors - Do you know it is doing what you suppose it is doing?
+
+11. How do you know if a result is plausible? What techniques do you have to answer such questions?
+You guesstimate! Sorta.
+
+12. Compare and contrast having the caller of a function handle a run-time error vs. the called function’s handling the runtime error.
+If the CALLER deals with errors:
+you check that inputs into area(x,y) are non-neg, then call area.
+Can be brittle because maybe someone changed the function to their desire.
+IF the CALLEE deals with errors:
+you check that inputs into area(x,y) are non-neg, inside the funciton call.
+Similarities:
+Both sanitize inputs.
+Contrasts:
+CALLEE method has everyhting in one place, needs fewer tests.
+
+OK, so far, we have focused on finding errors.
+Separate topic is reporting them. What is best praxis?
+Reporting involves sometimes sending an error value.
+13. Why is using exceptions a better idea than returning an “error value”?
+Basic idea is to separate detection from reporting.
+That way, you can handle function outputs from erros better than just exiting and returning a vlaue.
+
+14. How do you test if an input operation succeeded?
+Add tests for pre and post-conditions.
+Assert what you expect.
+
+15. Describe the process of how exceptions are thrown and caught.
+In you rmain function you include a try{} block. If that doesn't exit normally,
+you add catch('error type'){} blocks to output the corresponding error messages.
+
+16. Why, with a vector called v, is v[v.size()] a range error? What would be the result of calling this?
+OBOB! out_of_range, because it goes from 0 to size-1.
+
+17. Define pre-condition and post-condition; give an example (that is not the area() function from this chapter), preferably a computation that requires a loop.
+Pre-condition: a requiremente of a function upon its argument - this MUST be true for the fuction to have been carried out correctly.
+// Don't forget to comment it wrt what you expect
+Post-condition: a requirement of a function upon its return value - this MUST be true for the function to have been carriet out correctly.
+// Add comments to specify it!
+18. When would you not test a pre-condition?
+Sometimes, checking condition is very expensive - think scanning a whole database.
+19. When would you not test a post-condition?
+
+A run with a given set of inputs is called a test case.
+ Realistic programs can require millions of test cases.
+ Basically, systematic testing cannot be done by humans typing in one test after another,
+ so we’ll have to wait a few chapters before we have the tools necessary to properly approach testing.
+ However, in the meantime, remember that we have to approach testing with the attitude
+ that finding errors is good.
+ Consider:
+ Attitude 1: I’m smarter than any program! I’ll break that @#$%^ code!
+ Attitude 2: I polished this code for two weeks. It’s perfect!
+ Who do you think will find more errors?
+ Of course, the very best is an experienced person with a bit of “attitude 1”
+ who coolly, calmly, patiently, and systematically works through the possible failings of the program.
+ Good testers are worth their weight in gold.
+
+20. What are the steps in debugging a program?
+
+PRACTICAL DEBUGGING ADVICE:
+1. BEFORE YOU WRITE code - think about how to debug.
+2. COMMENT WELL
+- not just add comments. say what you can't with code.
+-- name of the program.
+-- purpose of program.
+-- who wrote it and when.
+-- version numbers.
+-- what complicated parts are supposed to do.
+-- general design ideas
+-- how the source code is organized.
+-- what assumptions are made of inputs.
+-- what parts of the code are still missing and what cases are still not handled.
+
+- Use meaningful names - not longer, meaningful.
+
+- Use consistent layout. IDEs help, but you da man.
+- Style used in this book is a reasonable starting point.
+
+- Break code into small functions, each doing one small logical action.
+
+- Avoid functions longer than a page or two.
+
+- Avoid complicated code sequences.
+
+- Avoid nested loops, nested if-statements, complicated conditions, etc.
+Probs where bugs lie.
+
+- Use libraries vs your own code where possible.
+
+3. Missed:
+" "
+' '
+( )
+{ }
+ =
+ #
+ spelling
+
+ 4. Use assertions
+ 5. Functions check their own arguments by types -preconditions
+- insert just below function such assertions
+ 6. post-conditions are throws
+
+21. Why does commenting help when debugging?
+Just makes clearer what should happen when, and what things should be happening and expected
+along different parts of the code, as well as simplifying
+
+22. How does testing differ from debugging?
+Not dissimilar. Testing can help you find bugs now, but also prevent future bugs if something chagnes.
+Debugging is more about getting to run the program in the first place.
+Testing is a systematic way to search for errors.
