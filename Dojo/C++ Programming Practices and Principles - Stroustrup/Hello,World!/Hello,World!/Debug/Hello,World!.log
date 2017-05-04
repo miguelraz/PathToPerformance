@@ -1,6 +1,5 @@
 ﻿  HelloWorld!.cpp
-c:\users\miguel\desktop\gits\pathtoperformance\dojo\c++ programming practices and principles - stroustrup\hello,world!\hello,world!\helloworld!.cpp(21): warning C4018: '<': signed/unsigned mismatch
-c:\users\miguel\desktop\gits\pathtoperformance\dojo\c++ programming practices and principles - stroustrup\hello,world!\hello,world!\helloworld!.cpp(24): warning C4018: '<': signed/unsigned mismatch
-c:\users\miguel\desktop\gits\pathtoperformance\dojo\c++ programming practices and principles - stroustrup\hello,world!\hello,world!\helloworld!.cpp(25): warning C4018: '<': signed/unsigned mismatch
+c:\users\miguel\desktop\gits\pathtoperformance\dojo\c++ programming practices and principles - stroustrup\hello,world!\hello,world!\helloworld!.cpp(28): warning C4715: 'asktoplay': not all control paths return a value
+c:\users\miguel\desktop\gits\pathtoperformance\dojo\c++ programming practices and principles - stroustrup\hello,world!\hello,world!\helloworld!.cpp(71): warning C4715: 'wincondition': not all control paths return a value
   Hello,World!.vcxproj -> C:\Users\miguel\Desktop\gits\PathToPerformance\Dojo\C++ Programming Practices and Principles - Stroustrup\Hello,World!\Debug\Hello,World!.exe
   Hello,World!.vcxproj -> C:\Users\miguel\Desktop\gits\PathToPerformance\Dojo\C++ Programming Practices and Principles - Stroustrup\Hello,World!\Debug\Hello,World!.pdb (Partial PDB)
