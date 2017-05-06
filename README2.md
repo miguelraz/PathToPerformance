@@ -8,6 +8,20 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
+### 06/05/2017
+
+107. Rust has some really cool approach to building an common API for pkg dev [socially](https://blog.rust-lang.org/2017/05/05/libz-blitz.html) remember to bring this up after v0.6 release.
+@oxinabox and @musm
+
+108. Read [Chris's post about modular Pkg devving](http://www.stochasticlifestyle.com/modular-algorithms-scientific-computing-julia/). Basically, your core package is a metapackage that pulls all the other dependencies together to have a robust and modular API.
+
+109. Vocab: Closures are defining a [function inside a function](http://stackoverflow.com/documentation/julia-lang/5724/closures#t=201705061353044428602). A special case of this is currying, where you call a function and it outputs
+more args into itself.
+`curry(f,x) = (xs...) -> f(x,xs...)`
+
+110. 
+
+
 ### 05/05/2017
 
 99. Chris on DiffEq roadmap and advantages of DiffEq global sensitivity methods
