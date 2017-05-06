@@ -8,6 +8,168 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
+### 05/05/2017
+
+99. Chris on DiffEq roadmap and advantages of DiffEq global sensitivity methods
+> I wouldn't count number of packages as much as I would cound the number of packages with binary dependencies
+these are all pure Julia, all the way down
+so they should work anywhere
+Do any of the DAE solvers support the callback interface?
+Only if you count + projection
+it wouldn't be hard to implement the mass matrix stuff in the Rosenbrock methods though
+so that would be a DAE solver + callback interface
+but no
+IDA, dassl, and daskr do not implement the callback interface
+Sundials and DASKR have a hard problem with garbage control: they need a custom allocator so that way Julia's GC can know their size. To me, it's easier just to implement native Julia DAE solvers than to handle that...
+Dassl.jl just needs love.
+but I'm thinking of starting over, extending OrdinaryDiffEq.jl in that direction, instead of working on DASSL.jl
+so...
+that's where I am at with that
+I would need a good reason to push there though, since I don't generally use DAEs in my research, which makes it hard to justify the work
+Drayton Munster @dwmunster May 01 12:58
+extending OrdinaryDiffEq.jl in that direction
+In the direction of implementing native Julia solvers?
+Christopher Rackauckas @ChrisRackauckas May 01 12:58
+multistep methods
+OrdinaryDiffEq.jl is all one-step methods right now, but it already is setup to do multistep methods, but I haven't done those yet
+I think it's probably just better to recreate the multistep methods anyways: the old Gear methods (LSODE/Sundials/DASKR etc., they are all actually the same code) are super convoluted and really need to just be restarted from scratch
+it's all time management though: since Sundials exists I put that off for other things
+it wouldn't be hard to setup the passing of the mass matrix to radau though, and that's a very good DAE method, but that doesn't have callbacks
+yeah, Rosenbrock is your best bet right now
+I'm releasing my next roadmap in about a week, after Google Summer of Code is announced and DiffEq 2.0 is out
+but essentially, my next focus is on tools for PDEs, symplectic methods, higher order SDE methods, and stiff ODEs
+DAEs written in mass matrix format come for free out of the stiff ODE stuff, at least in many cases.
+Christopher Rackauckas @ChrisRackauckas May 01 13:03
+Then I believe 4.0 would be the big push for a new multistep NDF/BDF/Adams implementation
+but honestly, those are slightly overrated: they're only useful if the function evaluation is very expensive and you don't have many events (they have to restart from Euler, so tons of events will slow them down even in the case where they do best. Unless it's a huge PDE discretization, it's kind of a toss-up between these and implicit RK methods like Radau)
+I'll have a blog post explain this all, but really it was
+1.0 = core (good common interface to ODE/SDE/DAEs with basic event handling)
+2.0 = infrustructure (all of the bells and whistles: find out how to resize, completely bonkers event handling, abstract types, split problems, interpolations, APIs, solution handling, etc.)
+3.0 = PDEs (toolboxes for making PDEs easy, and some standard discretizations)
+4.0 = algorithms (now implementing algorithms is easy, and so just do it the standard way and everything else like event handling is free)
+robindenhardteriksson @robindenhardteriksson May 02 09:29
+@ChrisRackauckas I saw that you were interested in integrating some global sensitivity analysis into Diffeqs. I was going to move over some matlab stuff I had previously done for this into Julia. What's the best place to discuss this?
+Christopher Rackauckas @ChrisRackauckas May 02 09:30
+right here
+robindenhardteriksson @robindenhardteriksson May 02 09:32
+Perfect. What is the advantage you see in having this in DiffEqs rather than another package?
+Christopher Rackauckas @ChrisRackauckas May 02 09:33
+not much. But if it's in JuliaDiffEq, then the members of JuliaDiffEq could help with the maitanance.
+But this could be built outside of DiffEq without a problem
+robindenhardteriksson @robindenhardteriksson May 02 09:35
+I was just thinking about the numerical advantages. With local sens, you've already got access to jacobians if you're implementing this in DiffEqs. But from the global sens methods I know, none of that kind of info is required
+Christopher Rackauckas @ChrisRackauckas May 02 09:36
+if you implement it on the DiffEq interface, than any underlying numerical method can be used
+I think the ability to swap between BDF methods and high order RK methods to match the problem is where the gains would be had
+robindenhardteriksson @robindenhardteriksson May 02 09:38
+Ah, you mean depending on the resolution you're looking for with your global sens? ie. if a parameter only has a small effect you could switch methods to better resolve this effect
+Christopher Rackauckas @ChrisRackauckas May 02 09:39
+yes and things like that
+and also you could estimate models with events
+robindenhardteriksson @robindenhardteriksson May 02 09:39
+models with events?
+Christopher Rackauckas @ChrisRackauckas May 02 09:40
+yes
+like special behavior on zero-crossings
+like a bouncing ball
+discontinuities
+robindenhardteriksson @robindenhardteriksson May 02 09:40
+right
+Christopher Rackauckas @ChrisRackauckas May 02 09:40
+the DiffEq interface also makes the extension to stochasticity easy
+I'm not sure what the other option would really be anyways. What else would you build it on top of?
+robindenhardteriksson @robindenhardteriksson May 02 10:10
+The quick-and-dirty GSA i had done was pretty much by itself. You would have to write a sensitivity function, which would compute outputs from inputs from the GSA, this is where you would solve models. You would define an input space, then it would do some sampling and return different sensitivity indices
+Christopher Rackauckas @ChrisRackauckas May 02 10:13
+but what you were sampling was solutions of a diffeq solver with different parameters?
+robindenhardteriksson @robindenhardteriksson May 02 10:13
+mostly yes
+Christopher Rackauckas @ChrisRackauckas May 02 10:14
+yeah
+I was just thinking of making it so that way it can take some diffeq problem and some diffeq algorithm, and use that internally for the sampling
+if you have an idea for making this encompass more general models, that works too
+robindenhardteriksson @robindenhardteriksson May 02 10:16
+It would be a nice addition to have it integrated, right alongside the local SA
+Were you thinking of implementing it in a similar way to the current local SA?
+Christopher Rackauckas @ChrisRackauckas May 02 10:17
+no
+local SA is a much different algorithm in implementation
+that builds an extended diffeq and solves that
+I don't think you need to do any modifications like that for global SA. As you said, you can just sample solutions at different parameters.
+robindenhardteriksson @robindenhardteriksson May 02 10:19
+right, I didn't really ask what I meant to. I know the algorithms work differently, I was thinking of more abstractedly, in terms of receiving an ODEProblem or ParametrizedFunction and then working on that to return sensitivity indices.
+Christopher Rackauckas @ChrisRackauckas May 02 10:19
+yes
+that's the plan
+robindenhardteriksson @robindenhardteriksson May 02 10:20
+I thought I'd read up on the current local SA to get an idea how the global would be done
+Christopher Rackauckas @ChrisRackauckas May 02 10:20
+I'm not sure that would actually be too helpful
+global SA is actually closer to parameter estimation I think
+in how it's all based on sampling solutions
+most of what's done for local SA would likely be unnecessary for global SA
+robindenhardteriksson @robindenhardteriksson May 02 10:21
+Okay. Translating and writing the algorithms I'm fine with, as a user it's just the internals of DiffEq which I'm not familiar with
+Christopher Rackauckas @ChrisRackauckas May 02 10:21
+I don't think you need to use the internals at all.
+At a high level, if I remember the Morris algorithm correctly its:
+1) Take a set of parameters and solve the diffeq
+2) Change the set of parameters around according to some algorithm, solve again
+3) Repeat 1 and 2, saving data along the way.
+robindenhardteriksson @robindenhardteriksson May 02 10:23
+You think it's as simple as receiving an ODEProblem, solving it with a bunch of sampled parameters and returning sensitivity indices?
+beat me to it
+Christopher Rackauckas @ChrisRackauckas May 02 10:24
+I will say I haven't implemented it yet so I am not intimitely familiar with all of the details
+but that's what it seemed like it was from a first read.
+robindenhardteriksson @robindenhardteriksson May 02 10:25
+Yeah, that's basically it, sampling parameters and re-calculating a model output based on new samples
+Christopher Rackauckas @ChrisRackauckas May 02 10:27
+so yeah, I'm not sure any of the diffeq internals are really needed. It should be standard diffeq usage (solve diffeq and change parameters), then turned into a library function to make it easy for others to use it.
+robindenhardteriksson @robindenhardteriksson May 02 10:29
+Is there an example I can base myself on, or a set of principles for making it a library function?
+Christopher Rackauckas @ChrisRackauckas May 02 10:31
+The main principle is that it should try to be as efficient as possible, yet agnostic to the type of problem it's solving (ODE/SDE/DDE/DAE/etc.) and the algorithms it's using to solve it (it should be able to swap out OrdinaryDiffEq methods for Sundials methods etc. as much as possible)
+but I think it's usually best to just start small
+make a method which only works for ODEs, and then generalize later
+I prefer multiple consecutive PRs, each adding one detail, to one giant PR that is supposed to solve the whole problem.
+(of course, you don't have to go all the way. You could write it to ODEs and PR that and be off on your merry way. Then that gives me or someone else a starting point to work from later)
+robindenhardteriksson @robindenhardteriksson May 02 10:37
+Okay. In any case, I'm going to be implementing several GSA methods into Julia for my own use (ODEs for now, possibly stochastic later). I'd be more than happy to help out and possibly contribute.
+From which repo should I branch and then submit PRs?
+Christopher Rackauckas @ChrisRackauckas May 02 10:38
+DiffEqSensitivity.jl
+you'll see it's a very tiny library, just with the local SA stuff
+it's in dire need of love :smile:
+robindenhardteriksson @robindenhardteriksson May 02 10:39
+yeah, I saw the code isn't very long. Does that actually contain everything to do local SA?
+Christopher Rackauckas @ChrisRackauckas May 02 10:40
+yeah
+robindenhardteriksson @robindenhardteriksson May 02 10:41
+that's some nice and concise code there
+Christopher Rackauckas @ChrisRackauckas May 02 10:42
+I mean, local SA is just appending to the diffeq some extra states for solving the SA equations simultaniously
+it's not an adjoint method or anything fancy (though I do wish to get there)
+robindenhardteriksson @robindenhardteriksson May 02 10:48
+true, not overly complex, but still nice
+Well thanks for the time to chat. I'll make some basic GSA stuff first, and will probably be back at some point with some more questions.
+
+100.
+julia> @doc clamp                                                                                   clamp(x, lo, hi)                                                                                                                                                                                    Return x if lo <= x <= hi. If x < lo, return lo. If x > hi, return hi. Arguments are promoted     to a common type. Operates elementwise over x if x is an array.                                                                                                                                     
+julia> clamp([pi, 1.0, big(10.)], 2., 9.)                                                         3-element Array{BigFloat,1}:                                                                       3.141592653589793238462643383279502884197169399375105820974944592307816406286198                  2.000000000000000000000000000000000000000000000000000000000000000000000000000000          9.000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+101. On Plots.jl design
+> Michael Krabbe Borregaard @mkborregaard 00:58
+No @sbromberger the ecosystem is quite solid. PlotRecipes, on the other hand, is fragile. That is because the very purpose of PlotRecipes is to hold those plotting recipes that require dependencies on other packages, exactly to separate those dependencies from the rest of the ecosystem. This means that PlotRecipes fails every time one of the dependencies fail - in this case both bugs in PlotRecipes come through NetworkLayouts.
+But that doesn't affect the rest of the functionality of the Plots ecosystem.
+The most solid approach is for downstream packages to not rely on PlotRecipes but to depend on RecipesBase and put the plotting functionality inside the package that defines the types. That will clearly keep all bugs to the package itself. Maybe it's worth considering something like that for LightGraphs? The graph functionality in PlotRecipes itself is general and not restricted to LigthGraphs, so maybe even a small GraphRecipes package residing in the Graphs organization?
+@Evizero had some [good recommendations](https://discourse.julialang.org/t/why-wouldnt-one-want-to-use-inferred-in-package-tests/2776) about its usage in his [JuliaML UnitTests](https://github.com/JuliaML/LossFunctions.jl/blob/master/test/tst_api.jl#L30-L33)
+
+102. Compatibility [is hard. Very hard](https://github.com/JuliaLang/Juleps/issues/3)
+Read springoff issues 2 and 3.
+
+103. @sbromberger uses @inferred and `using testsets` all over to help find regressions and such.
+
 ### 04/05/2017
 
 96. [Fuck.](https://summerofcode.withgoogle.com/organizations/5642180010967040/?sp-page=2#!)
@@ -21,7 +183,7 @@ Most of the ecosystems before focused on just solving ODEs with adaptive timeste
 In fact, the vast majority of codes were the same wrapped Fortran codes (dopri, Sundials, and LSODA which is actually just an old version of Sundials)
 however, those were all written in the 80's and 90's
 and there has been a lot of research, not to mention a small change in computer architecture, since that happened
-so along the lines of one: use newer algorithms, make them internally SIMD and multithread, etc.
+so along the lines of one: use newer algorithms, make them internally SIMD and multithreadbrom, etc.
 along the lines of two: there have been some "addons" or external software in MATLAB for doing this, but it required "choosing" a specific type of ODE solver. Now, you can give it generically any DE solver for any kind of DE, and you can do extended analysis on it with the built-in tools
 and 3, there really isn't a comprehensive suite which handles the wide variety of differential equations
 MATLAB does ODEs, DAEs and DDEs (delay differential equations). BVPs too
@@ -46,6 +208,23 @@ but if you want to do it in Julia, we have a built in function that does exactly
 http://docs.juliadiffeq.org/latest/analysis/parameter_estimation.html#lm_fit-1
 but recommend you don't use it because it's a really bad method, and instead point you to more advanced methods
 Seeing things like that (everyone re-implementing Levenburg-Marquedt parameter estimation for each new project, instead of developing a suite of well-tested more advanced methods) pisses me off so much that I had to do it.
+
+98. MCMC and DiffEq
+>
+@jamesonquinn they're actually very different
+DiffEq usually isn't about data
+it's about models
+is simulating trajectories of a class of nonlinear models which just happen to describe scientific phenomena really well.
+So to a statistician, you can think of DiffEq as just an entire library of scientifically interesting nonlinear models
+Parameter estimation of differential equation is the question: what about the model needs to be true in order to fit data?
+One example of this in statistics (under different words) is nonlinear mixed effects models.
+But generally, it's defining some optimization problem to solve, and finding out the parameters for the model (friction coefficients, chemical reaction rates, etc.) such that the timewise trajectories you get out of the simulations match the realistic data.
+These converge when you start to talk about these methods
+since some of the most common methods for finding parameters are Bayesian methods and MCMC
+but at that point, you're almost away from diffeqs, essentially making the assumption "okay we can simulate diffeq models, and using the results of simulations vs data ..."
+but actually, the vast majority of DiffEq is methods for simulating the diffeqs
+Christopher Rackauckas @ChrisRackauckas 18:22
+And that's why I am interested in your work: I want MCMC tools to apply at the end of the stack here
 
 ### 03/05/2017
 
