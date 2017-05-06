@@ -19,8 +19,52 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 more args into itself.
 `curry(f,x) = (xs...) -> f(x,xs...)`
 
-110. 
+110. Notes on DiffEqDevDocs:
+# Overview
+- Common interface is `solve(prob,alg;kwargs)`.
+- JuliaDiffEq is setup in a distributed manner.
+- JuliaDiffEq is a metapackage, DiffEqBase pulls the different modules in to work on cool stuff. People can then license/contribute their own algorithms in their own way and make it work in the ecosystem.
+- Component solvers are the \*DiffEq (Aaaaach so.)
+- Add-on packages are DiffEq\*, which add functionality to the Problem+solve setup.
+- To have package join the ecocystem, Pkg has to get into JuliaDiffEq, then algos can move into DiffEqBase.
 
+# Adding Algos
+- new problems (new PDE, new type of diffeq, new subclass of problems, etc) problem and solution types should be added to DiffEqBase first.
+- After problem and solutions are defined, the `solve` method is implemented. Should accept maximum kwargs, compatibility with Juliatypes must be documented, also in document in DiffEqBenchmarks, DiffEqTutorials
+
+# eg adding new algos to ODEq. with SSPRK22
+1. To create a new solver, 2/3 types have to be created. The algo SSPRK22 is used for dispatch, the other ones `SPRK22Cache` for inplace updates and `SSPRK22ConstantCache`.
+2. algo gets defined in `algorithms.jl` as `immutable SSPRK22 <: Ordinarry DiffEqAlgorithm end`. It has no First Same As Last property, but derivatives are used for the Hermite interpolations -> only one more function evaluatied. This happens in `alg_utils.jl` like `isfsal(alg::SSPRK22) = true`. Also, order is set as `alg_order(alg::SPRK22) = 2`.
+3. export the algo `SSPRK22` to `ODEq.jl`
+4. In `caches.jl`, the two cache types are defined. Note*: wtf? Ask Chris.
+5. new file `integrators/ssprk_integrators.jl` for both types of caches, the functions `initialize!` and `perform_step!` are defined there.
+6. Tests are added. New file `test/ode/ode_ssprk_tests.jl` is created and includes tests/runtests.jl via `@time @testset "SSPRK Tests" begin include("ode/ode_ssprk_tests.jl") end`
+7. Addendum, regression tests for the dense output are added in `test/ode/ode_dense_tests.jl`
+8. Deets [are here](https://github.com/JuliaDiffEq/OrdinaryDiffEq.jl/pull/40)
+Summary:
+Create types for your algo and 2 caches. Define the immutable in `algorithms.jl`, maybe `alg_utils.jl` applies. Export in ODEq.jl. Define the 2 caches in `caches.jl` because magics. in `integrators/ssprk_integrators.jl`, you define `initialize!` and `perform_step!` for both types of caches. Add super cool tests. Add dense tests.
+i.e.,
+```
+dts = 1.//2.^(8:-1:4)
+testTol = 0.2
+
+prob = prob_ode_linear
+
+sim = test_convergence(dts,prob,SSPRK22())
+@test abs(sim.𝒪est[:final]-2) < testTol
+
+prob = prob_ode_2Dlinear
+
+sim = test_convergence(dts,prob,SSPRK22())
+@test abs(sim.𝒪est[:final]-2) < testTol
+```
+change `dts ` around, and plot to make sure things are legit == should be smooth to the eye!
+
+Also, probs copy a test from [the dense output](https://github.com/JuliaDiffEq/OrdinaryDiffEq.jl/blob/master/test/ode/ode_dense_tests.jl#L65).
+
+> for making sure that the dense output is good. Just follow what's there for RK4 or the Midpoint method. You'll need to adjust the numbers on the test to match how close the fit should be (this is a regression test). Before setting the numbers, make sure you plot it with the interpolation (should be the default plot(sol). Check it by eye: if it's not smooth then there's an issue in the interpolation.
+
+#
 
 ### 05/05/2017
 
