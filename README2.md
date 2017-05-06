@@ -170,6 +170,21 @@ Read springoff issues 2 and 3.
 103. @sbromberger uses @inferred and `using testsets` all over to help find regressions and such.
 @Evizero had some [good recommendations](https://discourse.julialang.org/t/why-wouldnt-one-want-to-use-inferred-in-package-tests/2776) about its usage in his [JuliaML UnitTests](https://github.com/JuliaML/LossFunctions.jl/blob/master/test/tst_api.jl#L30-L33)
 
+104. @ChrisRackauckas on shadowing. Refactoring code ain't as easy as it looks...
+when you create a new function which matches the name of another
+so if you're in a package, and you define a function cycle, it will shadow Base.cycle
+your local scope will now act like Base.cycle didn't exist, and all of its dispatches didn't exist: just the ones you define.
+the way that import works is very weird though
+import DiffEqBase: DiffEqDiffTools.get_du
+will import DiffEqDiffTools.get_du instead of DiffEqBase.get_du
+which are two different functions: DiffEqBase.get_du is user-facing and part of the integrator interface
+DiffEqDiffTools.get_du is backend only, part of the differentiation tools (probably should be re-named so that way this clash isn't even possible)
+
+105. Nugget: to copy over your past Julia version, copy the REQUIRE file hidden in ~.julia
+
+106. Vocab: Refactoring - moving code around. Aesthetic and Quality of Life but not functional changes.
+Linter - Cool program that tells you if script will compile before compiling, usually with little color flags.
+
 ### 04/05/2017
 
 96. [Fuck.](https://summerofcode.withgoogle.com/organizations/5642180010967040/?sp-page=2#!)
