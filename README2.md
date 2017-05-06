@@ -64,7 +64,21 @@ Also, probs copy a test from [the dense output](https://github.com/JuliaDiffEq/O
 
 > for making sure that the dense output is good. Just follow what's there for RK4 or the Midpoint method. You'll need to adjust the numbers on the test to match how close the fit should be (this is a regression test). Before setting the numbers, make sure you plot it with the interpolation (should be the default plot(sol). Check it by eye: if it's not smooth then there's an issue in the interpolation.
 
-#
+# Developing a new problem
+
+Define new problem types to specialize dispatch. New diffeqs, pdes, special subclasses of diffeqs.
+1. Make a new `DEProblem` and new `DESolution`. These belong in DiffEqBase and should be  exported. The `DEProblem` must hold all mathematical info, including meshing in both space and time, and `DESolution` should hold all info for the solution. That's all you need to get a `solve(::DEProblem,alg;kwargs)` which takes problem, spits solution.
+2. Does it make sense in a hierarchy? Make a promotion structure. Cool! ODEProbs are DAEProbs, this way, methods for DAES can solve ODEs by promotion (like DASSL provides BDF method).
+3. Add plotting via a recipe to the the solution type.
+4. Add tests with `DETestProblem` and `DETestSolution` which holds the analytical solution, and extend `appxtrue!` in DiffEqDevTools. To check algo works, add a dispatch for `test_convergence` which makes a `ConvergenceSimulation` type. This already has a recipe, plotting is therefore embedded. Your problem can take in a true solution, and has a field `errors` which is a dictionary of symbols for the different error estimates (L2, L inf, etc.).
+5. Update docs to include new problem types.
+Summary:
+make new types for problem and solution. solution needs all math info like meshing space and time. create promotion structure for types if logical. add plotting, tests, and error metrics. update docs.
+
+# DiffEq Internals
+
+Easy way to start is to develop a new solver algo.
+
 
 ### 05/05/2017
 
