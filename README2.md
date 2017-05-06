@@ -181,6 +181,7 @@ which are two different functions: DiffEqBase.get_du is user-facing and part of 
 DiffEqDiffTools.get_du is backend only, part of the differentiation tools (probably should be re-named so that way this clash isn't even possible)
 
 105. Nugget: to copy over your past Julia version, copy the REQUIRE file hidden in ~.julia
+If moving around dependencies, don't forget to import or delete from REQUIRE as appropriate.
 
 106. Vocab: Refactoring - moving code around. Aesthetic and Quality of Life but not functional changes.
 Linter - Cool program that tells you if script will compile before compiling, usually with little color flags.
