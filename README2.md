@@ -186,6 +186,10 @@ If moving around dependencies, don't forget to import or delete from REQUIRE as 
 106. Vocab: Refactoring - moving code around. Aesthetic and Quality of Life but not functional changes.
 Linter - Cool program that tells you if script will compile before compiling, usually with little color flags.
 
+107. @oxinabox shows [why the for loop iterator](https://github.com/JuliaLang/julia/issues/6484) is the way it is.
+`for (x, y) in zip(xs, ys)`
+
+
 ### 04/05/2017
 
 96. [Fuck.](https://summerofcode.withgoogle.com/organizations/5642180010967040/?sp-page=2#!)
