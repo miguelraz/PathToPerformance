@@ -1,9 +1,9 @@
 # GSoC goals:
 
-- [] Refactor ODEqs and SDEqs into DiffEqDiffTools
-- [] Unit tests for PRs into DiffEqDiffTools
+ [ ] Refactor ODEqs and SDEqs into DiffEqDiffTools
+ [ ] Unit tests for PRs into DiffEqDiffTools
 
-[] Read tests and get on implementing ODEs as test cases
+[ ] Read tests and get on implementing ODEs as test cases
 
 
 
