@@ -11,11 +11,15 @@
 
 - [ ] Work through Euler (May9 discussion, DiffEq lobby) and Jacobians
 
+
+
 - [ ] [fempoisson example](http://docs.juliadiffeq.org/latest/tutorials/fempoisson_example.html)
 
-# Open problems:
+# Stretch goals
 
-- [ ] Connect well to LSODA
+- [ ] Complex autodifferentiation for physics - so then it probably can be a straightforward application of ForwardDiff to build those equations from a Hamiltonian
+- Euler-Langrange
+- he'll need to dig into how the diffeq functions are differenitated which is all about handling closures and that jazz it's the same idea to differentiate H(p,q) so that would be a good exercise then the internals would make a lot more sense.
 
 - [ ] Turbo DiffEqPhysics
 
@@ -24,6 +28,12 @@
 - [ ] shutz and misner
 
 - [ ] wonsheok shin EM
+
+- [ ] add old methods for didactic purposes
+
+# Open problems:
+
+- [ ] Connect well to LSODA
 
 # Other GSoCs:
 
