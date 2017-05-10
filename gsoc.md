@@ -1,4 +1,6 @@
-# GSoC goals:
+# GSoC '17
+
+## GSoC goals:
 
 - [ ] Refactor ODEqs and SDEqs into DiffEqDiffTools
 - [ ] Unit tests for PRs into DiffEqDiffTools
@@ -8,16 +10,15 @@
 
 - [ ] Read tests and get on implementing ODEs as test cases
 
-
-
-# Examples to do:
+## Examples to do:
 
 - [ ] Work through Euler (May9 discussion, DiffEq lobby) and Jacobians
 
 - [ ] [fempoisson example](http://docs.juliadiffeq.org/latest/tutorials/fempoisson_example.html)
 
 - [ ] DevDocs use case and walkthrough
-# Stretch goals
+
+## Stretch goals
 
 - [ ] Complex autodifferentiation for physics - so then it probably can be a straightforward application of ForwardDiff to build those equations from a Hamiltonian
 - Euler-Langrange
@@ -33,11 +34,11 @@
 
 - [ ] add old methods for didactic purposes
 
-# Open problems:
+## Open problems:
 
 - [ ] Connect well to LSODA
 
-# Other GSoCs:
+## Other GSoCs:
 
 - [ ] @shivin9 - speed up elliptics PDEs
 
@@ -45,7 +46,7 @@
 
 - [ ] Ying Bo - BVP
 
-# Taking care of the little things:
+## Taking care of the little things:
 
 - [ ] Typos in all DiffEqDocs et al
 
