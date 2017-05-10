@@ -14,6 +14,8 @@
 
 - [ ] Work through Euler (May9 discussion, DiffEq lobby) and Jacobians
 
+- [ ] [UCIDataScienceInitiative](http://ucidatascienceinitiative.github.io/IntroToJulia/) Projects and such
+
 - [ ] [fempoisson example](http://docs.juliadiffeq.org/latest/tutorials/fempoisson_example.html)
 
 - [ ] DevDocs use case and walkthrough
