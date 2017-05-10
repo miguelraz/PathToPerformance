@@ -1,5 +1,9 @@
 List of all possible C++ mistakes.
 
+04/05/2017
+
+35.
+
 27/04/2017
 
 31. ; - 29
@@ -64,6 +68,5 @@ ex11 Penny counter to dollars
 13. Not using ints for pennies
 
 Chapter 4
-
 14. Bad for loop conditions - 1
 15. Wrote/rewrote vars as ints/floats - 2
