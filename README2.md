@@ -8,6 +8,10 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
+### 10/05/17
+
+110. Scribing! @Pualms comes into chat with non-linear conservation laws based on Kurganov and Tadmor and FVol method. @aytekinar discussion is also a great DiffEq user case walkthrough with simple Euler.
+
 ### 06/05/2017
 
 107. Rust has some really cool approach to building an common API for pkg dev [socially](https://blog.rust-lang.org/2017/05/05/libz-blitz.html) remember to bring this up after v0.6 release.
