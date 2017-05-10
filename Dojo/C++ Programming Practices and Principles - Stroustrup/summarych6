@@ -1,0 +1,37 @@
+// Chapter 6 Summary
+A GRAMMAR definex the syntax of an input.
+A program that implements said rules is a parser/lexer.
+
+WRiting a Grammar:
+1. Rules vs Tokens distinction
+2. Put one rule after another (sequencing)
+3. Express alternative patterns (alternation)
+4. Express repeating patterns (repetition)
+5. Recognize the grammar rule to start with
+
+Tokens go in double quotes
+e.g.
+List:
+"{" Sequence "}"
+Sequence:
+Element
+Element "," Sequence
+Element:
+"A"
+"B"
+
+To turn a grammar into code...
+you must
+1.
+
+When you answer "obviously I will accept floats"
+and then fail - that is called feature creep.
+
+If you are dividing, make sure you can't divide by zero.
+
+If you wanna initialize vars within a switch-statement, gotta put it in a block.
+
+"WHY DOESN'T THIS WORK?" -> "Why does this work the way it does?"
+                         -> "What does it do?"
+
+throwing away input without knowing what it is can't be a good idea

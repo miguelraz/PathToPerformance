@@ -25,8 +25,8 @@ Token get_token()    // read a token from cin
 	cin >> ch;    // note that >> skips whitespace (space, newline, tab, etc.)
 
 	switch (ch) {
-		//not yet   case ';':    // for "print"
-		//not yet   case 'q':    // for "quit"
+		not yet   case ';':    // for "print"
+		not yet   case 'q':    // for "quit"
 	case '(': case ')': case '+': case '-': case '*': case '/':
 		return Token(ch);        // let each character represent itself
 	case '.':
@@ -107,7 +107,12 @@ double primary()     // read and evaluate a Primary
 }
 int main()
 try {
+	double val = 0;
 	while (cin)
+	Token t = ts.get();
+
+	if (t.kind == 'q') break;
+	if (t.kind == ';')
 		cout << "=" << expression() << '\n';
 	keep_window_open("~0");
 }
