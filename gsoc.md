@@ -9,32 +9,32 @@
 
 # Examples to do:
 
-[] Work through Euler (May9 discussion, DiffEq lobby) and Jacobians
+- [] Work through Euler (May9 discussion, DiffEq lobby) and Jacobians
 
-[] [fempoisson example](http://docs.juliadiffeq.org/latest/tutorials/fempoisson_example.html)
+- [] [fempoisson example](http://docs.juliadiffeq.org/latest/tutorials/fempoisson_example.html)
 
 # Open problems:
 
-[] Connect well to LSODA
+- [] Connect well to LSODA
 
-[] Turbo DiffEqPhysics
+- [] Turbo DiffEqPhysics
 
-[] katthyat qmech
+- [] katthyat qmech
 
-[] shutz and misner
+- [] shutz and misner
 
-[] wonsheok shin EM
+- [] wonsheok shin EM
 
 # Other GSoCs:
 
-[] @shivin9 - speed up elliptics PDEs
+- [] @shivin9 - speed up elliptics PDEs
 
-[] Yannis - FEM
+- [] Yannis - FEM
 
-[] Ying Bo - BVP
+- [] Ying Bo - BVP
 
 # Taking care of the little things:
 
-[] Typos in all DiffEqDocs et al
+- [] Typos in all DiffEqDocs et al
 
-[] Graph of DiffEq dependencies
+- [] Graph of DiffEq dependencies
