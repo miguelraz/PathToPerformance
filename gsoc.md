@@ -2,6 +2,9 @@
 
 - [ ] Refactor ODEqs and SDEqs into DiffEqDiffTools
 - [ ] Unit tests for PRs into DiffEqDiffTools
+- [ ] Review JuliaDiffEq/DifferentialEquations.jl#159
+- [ ] Refactor JuliaDiffEq/OrdinaryDiffEq.jl@8318c0f
+* The abstraction of the Shampine Matlab ODE Suite paper is the key goal for project. [Many things spring off from this.](http://people.eecs.berkeley.edu/~wkahan/Math128/ODEsuite.pdf)
 
 - [ ] Read tests and get on implementing ODEs as test cases
 
@@ -11,10 +14,9 @@
 
 - [ ] Work through Euler (May9 discussion, DiffEq lobby) and Jacobians
 
-
-
 - [ ] [fempoisson example](http://docs.juliadiffeq.org/latest/tutorials/fempoisson_example.html)
 
+- [ ] DevDocs use case and walkthrough
 # Stretch goals
 
 - [ ] Complex autodifferentiation for physics - so then it probably can be a straightforward application of ForwardDiff to build those equations from a Hamiltonian
