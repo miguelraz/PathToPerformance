@@ -7,8 +7,17 @@
 - [ ] Review JuliaDiffEq/DifferentialEquations.jl#159
 - [ ] Refactor JuliaDiffEq/OrdinaryDiffEq.jl@8318c0f
 * The abstraction of the Shampine Matlab ODE Suite paper is the key goal for project. [Many things spring off from this.](http://people.eecs.berkeley.edu/~wkahan/Math128/ODEsuite.pdf)
-
 - [ ] Read tests and get on implementing ODEs as test cases
+
+### Pre-GSoC - Community bonding time
+- [ ] Know who people are, what the repos and packages are, know them as a user.
+- [ ] List 30 packages, people,
+- [ ] JuliaDiff
+- [ ] ForwardDiff.jl
+- [ ] Calculus.jl
+- [ ] OrdinaryDiffEq.jl
+- [ ] StochasticDiffEq.jl
+
 
 ## Examples to do:
 
