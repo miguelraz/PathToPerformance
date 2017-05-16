@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="tbb">
+      <UniqueIdentifier>{2516a0ff-c821-45cc-ae54-05097fdb3506}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cilkplus">
+      <UniqueIdentifier>{43786a1c-fe86-4ce6-bd4c-17a821636172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serial">
+      <UniqueIdentifier>{9a1fa882-b11e-4979-aaf2-2653002c873b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="openmp">
+      <UniqueIdentifier>{510d6603-1444-4f29-8510-9968bcbc2257}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common\test_sort.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\cilkplus\merge_sort_cilk.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\quicksort_cilk_recursive.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\quicksort_cilk_semirecursive.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\merge_sort_tbb.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\quicksort_tbb_task.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\quicksort_tbb_taskgroup.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\choose_number_of_bins.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\quicksort_cilk_production.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\merge_cilk.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\serial\serial_merge.h">
+      <Filter>serial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\openmp\merge_sort_openmp.h">
+      <Filter>openmp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\openmp\merge_openmp.h">
+      <Filter>openmp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\merge_tbb.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\destructive_move.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\sample_sort.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\repack_and_subsort_tbb.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\repack_and_subsort_cilk.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\map_keys_to_bins.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\bin_cilk.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\bin_tbb.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

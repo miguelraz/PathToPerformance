@@ -1,0 +1,36 @@
+<HTML>
+<BODY>
+<H1>Pipeline</H1>
+
+The subdirectories herein contain Pipeline examples from Chapter 9 of the book.
+
+<H2>Listings</H2>
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>  
+		<td>9.1</td> <td><A href="serial/serial_pipeline.h">serial/serial_pipeline.h</A></td> <td>Serial implementation of a pipeline, with stages f, g, and h.</td>
+	</tr>	
+	<tr>
+		<td>9.2</td> <td><A href="tbb/tbb_sps_pipeline.h">tbb/tbb_sps_pipeline.h</A></td> 
+                <td>Pipeline in TBB.  Equivalent to Listing 9.1, except that the stages run in parallel and the middle stage processes multiple items in parallel.</td>
+	</tr>
+	<tr>
+		<td>9.3</td> <td><A href="cilkplus/cilk_sps_pipeline.h">cilkplus/cilk_sps_pipeline.h</A></td> <td>Pipeline in Cilk Plus equivalent to the serial pipeline in Listing 9.1.</td>
+	</tr>
+	<tr>  
+		<td>9.4</td> <td><A href="cilkplus/reducer_consume.h">cilkpus/reducer_consume.h</A></td> <td>Defining a reducer for serializing consumption of items in Cilk Plus.</td>
+	</tr>	
+	<tr>  
+		<td><EM>Bonus</EM></td> <td><A href="cilkplus/test_reducer_consume.cpp">cilkplus/test_reducer_consume.cpp</A></td> <td>Test for class reducer_consume.</td>
+	</tr>	
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="common/test_pipeline.cpp">common/test_pipeline.cpp</A></td> <td>Test for pipelines.</td>
+	</tr>
+</table>
+<HR>
+<A HREF="../index.html">Parent directory</A>
+</BODY>
+</HTML>
+

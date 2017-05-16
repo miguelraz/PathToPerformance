@@ -1,0 +1,100 @@
+<HTML>
+<BODY>
+<H1>Sorts</H1>
+
+The subdirectories herein contain the sorts from the book and a harness
+(<A href="common/test_sort.cpp">common/test_sort.cpp</A>).
+that both tests and times them.
+
+<H2>Errata</H2>
+C++11 was still under development when the sorts were written.  
+Though the codes compiled and ran with the Intel 12.1 compiler and VS2010 headers,
+later we discovered that const-qualified lvalues should not be used with <TT>std::move</TT>.
+This issue has been corrected in the listings, so you'll see fewer const qualifiers than in the book.
+The book listings not using <TT>std::move</TT> should nonetheless work with C++98 compilers.
+
+<H2>Quicksort</H2>
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>  
+		<td>8.9</td> <td><A href="common/quicksort_util.h">common/quicksort_util.h</A></td> <td>Code shared by Quicksort implementations.</td>
+	</tr>	
+	<tr>
+		<td>8.10</td> <td><A href="cilkplus/quicksort_cilk_recursive.h">cilkplus/quicksort_cilk_recursive.h</A></td> <td>Fully recursive parallel Quicksort using Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td>8.11</td> <td><A href="cilkplus/quicksort_cilk_semirecursive.h">cilkplus/quicksort_cilk_semirecursive.h</A></td> <td>Semi-recursive parallel Quicksort using Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td>8.12</td> <td><A href="tbb/quicksort_tbb_taskgroup.h">tbb/quicksort_tbb_taskgroup.h</A></td> <td>Semi-recursive parallel Quicksort using TBB.</td>
+	</tr>
+	<tr>
+		<td>8.13</td> <td><A href="tbb/quicksort_tbb_task.h">tbb/quicksort_tbb_task.h </A></td> <td>Quicksort in TBB that achieves Cilk Plus space guarantees for Listing 8.11.</td>
+	</tr>
+</table>
+<H2>Merge Sort</H2>
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>
+		<td>13.1</td> <td><A href="serial/serial_merge.h">serial/serial_merge.h</A></td> <td>Serial merge.</td>
+	</tr>
+	<tr>
+		<td>13.2</td> <td><A href="cilkplus/merge_cilk.h">cilkplus/merge_cilk.h</A></td> <td>Parallel merge in Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td>13.3</td> <td><A href="tbb/merge_tbb.h">tbb/merge_tbb.h</A></td> <td>Parallel merge in TBB.   This is the entire algorithm in TBB.  The book shows only the lines that differ from the Cilk Plus version.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="openmp/merge_openmp.h">openmp/merge_openmp.h</A></td> <td>Parallel merge in OpenMP.</td>
+	</tr>
+	<tr>
+		<td>13.4</td> <td><A href="cilkplus/merge_sort_cilk.h">cilkplus/merge_sort_cilk.h</A></td> <td>Parallel merge sort in Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="tbb/merge_sort_tbb.h">tbb/merge_sort_tbb.h</A></td> <td>Parallel merge sort in TBB.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="openmp/merge_openmp.h">openmp/merge_sort_openmp.h</A></td> <td>Parallel merge sort in OpenMP.</td>
+	</tr>
+</table>
+
+<H2>Sample Sort</H2>
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>
+		<td>14.1</td> <td><A href="common/sample_sort.h">common/sample_sort.h</A></td> <td>Top-level code for parallel sample sort.</td>
+	</tr>
+	<tr>
+		<td>14.2</td> <td><A href="cilkplus/map_keys_to_bins_cilk.h">common/map_keys_to_bins_cilk.h</A></td> <td>Code for mapping keys to bins in Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="tbb/map_keys_to_bins_tbb.h">tbb/map_keys_to_bins_tbb.h</A></td> <td>Code for mapping keys to bins used by TBB sample sort.
+                                                                                                                         It differs from listing 14.2 in that it uses std::fill_n instead of array notation.</td>
+	</tr>
+	<tr>
+		<td>14.3</td> <td><A href="cilkplus/bin_cilk.h">cilkplus/bin_cilk.h</A></td> <td>Parallel binning of keys using Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="tbb/bin_tbb.h">tbb/bin_tbb.h</A></td> <td>Parallel binning of keys using TBB.</td>
+	</tr>
+	<tr>
+		<td>14.4</td> <td><A href="cilkplus/repack_and_subsort_cilk.h">cilkplus/repack_and_subsort_cilk.h</A></td> <td>Repacking and subsorting using Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="tbb/repack_and_subsort_tbb.h">tbb/repack_and_subsort_tbb.h</A></td> <td>Repacking and subsorting using TBB.</td>
+	</tr>
+	<tr>
+		<td>14.5</td> <td><A href="cilkplus/destructive_move.h">common/destructive_move.h</A></td> <td>Destructive move in Cilk Plus.</td>
+	</tr>
+</table>
+<HR>
+<A HREF="../index.html">Parent directory</A>
+</BODY>
+</HTML>
+
