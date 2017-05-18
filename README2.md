@@ -8,6 +8,10 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
+### 17/05/17
+
+111. [The problem with threads](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2006/EECS-2006-1.pdf)
+
 ### 10/05/17
 
 110. Scribing! @Pualms comes into chat with non-linear conservation laws based on Kurganov and Tadmor and FVol method. @aytekinar discussion is also a great DiffEq user case walkthrough with simple Euler.
