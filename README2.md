@@ -8,6 +8,14 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
+### 19/05/17
+
+112. A Struct is a Class whose every member is public. A `begin` block introduces a local scope/vars for you to play with :D.
+
+113. Views/subarrays when passed by value make copies and render data as contiguous in memory >>> speeds up calculation if you have a lot of transformations to do!
+
+114. @pure functions only modified their arguments and nothing else, not even globals -- no side effects! Purity leads to ease in parallelization.
+
 ### 17/05/17
 
 111. [The problem with threads](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2006/EECS-2006-1.pdf)
