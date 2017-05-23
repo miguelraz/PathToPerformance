@@ -8,6 +8,11 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
+### 22/05/17
+
+115. Dear god just stumbled onto @eschnett 's twitter. Super cool guy. Need to get a hold of his manual on proper Distributed computing. Also, this link on [modern architectures has to be noted down somewhere](https://us9.proxysite.com/process.php?d=joV9v0%2BWEk1HycjQWBjdi9MLNGsVx213r9Gi0i%2BY8w%3D%3D&b=3)
+
+
 ### 19/05/17
 
 112. A Struct is a Class whose every member is public. A `begin` block introduces a local scope/vars for you to play with :D.
