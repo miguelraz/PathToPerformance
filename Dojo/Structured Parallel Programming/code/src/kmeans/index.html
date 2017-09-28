@@ -1,0 +1,48 @@
+<HTML>
+<BODY>
+<H1>K-Means Clustering</H1>
+
+The subdirectories herein contain the K-Means Clustering examples from Chapter 11 of the book.
+
+<H2>Listings</H2>
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>  
+		<td>11.1</td> <td><A href="cilkplus/kmeans_cilk.h">cilkplus/kmeans_cilk.h</A></td> <td>K-means clustering in Cilk Plus.</td>
+	</tr>	
+	<tr>  
+		<td>11.2</td> <td><A href="common/sum_and_count.h">common/sum_and_count.h</A></td> <td>Type <TT>sum_and_count</TT> for computing mean of points in a cluster.</td>
+	</tr>	
+	<tr>  
+		<td>11.3</td> <td><A href="cilkplus/elementwise_reducer.h">cilkplus/elementwise_reducer.h</A></td> <td>Defining a hyperobject for summing an array elementwise in Cilk Plus.</td>
+	</tr>	
+	<tr>  
+		<td><EM>Bonus</EM></td> <td><A href="common/repair_empty_clusters.cpp">common/repair_empty_clusters.cpp</A></td> 
+                                        <td>Code for repairing empty clusters.  Look at the code in the #if/#else to see the brevity that array notation sometimes brings.</td>
+	</tr>	
+	<tr>
+		<td>11.4</td> <td><A href="tbb/view.h">tbb/view.h</A></td> <td>Declaring type <TT>tls_type</TT> for thread-local views in TBB.</td>
+	</tr>
+	<tr>
+		<td>11.5</td> <td><A href="tbb/reduce_local_sums_to_global_sum.h">tbb/reduce_local_sums_to_global_sum.h</A></td> <td>Walking local views to detect changes.</td>
+	</tr>
+	<tr>
+		<td>11.6</td> <td><A href="tbb/reduce_local_counts_to_global_count.h">tbb/reduce_local_counts_to_global_count.h</A></td> <td>Walking local views to accumulate a global sum.</td>
+	</tr>
+	<tr>
+		<td>11.7</td> <td><A href="tbb/reduce_min_ind.h">tbb/reduce_min_ind.h</A></td> <td>Routine for finding index of centroid closest to a given point.</td>
+	</tr>
+	<tr>  
+		<td>11.8</td> <td><A href="tbb/kmeans_tbb.h">tbb/kmeans_tbb.h</A></td> <td>K-means clustering in TBB.</td>
+	</tr>	
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="common/test_kmeans.cpp">common/test_kmeans.cpp</A></td> <td>Harness for testing K-Means implementations.</td>
+	</tr>
+</table>
+<HR>
+<A HREF="../index.html">Parent directory</A>
+</BODY>
+</HTML>
+

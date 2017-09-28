@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="serial">
+      <UniqueIdentifier>{264588c4-ea14-4ea1-9a72-54f04c537dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{058e4573-2a5e-459a-90a6-85c9b03dd3e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tbb">
+      <UniqueIdentifier>{a17b8891-002a-497c-aeb2-0461569e42b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cilkplus">
+      <UniqueIdentifier>{62cc3bbd-072f-41c2-aa85-f6b59e41726d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\cilkplus\reducer_consume.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\cilk_sps_pipeline.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\serial\serial_pipeline.h">
+      <Filter>serial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\tbb_sps_pipeline.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common\Test_pipeline.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cilkplus\test_reducer_consume.cpp">
+      <Filter>cilkplus</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

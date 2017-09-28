@@ -1,0 +1,34 @@
+<HTML>
+<BODY>
+<H1>Seismic Forward Simulation</H1>
+
+The subdirectories herein contain seismic forward simulation code from Chapter 10 of the book.
+
+<H2>Listings</H2>
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>  
+		<td>10.1</td> <td><A href="serial/serial_stencil.h">serial/serial_stencil.h</A></td> <td>Serial code for simulating wavefield.</td>
+	</tr>	
+	<tr>
+		<td>10.3</td> <td><A href="cilkplus/base_trapezoid.h">cilkplus/base_trapezoid.h</A></td> 
+		<td>Base case for applying stencil to space-time trapezoid.</td>
+	</tr>
+	<tr>
+		<td>10.4</td> <td><A href="cilkplus/recursive_trapezoid.h">cilkplus/recursive_trapezoid.h</A></td> 
+		<td>Parallel cache-oblivious trapezoid decomposition in Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="cilkplus/cilk_stencil.h">cilkplus/cilk_stencil.h</A></td> <td>Top-level code for Cilk Plus equivalent of Listing 10.1.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="common/test_seismic.cpp">common/test_seismic.cpp</A></td> <td>Test for the above.</td>
+	</tr>
+</table>
+<HR>
+<A HREF="../index.html">Parent directory</A>
+</BODY>
+</HTML>
+

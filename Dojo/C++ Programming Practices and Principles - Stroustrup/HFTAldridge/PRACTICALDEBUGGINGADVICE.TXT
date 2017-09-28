@@ -1,0 +1,43 @@
+PRACTICAL DEBUGGING ADVICE:
+1. BEFORE YOU WRITE code - think about how to debug.
+2. COMMENT WELL
+- not just add comments. say what you can't with code.
+-- name of the program.
+-- purpose of program.
+-- who wrote it and when.
+-- version numbers.
+-- what complicated parts are supposed to do.
+-- general design ideas
+-- how the source code is organized.
+-- what assumptions are made of inputs.
+-- what parts of the code are still missing and what cases are still not handled.
+
+- Use meaningful names - not longer, meaningful.
+
+- Use consistent layout. IDEs help, but you da man.
+- Style used in this book is a reasonable starting point.
+
+- Break code into small functions, each doing one small logical action.
+
+- Avoid functions longer than a page or two.
+
+- Avoid complicated code sequences.
+
+- Avoid nested loops, nested if-statements, complicated conditions, etc.
+Probs where bugs lie.
+
+- Use libraries vs your own code where possible.
+
+3. Missed:
+" "
+' '
+( )
+{ }
+ =
+ #
+ spelling
+
+ 4. Use assertions
+ 5. Functions check their own arguments by types -preconditions
+- insert just below function such assertions
+ 6. post-conditions are throws
