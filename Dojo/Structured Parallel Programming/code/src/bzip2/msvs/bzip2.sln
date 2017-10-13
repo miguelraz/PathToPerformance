@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzip2-tbb", "bzip2-tbb\bzip2-tbb.vcxproj", "{8AC8EC13-BE16-438B-ADB3-5613F4D1A5E1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bzip2-cilkplus", "bzip2-cilkplus\bzip2-cilkplus.vcxproj", "{7F231E6A-EA33-484A-B2C2-DAEB9391A341}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ngram", "ngram\ngram.vcxproj", "{D2D2AF99-4E21-4F29-AB0B-816D97AE6CEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AC8EC13-BE16-438B-ADB3-5613F4D1A5E1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8AC8EC13-BE16-438B-ADB3-5613F4D1A5E1}.Debug|Win32.Build.0 = Debug|Win32
+		{8AC8EC13-BE16-438B-ADB3-5613F4D1A5E1}.Release|Win32.ActiveCfg = Release|Win32
+		{8AC8EC13-BE16-438B-ADB3-5613F4D1A5E1}.Release|Win32.Build.0 = Release|Win32
+		{7F231E6A-EA33-484A-B2C2-DAEB9391A341}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7F231E6A-EA33-484A-B2C2-DAEB9391A341}.Debug|Win32.Build.0 = Debug|Win32
+		{7F231E6A-EA33-484A-B2C2-DAEB9391A341}.Release|Win32.ActiveCfg = Release|Win32
+		{7F231E6A-EA33-484A-B2C2-DAEB9391A341}.Release|Win32.Build.0 = Release|Win32
+		{D2D2AF99-4E21-4F29-AB0B-816D97AE6CEC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D2D2AF99-4E21-4F29-AB0B-816D97AE6CEC}.Debug|Win32.Build.0 = Debug|Win32
+		{D2D2AF99-4E21-4F29-AB0B-816D97AE6CEC}.Release|Win32.ActiveCfg = Release|Win32
+		{D2D2AF99-4E21-4F29-AB0B-816D97AE6CEC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

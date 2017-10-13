@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="cilkplus">
+      <UniqueIdentifier>{24484ebe-b8e6-4937-b709-41313d35b4ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tbb">
+      <UniqueIdentifier>{a58bac62-bb1c-47e5-8feb-8d3fcf6620cb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\tbb\view.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\reduce_local_counts_to_global_count.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\reduce_local_sums_to_global_sum.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\kmeans.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common\sum_and_count.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\elementwise_reducer.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\reduce_min_ind.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\kmeans_tbb.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\kmeans_cilk.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common\repair_empty_clusters.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\test_kmeans.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cilkplus\kmeans_cilk.cpp">
+      <Filter>cilkplus</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tbb\kmeans_tbb.cpp">
+      <Filter>tbb</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!-- Property sheet for Visual Studio 2010 that defines:
+     HAVE_CILKPLUS=1
+     HAVE_OPENMP=1
+     include and library directories for TBB
+     include and library directories for MKL
+     This sheet assumes that the compiler is icc 14.0
+  -->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <TBB_ROOT>$(ICPP_COMPILER14)\tbb</TBB_ROOT>
+    <MKL_ROOT>$(ICPP_COMPILER14)\mkl</MKL_ROOT>
+  </PropertyGroup>
+  <ItemDefinitionGroup />
+  <ItemGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>HAVE_CILKPLUS=1;HAVE_OPENMP=1</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(TBB_ROOT)\include\;$(MKL_ROOT)\include\;..</AdditionalIncludeDirectories>
+      <OpenMP>GenerateParallelCode</OpenMP>
+      <Cpp0xSupport>true</Cpp0xSupport>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(TBB_ROOT)\lib\ia32\vc_mt;$(MKL_ROOT)\lib\ia32</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

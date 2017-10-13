@@ -1,6 +1,18 @@
 List of all possible C++ mistakes.
 
+27/04/2017
+
+31. ; - 29
+32. cin for cout.
+33. typo doube
+34. ;
+
+26/04/2017
+
+30. ; - 28. Remember to look at previous lines as well where error are highlighted.
+
 25/04/2017
+
 Ex4.17 - Names and Scores keeper.
 20. ()
 21. ;
@@ -10,9 +22,12 @@ Ex4.17 - Names and Scores keeper.
 25.Not entering while conditional. Use || and not &&.
 26. ; - 7
 27. {}
+Ex4.19
 28. Didn't update sweep
+29. Goddamn checking contiguous elements
 
- - - 24/04/2017
+24/04/2017
+
 Word bleeper
 16. Didn't initialized var in for loop.
 17. {} - 1
@@ -21,6 +36,7 @@ Word bleeper
 
 
 21/04/2017
+
 Chapter 1
 Letter writing exercise
 1. Missed a ;
@@ -48,5 +64,6 @@ ex11 Penny counter to dollars
 13. Not using ints for pennies
 
 Chapter 4
+
 14. Bad for loop conditions - 1
 15. Wrote/rewrote vars as ints/floats - 2

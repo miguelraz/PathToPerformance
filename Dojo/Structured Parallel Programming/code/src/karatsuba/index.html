@@ -1,0 +1,36 @@
+<HTML>
+<BODY>
+<H1>Karatsuba Multiplication</H1>
+
+The subdirectories herein contain the Karatsuba multiplication algorithm from Chapter 8 of the book.
+
+<H2>Listings</H2>
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>  
+		<td>8.5</td> <td><A href="cilkplus/simple_mul_cilkplus.h">cilkplus/simple_mul_cilkplus.h</A></td> <td>Flat algorithm for polynomial multiplication using Cilk Plus array notation.</td>
+	</tr>	
+	<tr>
+		<td>8.6</td> <td><A href="cilkplus/karatsuba_cilkplus.h">cilkplus/karatsuba_cilkplus.h</A></td> <td>Karatsuba multiplication in Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td>8.7</td> <td><A href="common/temp_space.h">common/temp_space.h</A></td> <td>Type for scratch space.  It is optimized for allocating short arrays of a type T with a trivial constructor and destructor.</td>
+	</tr>
+	<tr>  
+		<td><EM>Bonus</EM></td> <td><A href="tbb/simple_mul_tbb.h">tbb/simple_mul_tbb.h</A></td> <td>Flat algorithm for polynomial multiplication using serial code.   
+			                                                                                     It's called by the TBB version of Karatsuba multiplication.</td>
+	</tr>	
+	<tr>  
+		<td><EM>Bonus</EM></td> <td><A href="serial/karatsuba_serial.h">serial/karatsuba_serial.h</A></td> <td>Karatsuba multiplication (serial)</td>
+	</tr>	
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="tbb/karatsuba_cilkplus.h">tbb/karatsuba_tbb.h</A></td> <td>Karatsuba multiplication in TBB.</td>
+	</tr>
+</table>
+<HR>
+<A HREF="../index.html">Parent directory</A>
+</BODY>
+</HTML>
+

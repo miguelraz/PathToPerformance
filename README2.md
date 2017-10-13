@@ -8,23 +8,6 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
-### 22/05/17
-
-115. Dear god just stumbled onto @eschnett 's twitter. Super cool guy. Need to get a hold of his manual on proper Distributed computing. Also, this link on [modern architectures has to be noted down somewhere](https://us9.proxysite.com/process.php?d=joV9v0%2BWEk1HycjQWBjdi9MLNGsVx213r9Gi0i%2BY8w%3D%3D&b=3)
-
-
-### 19/05/17
-
-112. A Struct is a Class whose every member is public. A `begin` block introduces a local scope/vars for you to play with :D.
-
-113. Views/subarrays when passed by value make copies and render data as contiguous in memory >>> speeds up calculation if you have a lot of transformations to do!
-
-114. @pure functions only modified their arguments and nothing else, not even globals -- no side effects! Purity leads to ease in parallelization.
-
-### 17/05/17
-
-111. [The problem with threads](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2006/EECS-2006-1.pdf)
-
 ### 10/05/17
 
 110. Scribing! @Pualms comes into chat with non-linear conservation laws based on Kurganov and Tadmor and FVol method. @aytekinar discussion is also a great DiffEq user case walkthrough with simple Euler.

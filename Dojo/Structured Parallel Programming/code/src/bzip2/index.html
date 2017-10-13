@@ -1,0 +1,116 @@
+<HTML>
+<BODY>
+<H1>Bzip2 Data Compression</H1>
+
+The subdirectories herein contain parallel versions of bzip2 
+as described in Chapter 12 of the <A HREF="http://parallelbook.com/">book</A>.
+<P>
+This version of bzip2 is for demonstration purposes only.
+It has not been validated.
+
+<A name="license">
+<H2>License</H2>
+
+The files in this directory and subdirectories are varying licenses.
+<table border="1">
+<TR>
+    <TH>File(s)</TH>                <TH>License</TH> 
+</TR>
+<TR>
+	<TD>bzip2-src/*</TD>         	<TD>See <A href="bzip2-src/LICENSE">bzip2-src/LICENSE</A></TD> 
+</TR>
+<TR>
+	<TD>ngram/alice.html</TD>       <TD>See <A HREF="ngram/alice.html">ngram/alice.html</A></TD>
+</TR>
+<TR>
+	<TD>ngram/ngram.cpp</TD>        <TD>See top of <A HREF=ngram/ngram.cpp>ngram/ngram.cpp</A></TD>
+</TR>
+</table>
+All other files are covered by <A href="../../LICENSE.txt">../../LICENSE.txt</A>.
+</A>
+
+<H2>Building</H2>
+To simplify building, all object files are compiled into the final program(s), 
+instead of building a separate library first as in the original bzip2 distribution.
+<P>
+The <TT>Makefile</TT> in subdirectory<TT>build/</TT> comes ready to build the TBB version.
+To build the Cilk Plus version, you will need to edit the top of the Makefile
+to set <TT>MODEL=cilkplus</TT> instead of <TT>MODEL=tbb</TT>.
+
+<H2>Usage</H2>
+
+For testing, we recommend using an input file that is approximately 250 Megabytes.
+One way to obtain such a file is to use the <EM>ngram</EM> tool  in <A href="ngram/ngram.cpp">ngram/ngram.cpp</A>.
+Here is a sample invocation of the tool that generates a 250 Megabyte file <TT>foo.txt</TT>
+from the training file A href="ngram/model.txt"><TT>ngram/alice.txt</TT></A>.
+<PRE>
+    ngram.exe 250000000 alice.txt foo.txt
+</PRE>
+<P>
+Here is a sample command line for invoking the Cilk Plus version of bzip2:  
+<PRE>
+    bzip2-cilkplus -9 &lt;foo.txt &gt;foo.bz2
+</PRE>
+Be sure to have both the input and output files on a local filesystem,
+otherwise performance will likely be I/O bound.
+We recommend using the option -9, 
+which specifies that very large blocks should be used, 
+so that parallel scheduling overheads can be well amortized.
+<P>
+To decompress a file:
+<PRE>
+    bzip2-cilkplus -d &lt;foo.bz2 &gt;bar.txt
+</PRE>
+Then you can check that <TT>foo.txt</TT> and <TT>bar.txt</TT> are identical.
+<P>
+You can set the number of threads used by the Cilk Plus or TBB versions 
+by setting <TT>CILK_NWORKERS</TT> or <TT>TBB_NWORKERS</TT> respectively.  
+For example, using bash:  
+<PRE>
+    export TBB_NWORKERS=2
+</PRE>
+makes the TBB version use 2 threads.
+
+<H2>Listings</H2>
+
+The files containing Listing 12.2 and 12.3 are adapted from the original bzip2, 
+and thus contain <EM>much</EM> more than those listings.
+
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>  
+		<td>12.1</td> <td><A href="bzip2-src/InputState.h">bzip2-src/InputState.h</A></td> 
+		<td>Declarations for bzip2 pipeline.</td>
+	</tr>	
+	<tr>  
+		<td><EM>Bonus</EM></td> <td><A href="bzip2-src/OutputState.h">bzip2-src/OutputState.h</A></td> 
+		<td>Class OutputState that is referenced in Listing 12.2</A></td>
+	</tr>	
+	<tr>  
+		<td>12.2</td> <td><A href="bzip2-src/compress_bzip2-src.cpp">bzip2-src/compress_bzip2-src.cpp</A></td> 
+		<td>Use of TBB <TT>parallel_pipeline</TT> to coordindate bzip2 actions.
+		    Look for <TT>parallel_pipeline</TT> to find the portion corresponding to Listing 12.2.</td>
+	</tr>	
+	<tr>  
+		<td>12.3</td> <td><A href="bzip2-src/compress_cilkplus.cpp">bzip2-src/compress_cilkplus.cpp</A></td> 
+		<td>bzip2 pipeline in Cilk Plus using a consumer reducer.  
+		    Look for <TT>void SecondStage</TT> to find the portion corresponding to Listing 12.3.</td>
+	</tr>	
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="bzip2-src/.">bzip2-src/.</A></td>
+		<td>The other files here constitute the rest of the bzip2 application.
+			Look for <TT>BZLIB_TBB</TT> or <TT>BZLIB_CILKPLUS</TT> to 
+			find portions that were changed from the serial version.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="ngram/ngram.cpp">ngram/ngram.cpp</A></td>
+		<td>Tool for generating big file of gibberish from a smaller text file.</td>
+	</tr>
+</table>
+<HR>
+<A HREF="../index.html">Parent directory</A>
+</BODY>
+</HTML>
+

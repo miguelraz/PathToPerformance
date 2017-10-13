@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<TITLE>src/</TITLE>
+</HEAD>
+<BODY>
+<H2>LICENSE</H2>
+The files in this directory and all subdirectories, except for <TT>bzip2/</TT>, are licensed to you according to <A HREF="../LICENSE.txt">LICENSE.txt</A>,
+which one level up from the current directory.
+<P>
+See <A HREF="bzip2/index.html#license">bzip2/index.html</A> for how the <TT>bzip2/</TT> example is licensed.
+<HR>
+<H2>Building and Running</H2>
+See <A HREF="../index.html">parent index</A> for instructions on how to build and run the examples.
+
+<HR>
+<H2>Note on File Organization</H2>
+
+Be aware that the usage of headers files differs from typical use of header files:
+<UL>
+	<LI>To preserve line numbers from the book, many of the files do not #include prerequisites.</LI>
+	<LI>Files that would ordinarily be *.cpp files are *.h files, so that they can be included by the harness.  
+	    The harnesses deal with including prerequisites.</LI>
+</UL>
+Comments are sparse since the examples are explained in the <A HREF="http://parallelbook.com/">book</A>.
+
+<HR>
+<H2>Index</H2>
+The Listing numbers match those in the book.
+The table links lead to pages with more detailed tables.
+<table border="1">
+	<tr>
+		<th>Listings</th> <th>Summary</th>
+	</tr>	
+	<tr>  
+		<td>5.16</td> <td><A href="scan/index.html">Scan implemented in OpenMP</A></td> 
+	</tr>	
+	<tr>  
+		<td>8.5-8.6</td> <td><A href="karatsuba/index.html">Karatsuba Multiplication</A></td> 
+	</tr>	
+	<tr>  
+		<td>8.9-8.13</td> <td><A href="sort/index.html">Quicksort</A></td> 
+	</tr>	
+	<tr>  
+		<td>8.17-8.20</td> <td><A href="scan/index.html">Scan and pack patterns implemented using fork-join</A></td> 
+	</tr>	
+	<tr>  
+		<td>8.21-8.23</td> <td><A href="lattice/index.html">Lattice recurrence using fork-join</A></td> 
+	</tr>	
+	<tr>  
+		<td>9.1-9.4</td> <td><A href="pipeline/index.html">Pipeline examples</A></td> 
+	</tr>	
+	<tr>  
+		<td>10.1,10.3,10.42</td> <td><A href="seismic/index.html">Forward Seismic Simulation</A></td> 
+	</tr>	
+	<tr>  
+		<td>11.1-11.8</td> <td><A href="kmeans/index.html">K-Means Clustering</A></td> 
+	</tr>	
+	<tr>
+		<td>12.1-12.3</td> <td><A href="bzip2/index.html">Bzip2 Data Compression</A></td>
+	</tr>
+	<tr>  
+		<td>13.1-13.4</td> <td><A href="sort/index.html">Merge Sort</A></td> 
+	</tr>	
+	<tr>  
+		<td>14.1-14.4</td> <td><A href="sort/index.html">Sample Sort</A></td> 
+	</tr>	
+	<tr>  
+		<td>15.1-15.3</td> <td><A href="cholesky/index.html">Cholesky Factorization</A></td> 
+	</tr>	
+</table>
+<HR>
+<A HREF="../index.html">Parent directory</A>
+</BODY>
+</HTML>

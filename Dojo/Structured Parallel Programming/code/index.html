@@ -1,0 +1,164 @@
+<HTML>
+<BODY>
+<CENTER>
+	Last updated 2013-Nov-21
+</CENTER>
+<UL>
+	<LI><A HREF="#LICENSE">LICENSE</A></LI>
+	<LI><A HREF="#Overview">Overview</A></LI>
+	<LI><A HREF="#Prerequisites">Prerequisites</A></LI>
+	<LI><A HREF="#Build-Run">Building and Running</A></LI>
+	<LI><A HREF="#Files">Files and Subdirectories</A></LI>
+	<LI><A HREF="#Issues">Known Issues</A></LI>
+</UL>
+<A NAME="LICENSE"> <H2>LICENSE</H2> </A>
+The files in this directory and all subdirectories are licensed to you according to the file <A HREF="LICENSE.txt">LICENSE.txt</A>
+(which resides in the same directory as this file),
+with the following exception:
+<UL>
+	<LI>Files in <TT>src/bzip2/</TT> are under different licenses.  
+            See <A HREF="src/bzip2/index.html#license">src/bzip2/index.html</A> for the applicable licenses.
+</UL>
+<HR>
+<A NAME="Overview"><H2>Overview</H2></A>
+
+The subdirectories in <A href="src/index.html">src/</A> contain source code for some examples from the book:
+<BLOCKQUOTE>
+	<EM><A HREF="http://parallelbook.com/">Structured Parallel Programming</A></EM>.
+	<BR>by Michael McCool, Arch Robison, and James Reinders.
+	<BR>published by Morgan Kaufman, July 2012.
+</BLOCKQUOTE>
+As a bonus, this package provides extra code:
+<UL>
+<LI>Serial or TBB equivalents to Cilk Plus code that, for space reasons, were not fully shown in the book.
+<LI>Auxilary routines mentioned in passing by the book.
+<LI>Harnesses for testing and/or timing the code.
+</UL>
+
+<HR>
+<A NAME="Prerequisites"><H2>Prerequisites</H2></A>
+This section lists prerequisite software required to build and run the examples.
+
+<H3>Compiler</H3> 
+
+To compile all of the examples requires a compiler supporting:
+<UL>
+<LI> Cilk Plus
+<LI> OpenMP 3.0 or later
+<LI> C++11 lambda expressions 
+</UL>
+Currently supported compilers are:
+<TABLE BORDER="1">
+	<TH> Compiler </TH><TH>Comment</TH>
+	<TR>
+		<TD>Intel C++ compiler, version 13.0 or later</TD><TD>Version 13.0 or later can compile all of the examples.</TD>
+	</TR>
+	<TR>
+		<TD>g++ 4.5.1 or later</TD><TD>Cannot compile Cilk Plus examples.</TD>
+	</TR>
+	<TR>
+		<TD>gcc 4.7 <A HREF="http://gcc.gnu.org/svn/gcc/branches/cilkplus/">branch</A> with Cilk Plus</TD><TD>Should be able to compile all of the examples</A>
+	</TR>
+	<TR>
+		<TD>Visual Studio 2010 or later</TD><TD>Can compile only the TBB examples.</TD>
+	</TR>
+</TABLE>
+Conditional compilation directives will automatically omit code that these compilers cannot handle.
+
+<H3>Libraries</H3>
+
+You need Intel Threading Building Blocks (TBB), because the examples use TBB's portable <TT>tbb::tick_count</TT> to do timing.
+TBB is distributed with the Intel compiler, and or <A HREF="http://threadingbuildingblocks.org">open-source</A> version can be downloaded.
+The makefiles assume your environment is set up so that your compiler can find the TBB include files and run-time library.
+On Linux and MacOS, you can do this setup by running the script <TT>tbb/bin/tbbvars.sh</TT> or sourcing the script <TT>tbb/bin/tbbvars.csh</TT>,
+depending on which shell you are using.  Those scripts are part of TBB and not part of this package.
+<P>
+The Cholesky Factorization example requires a Basic Linear Algebra Subroutines (BLAS) library.
+See <A href="src/cholesky/index.html#BLAS">here</A> for details.
+
+<H3>Other Tools</H3>
+
+Linux and Mac OS systems typically have the other prerequisites.  
+Windows users may have to acquire a few extra tools:
+<TABLE BORDER="1">
+<TR>
+<TD> GNU make </TD><TD> GNU make is required to build the examples.</TD>
+<TR>
+    <TD>Python</TD><TD> Required to run the top-level Makefile that builds all the examples.
+                        Python is not required for building individual examples.</TD>
+</TR>
+</TABLE>
+
+<HR>
+<A NAME="Build-Run"><H2>Building and Running</H2></A>
+
+NOTE: The timing part of the harnesses typically try only one particular kind and distribution of data, 
+so the timings are not necessarily representative of other situations.
+
+<H3><A NAME="Makefile">Using Makefiles</H3>
+
+Makefiles are provided.  
+They should work on Linux, Mac OS, or Windows.
+They include <A HREF="config/config.inc">config/config.inc</A>, which describes the compiler options to be used.
+Near the top of this file is a choice of lines that set CPLUS.
+Uncomment the one that matches your compiler.
+<P>
+The top level Makefile in this directory does the same action for all examples.
+The supported actions are:
+<BLOCKQUOTE>
+<TABLE BORDER="1">
+<TR>
+    <TH>Command</TH><TH>Effect</TH>
+</TR>
+<TR>
+	<TD><TT>make run</TT></TD><TD>Run all examples.  Builds any examples that are not yet built.</TD>
+</TR>
+<TR>
+	<TD><TT>make build</TT></TD><TD>Build all examples</TD>
+</TR>
+<TR>
+	<TD><TT>make clean</TT></TD><TD>Remove all binaries and object files</TD>
+</TR>
+</TABLE>
+</BLOCKQUOTE>
+These commands can be applied to a single example, say <EM>foo</EM>, by:
+<OL>
+<LI> cd to <TT>src/</TT><EM>foo</EM>/<TT>*/build/</TT></LI>.
+<LI> Run <TT>make</TT> there.
+</OL>
+
+<H3>Using Windows 2010 Solutions</H3>
+
+On Microsoft Windows, you can use either Makefiles or Visual Studio 2010 solutions.
+See previous section on how to use the Makefiles.
+<P>
+The Visual Studio 2010 solutions are set up to use the Intel C++ XE 12.1 Toolset.
+To build and run an example <EM>foo</EM>, 
+open the solution file <TT>src\<EM>foo</EM>\msvs\test_<EM>foo</EM>.sln</TT>.
+If the paths to TBB needs to be changed, edit the setting for TBB_ROOT in <A href="config/msvs.props">config\msvs.prop</A>.
+
+<HR>
+<A NAME="Files"><H2>Files and Subdirectories</H2></A>
+
+<TABLE BORDER="1">
+<TR>
+    <TD><A HREF="src/index.html">src/</A></TD><TD>Source files</TD>
+</TR>
+<TR>
+    <TD><A HREF="tools/.">tools/</A></TD><TD>Python script for running all of the Makefiles</TD>
+</TR>
+<TR>
+    <TD><A HREF="config/config.inc">config/config.inc</A></TD><TD>Configuration file inherited by Makefiles</TD>
+</TR>
+<TR>
+    <TD><A HREF="LICENSE.txt">LICENSE.txt</A></TD><TD>License covering all files in this directory and its subdirectories</TD>
+</TR>
+</TABLE>
+<HR>
+<A NAME="Issues"><H2>Known Issues</H2></A>
+<UL>
+	<LI> On Mac OS, TBB kmeans reports "surprisingly far from grid point" warning.
+	<LI> On Mac OS, TBB Cilk Plus kmeans hangs.
+</UL>
+</BODY>
+</HTML>

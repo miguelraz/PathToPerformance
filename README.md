@@ -8,6 +8,60 @@ A trillion points of altruism to Julia's Gitter chat and its benign and helpful 
 
 :shipit:
 
+### 04/05/2017
+
+96. [Fuck.](https://summerofcode.withgoogle.com/organizations/5642180010967040/?sp-page=2#!)
+
+97. Chris goes all out on DiffEq philosophy and what separates it from the others
+> I think the main things are:
+1) Refinement of standard tools (performance and new algorithms)
+2) Integrated analysis (parameter estimation, uncertainty quanitifcation)
+3) Expanded problem domain (stochasticity, discrete stochastic jump equations, random ordinary differential equations, etc.)
+Most of the ecosystems before focused on just solving ODEs with adaptive timestepping
+In fact, the vast majority of codes were the same wrapped Fortran codes (dopri, Sundials, and LSODA which is actually just an old version of Sundials)
+however, those were all written in the 80's and 90's
+and there has been a lot of research, not to mention a small change in computer architecture, since that happened
+so along the lines of one: use newer algorithms, make them internally SIMD and multithread, etc.
+along the lines of two: there have been some "addons" or external software in MATLAB for doing this, but it required "choosing" a specific type of ODE solver. Now, you can give it generically any DE solver for any kind of DE, and you can do extended analysis on it with the built-in tools
+and 3, there really isn't a comprehensive suite which handles the wide variety of differential equations
+MATLAB does ODEs, DAEs and DDEs (delay differential equations). BVPs too
+some codes here and there do versions of tha tas well
+Sundials and thus SciPy does ODEs and DAEs, then they have a separate wrapper for BVPs
+R wraps essentially the same codes as SciPy
+none of these really handle SDEs
+Christopher Rackauckas @ChrisRackauckas 12:55
+and the specialized extra packages that do handle SDEs are not well maintained and don't implement many algorithms
+so definitely including random equations (RODEs, SDEs) is unique.
+Then tying this all to PDEs
+Of course, we wrap all of the same algorithms the other suites do, but we don't use them as the core. We use them as bait in benchmarks
+And I think that's essentially the summary
+Christopher Rackauckas @ChrisRackauckas 12:56
+If you look at some extended diffeq feature in another language
+say
+parameter estimation
+you can pull up how to do it in Python
+http://stackoverflow.com/questions/11278836/fitting-data-to-system-of-odes-using-python-via-scipy-numpy
+http://adventuresinpython.blogspot.com/2012/08/fitting-differential-equation-system-to.html
+but if you want to do it in Julia, we have a built in function that does exactly what the top searches are doing
+http://docs.juliadiffeq.org/latest/analysis/parameter_estimation.html#lm_fit-1
+but recommend you don't use it because it's a really bad method, and instead point you to more advanced methods
+Seeing things like that (everyone re-implementing Levenburg-Marquedt parameter estimation for each new project, instead of developing a suite of well-tested more advanced methods) pisses me off so much that I had to do it.
+
+### 03/05/2017
+
+94. Found a super handy guide for [finite difference methods as a review](http://www.colorado.edu/amath/sites/default/files/attached-files/introduction_to_finite_differences_3.pdf)
+
+95. Read the Fornberg - Calculating weights in finite differences formulas paper. Cool insights by hand.
+
+### 02/05/2017
+
+91. Chris recommends lyx.org for Latex stuff, and we learned about why kwargs are slow and heap allocated arrays.[Some of the design philosophy](http://stackoverflow.com/questions/43731862/why-both-tableau-and-explicit-solver-in-differentialequations-jl) for DiffEqs.jl is here.
+
+92. [Rosenbrocks methods are](https://en.wikipedia.org/wiki/Rosenbrock_methods)
+> Rosenbrock methods for stiff differential equations are a family of multistep methods for solving ordinary differential equations that contain a wide range of characteristic timescales.[1][2] They are related to the implicit Runge-Kutta methods[3] and are also known as Kaps-Rentrop methods
+
+93. Read the 3 Shampine Papers, as well as Stroustrup's paper on CS education/curriculum.
+
 ### 07/04/2017
 
 88. Chris gives us an awesome lecture on mathematical history of numerial methods
@@ -82,11 +136,6 @@ so higher order methods for RODEs work even with discrete variables and other no
 89. [Why not to use Numerical Recipes](https://www.stat.uchicago.edu/~lekheng/courses/302/wnnr/nr.html)
 
 90. [Chris gives homework!](https://github.com/JuliaDiffEq/DiffEqJump.jl/issues/8)
-
-91.
-
-
-
 
 ### 06/04/2017
 

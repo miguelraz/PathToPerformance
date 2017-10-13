@@ -1,0 +1,54 @@
+<HTML>
+<BODY>
+<H1>Cholesky Factorization</H1>
+
+The subdirectories herein contain seismic forward simulation code from Chapter 15 of the book.
+<A name="BLAS"><H2>BLAS Prerequisite</H2></A>
+<P>
+The code assumes you have the Intel Math Kernel Library (MKL) implementation of the BLAS.
+You will need to set your paths so the compiler can find the MKL headers and libraries.  
+<P>
+If you have a different implementation the BLAS, you will need to edit <A href="common/blas_leaf.h">cilkplus/blas_leaf.h</A> as follows:
+<OL>
+	<LI>Replace <CODE>#include "mkl.h"</CODE> with the header for your BLAS.</LI> 
+	<LI>Perhaps edit the wrappers if your BLAS does not have the usual C interface.</LI>
+</OL>
+
+<H2>Listings</H2>
+<table border="1">
+	<tr>
+		<th>Listing</th> <th>File</th> <th>Summary</th>
+	</tr>	
+	<tr>  
+		<td><EM>Bonus</EM></td> <td><A href="common/blas_leaf.h">cilkplus/blas_leaf.h</A></td> 
+		<td>Thin wrappers around BLAS routines to simplify calling them from C++.   Section 15.1 of the book has an example for <CODE>leaf_trsm</CODE>.</td>
+	</tr>	
+	<tr>  
+		<td><EM>Bonus</EM></td> <td><A href="cilkplus/gemm_cilk.h">cilkplus/gemm_cilk.h</A></td> 
+		<td>Recursive matrix multiplication.  This is real Cilk Plus corresponding to the pseudo-code in Listing 8.8.  Section 15.1 discusses the interface.</td>
+	</tr>	
+	<tr>  
+		<td>15.1</td> <td><A href="cilkplus/potrf_cilk.h">cilkplus/potrf_cilk.h</A></td> <td>Recursive Cholesky decomposition.</td>
+	</tr>	
+	<tr>
+		<td>15.2</td> <td><A href="cilkplus/trsm_cilk.h">cilkplus/trsm_cilk.h</A></td> 
+		<td>Parallel triangular solve in Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td>15.3</td> <td><A href="cilkplus/syrk_cilk.h">cilkplus/syrk_cilk.h</A></td>
+		<td>Parallel symmetric rank update in Cilk Plus.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="common/FortranArray.h">common/FortranArray.h</A></td>
+		<td>Classes for manipulating arrays in Fortran column-major layout with indices starting at one.</td>
+	</tr>
+	<tr>
+		<td><EM>Bonus</EM></td> <td><A href="common/test_cholesky.cpp">common/test_cholesky.h</A></td>
+		<td>Harness for timing and checking the Cholesky decomposition.</td>
+	</tr>
+</table>
+<HR>
+<A HREF="../index.html">Parent directory</A>
+</BODY>
+</HTML>
+

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="cilkplus">
+      <UniqueIdentifier>{aa7a4b10-bcf5-4b4f-90b7-cd54a1231ba0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{247b55fc-b8cc-42e3-9537-7e6809a4c67d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tbb">
+      <UniqueIdentifier>{fe380a60-0e42-4607-ae1f-63d2da8a1c62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serial">
+      <UniqueIdentifier>{49332c57-16cd-46dd-8716-4e4c5a01f97d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="openmp">
+      <UniqueIdentifier>{050e3285-249b-4be3-a660-6d1e8a932fda}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\cilkplus\downsweep.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\upsweep.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\pack.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tbb\pack.h">
+      <Filter>tbb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\split.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+    <ClInclude Include="..\serial\serial_pack.h">
+      <Filter>serial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\serial\inclusive_scan.h">
+      <Filter>serial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\serial\exclusive_scan.h">
+      <Filter>serial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\openmp\openmp_scan.h">
+      <Filter>openmp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cilkplus\cilk_scan.h">
+      <Filter>cilkplus</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\common\Test_scan.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
