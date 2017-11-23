@@ -1,0 +1,90 @@
+\documentclass[10pt]{article}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+% Use either of these two definitions to include possible answers or not
+% (for the final student version)
+%\newcommand{\answer}[1]{}
+\newcommand{\answer}[1]{Possible answers: \textit{#1}}
+
+\begin{document}
+\section{Part I}
+\subsection{Module A}
+ Outdated
+\subsection{Module B}
+ \begin{enumerate}
+  \item
+  \item
+  \item
+  \item
+  \item
+ \end{enumerate}
+\subsection{Module C}
+ \begin{enumerate}
+ \item What determines the accuracy of a simulation? List at least two
+   ways in which the accuracy be improved.
+ \item What is MPI, and what is it used for? Assume there are two
+   processes, and process A needs to access an array element stored on
+   process B\@. Schematically, how does this work?
+ \item What is a software framework? Name one software framework, and
+   give at least three characteristic elements of a software
+   framework.
+ \item What are CCL files in Cactus? List which CCL files exist, and
+   what they define.
+ \item What tools exist to support code development in large,
+   distributed, international collaborations? Name at least five such
+   tools.
+ \end{enumerate}
+\subsection{Module D} % 4% of total
+ \begin{enumerate}
+  \item Define and describe a ``Visualization Pipeline''.
+%        {\em Answer: A concept that describes how data is processed for scientific visualization.}
+  \item Specify the difference between the ``push model'' and the ``pull model''.
+%	{\em Answer: Push model processes data even if not visualized, pull model only processes
+%	data that are visualized. 
+%	}
+  \item Describe the three atomic elements in a visualization network.
+  %    {\em Answer: Data Source, Data Filter, Data Sink}
+  \item Define and describe the purpose of a Bi-Vector.
+ %     {\em Answer (multiple answers possible): An oriented area element; the combination of two vectors describing a plane;
+ %    the anti-symmetric (wedge) product of two vectors;
+ %    an operation that rotates a vector by 90 degrees in a plane
+ %     }
+  \item Which are the three property objects (``communication types'' ) in the fiber bundle data model that are visible to the end user?
+ %       {\em Answer: Bundle, Grid, Field..}
+ \end{enumerate}
+\subsection{Module E}
+ \begin{enumerate}
+ \item We discussed five applications -- Montage, Nektar,
+   Climateprediction.net, SCOOP and Ensemble-based/Replica-Exchange
+   simulations. For any THREE of these (you choose which three),
+   answer any ONE of the following: Why they were distributed? How
+   they were distributed? Challenges \&/or success in distributing
+   them?
+ \item Estimate to within an order of magnitude the number of jobs
+   that are executed in the Worldwide LHC Computing Grid (WLCG) {\it
+     per day}? Esimate to within an order of magnitue the number of
+   bytes of data generated (overall) by the WLCG? Estimate the cost of
+   the LHC Experiment? Therefore what is the cost of generating a byte
+   of data from the LHC experiment? 
+   %Compare with the cost of 1 byte
+   %of data with that the cost of producing data from the
+   %next-generation sequencing achines? Over the long-term, which
+   %source of data will therefore dominate?
+ \item Using your estimate (whatever it was ) of number of jobs (on the
+   WLCG) from the previous answer, given that there are approximately
+   250,000 cores as part of the WLCG, and that it has a typical
+   utilization factor of 50\%, estimate the average time each job
+   takes? (assume: each job is a single-core job).
+ \item What are some of the factors -- technological and
+   non-technological, driving Cloud Computing? Provide a ``real
+   production'' example of a Cloud offering? Is the Cloud offering 
+   an example of IaaS, PaaS or SaaS?
+ \item What is (are) the primary difference(s) between predominantly
+   HTC and HPC Grids?  Provide a ``real production'' example of a HPC
+   and HTC Grid?
+\end{enumerate}
+\section{Part II}
+
+\end{document}
+

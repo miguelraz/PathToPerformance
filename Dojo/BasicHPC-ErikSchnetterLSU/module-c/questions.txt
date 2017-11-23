@@ -1,0 +1,91 @@
+Exam questions for Module C:
+
+--------------------------------------------------------------------------------
+
+1. What determines the accuracy of a simulation? List at least two
+   ways in which the accuracy be improved.
+
+Possible answers:
+
+The accuracy is influenced by:
+- approximations in choosing the PDEs that are simulated
+- approximations in the initial or boundary conditions
+- the discrete resolution
+
+The accuracy can be improved by using more faithful systems of PDEs,
+by using better initial conditions, and by increasing the discrete
+resolution.
+
+--------------------------------------------------------------------------------
+
+2. What is MPI, and what is it used for? Assume there are two
+   processes, and process A needs to access an array element stored on
+   process B. Schematically, how does this work?
+
+Possible answer:
+
+MPI is the "Message Passing Interface" standard. It is used to
+parallelise applications, in particular on distributed memory systems.
+
+MPI works by letting processes send and receive messages. These
+processes are otherwise independent, and they cannot see each other's
+data.
+
+If process A needs to access an array element stored on process B,
+this can be implemented as follows:
+
+1. process A sends the array index to process B
+2. process B receives the array index from process A
+3. process B looks up the array element locally
+4. process B sends the array element to process A
+5. process A receives the array element form process B
+
+--------------------------------------------------------------------------------
+
+3. What is a software framework? Name one software framework, and give
+   at least three characteristic elements of a software framework.
+
+Possible answer:
+
+A software framework is a way to structure large applications into a
+set of smaller, manageable components.
+
+One software framework is Cactus.
+
+Characteristics of a software framework are:
+- Used in large-scale applications, often developed/maintained by a
+  large, international team
+- Applications are built from components, which are developed by the
+  framework user
+- Framework itself performs no work, only glues components together
+- End user (not programmer) combines components into application
+- Control inversion: main program is part of framework, not user code
+  (opposite of a library)
+
+--------------------------------------------------------------------------------
+
+4. What are CCL files in Cactus? List which CCL files exist, and what
+   they define.
+
+Possible answer:
+
+CCL files declare the interface of a Cactus component (thorn) to the
+Cactus framework (flesh). There are three kinds of CCL files:
+- interface.ccl: define thorn interitance structure and grid functions
+- schedule.ccl:  specify when routines are called and storage is allocated
+- param.ccl:     declare the thorn's run-time parameters
+
+--------------------------------------------------------------------------------
+
+5. What tools exist to support code development in large, distributed,
+   international collaborations? Name at least five such tools.
+
+Possible answers:
+- email
+- chat (AIM, Skype)
+- repositories (cvs, svn, git)
+- wikis
+- bug trackers
+- telephone conferencing
+- video conferencing (Skype, EVO)
+- Google docs (live editing)

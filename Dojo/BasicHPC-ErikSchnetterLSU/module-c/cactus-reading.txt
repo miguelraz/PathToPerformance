@@ -1,0 +1,51 @@
+Tom Goodale, Gabrielle Allen, Gerd Lanfermann, Joan Massó, Thomas
+Radke, Ed Seidel, John Shalf,
+The Cactus Framework and Toolkit: Design and Applications
+<http://www.springerlink.com/content/2fapcbeyyc1xg0mm/fulltext.pdf>
+
+in:
+LECTURE NOTES IN COMPUTER SCIENCE
+Volume 2565, 2003, DOI: 10.1007/3-540-36569-9
+High Performance Computing for Computational Science — VECPAR 2002
+5th International Conference Porto, Portugal, June 26–28, 2002
+Selected Papers and Invited Talks
+José M.L.M. Palma, A. Augusto Sousa, Jack Dongarra, Vicente Hernández
+<http://www.springerlink.com/content/4k0n1dq5tf1k/>
+
+An overview over the Cactus framework and its design principles. These
+principles hold for many other frameworks for scientific simulations
+as well. I strongly recommend reading this article.
+
+
+
+Michael T. Heath,
+Scientific Computing: An Introductory Survey
+McGraw-Hill, New York, ISBN 0-07-239910-4
+<http://www.cse.illinois.edu/heath/scicomp/>
+
+This book gives an introduction to the mathematics of scientific
+computing, which is elsewhere also called "numerical analysis". In
+this, it goes far beyond what is needed for this course. At the same
+time, it does not cover any of the more advanced software aspects
+covered in this course. You are welcome to browse a copy of the book
+in my office.
+
+
+
+Cactus Users' Guide:
+
+This guide gives an introduction to the Cactus Software Framework, and
+explains how to use it and how to program with it.
+<http://www.cactuscode.org/documentation/UsersGuide.pdf>, parts A
+(Installation and Running) and B (Application thorn writing). See also
+other information available from <http://www.cactuscode.org/>.
+
+
+
+Einstein Toolkit Tutorial for New Users:
+
+This tutorial contains step-by-step instructions for installing and
+running the Einstein Toolkit, a Cactus-based application, on Queen
+Bee, a supercomputer in Baton Rouge.
+<http://docs.einsteintoolkit.org/et-docs/Tutorial_for_New_Users>. This
+tutorial is part of your homework.

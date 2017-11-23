@@ -1,0 +1,404 @@
+\documentclass[oneside]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage[english]{babel}   % does not work with amsart
+\usepackage{color}
+\usepackage{dcolumn}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{subfigure}
+\usepackage{psfrag}
+\usepackage{tabularx}
+\usepackage[hyphens]{url}
+% Include for creating the benchmark table
+
+% Put this package last
+\usepackage[bookmarks, bookmarksopen, bookmarksnumbered]{hyperref}
+% Put this package after hyperref
+\usepackage[all]{hypcap}
+% Don't use tt font for urls
+\urlstyle{rm}
+
+% 15 characters / 2.5 cm => 100 characters / line
+% Using 11 pt => 94 characters / line
+\setlength{\paperwidth}{216 mm}
+% 6 lines / 2.5 cm => 55 lines / page
+% Using 11pt => 48 lines / pages
+\setlength{\paperheight}{279 mm}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+% You can use a baselinestretch of down to 0.9
+\renewcommand{\baselinestretch}{0.96}
+
+% Make a comment stand out visually
+\newcommand{\todo}[1]{{\color{blue}$\blacksquare$~\textsf{[TODO: #1]}}}
+% Name of a code
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+\newcommand{\answerspace}{\vskip 6.5cm}
+
+
+% Use either of these two definitions to include possible answers or not
+% (for the final student version)
+\newcommand{\answer}[1]{}
+%\newcommand{\answer}[1]{Possible answers: \textit{#1}}
+
+\begin{document}
+
+\title
+{LSU Department of Computer Science\\ \vskip .3cm
+Fall 2010 Final Exam \\ \vskip .3cm CSC7700 Scientific Computing\\ \vskip .3cm
+December 6th 2010, 5.30pm to 7.30pm}
+
+\date{}
+\maketitle
+ 
+\section*{General Instructions}
+
+\begin{itemize}
+
+\item This is a closed book exam.
+
+\item No calculators or electronic devices.
+
+\item Part I of the exam covers all the five course modules and is designed to take 80 minutes to complete. Part II of the exam is for the Networks and Data module and is designed to take 40 minutes to complete. 
+
+\item Part I is worth 20\% of the final grade. Each module includes 5 questions. All questions have equal weight. Answer all questions.
+
+\item Part II is worth 10\% of your final grade. Answer only four out of five questions. If you answer all five,  only the lowest graded four will be taken into consideration.
+Questions have two parts, you need to answer both parts of the four questions you select.
+
+
+\end{itemize}
+
+\newpage
+
+.\vskip 10cm
+{\centering{\Huge Part I}}
+
+\newpage
+ 
+\section*{\center Module A: Basic Skills}
+
+ \begin{enumerate}
+  \item Provide two reasons why the same text file can look different when viewed on different systems or within different tools. \answer{EOL, TABS,
+        Syntax highlighting, Character encodings}
+\answerspace
+  \item In the context of numerical simulations, explain what is meant by discretization and why it is used.\answer{model of continuous function
+        on discrete set; because continuous space would require unlimited
+        memory}
+\answerspace
+  \item Briefly describe what a pseudo random-number generator is, and name three
+        disadvantages over real random-number generators. Name two reasons why pseudo random-number generators are
+        often used despite these disadvantages?
+        \answer{generate sequences of numbers with properties close to real
+        random numbers; finite size sequences, correlations, non-uniform distribution;
+        cheap, fast, reproducible}
+\answerspace
+  \item Name one advantage and two potential disadvantages of the Newton-Raphson method over the bisection method for root-finding.
+        \answer{The advantage is that it's convergence is 2nd order, while bisection is only 1st order, disadvantages are that the first derivative is needed and that NR can fail quite often while bisection is 'robust'}
+\answerspace
+  \item 
+  Explain the difference between centralized and distributed version control systems, including
+  one advantage and one disadvantage for each. Name one software implementation example for
+  each kind of system.
+  \answer{central: shallower learning curve <-> most operations require network (cvs,svn)
+          decentral: steeper learning curve <-> most operations local (git,darcs,mercurial)}
+ \end{enumerate}
+
+\newpage
+
+\section*{\center Module B: Networks and Data}
+
+\begin{enumerate}
+
+\item List two TCP parameters used in {\tt iperf} and briefly 
+describe their influence on the performance of TCP.
+
+\answerspace
+
+\item Briefly describe what the server-side data processing
+plug-in included in the standard GridFTP 
+installation does and what it can be used for 
+(hint - you used it in your homework)
+
+\answerspace
+
+\item List two benefits that middleware
+provides to developers of distributed applications.
+
+\answerspace
+
+\item Briefly outline two methods for accessing remote data in
+a distributed application.
+
+\answerspace
+
+\item Briefly outline two methods of doing remote visualization
+(based on distribution of the visualization pipeline)
+
+\end{enumerate}
+
+\newpage
+
+\section*{\center Module C: Simulations and Application Frameworks}
+
+\begin{enumerate}
+
+ \item What determines the accuracy of a simulation? List two
+   ways in which accuracy can be improved.
+\answer{
+The accuracy is influenced by:
+- approximations in choosing the PDEs that are simulated
+- approximations in the initial or boundary conditions
+- the discrete resolution
+
+The accuracy can be improved by using more faithful systems of PDEs,
+by using better initial conditions, and by increasing the discrete
+resolution.
+}
+
+\answerspace
+
+ \item What is MPI, and what is it used for? Assume there are two
+   processes, and process A needs to access an array element stored on
+   process B\@. Schematically, how does this work?
+\answer{
+MPI is the "Message Passing Interface" standard. It is used to
+parallelize applications, in particular on distributed memory systems.
+
+MPI works by letting processes send and receive messages. These
+processes are otherwise independent, and they cannot see each other's
+data.
+
+If process A needs to access an array element stored on process B,
+this can be implemented as follows:
+
+1. process A sends the array index to process B
+2. process B receives the array index from process A
+3. process B looks up the array element locally
+4. process B sends the array element to process A
+5. process A receives the array element form process B
+}
+
+\answerspace
+
+ \item What is a software framework? Name one software framework, and
+   provide three characteristic elements of a software
+   framework.
+\answer{
+A software framework is a way to structure large applications into a
+set of smaller, manageable components.
+
+One software framework is Cactus.
+
+Characteristics of a software framework are:
+- Used in large-scale applications, often developed/maintained by a
+  large, international team
+- Applications are built from components, which are developed by the
+  framework user
+- Framework itself performs no work, only glues components together
+- End user (not programmer) combines components into application
+- Control inversion: main program is part of framework, not user code
+  (opposite of a library)
+}
+
+\answerspace
+
+ \item What are CCL files in Cactus? List which CCL files exist, and
+   what they define.
+\answer{
+CCL files declare the interface of a Cactus component (thorn) to the
+Cactus framework (flesh). There are three kinds of CCL files:
+- interface.ccl: define thorn inheritance structure and grid functions
+- schedule.ccl:  specify when routines are called and storage is allocated
+- param.ccl:     declare the thorn's run-time parameters
+}
+
+\answerspace
+
+ \item Name and briefly describe five tools that support code development in large,
+   distributed, international collaborations.
+\answer{
+- email
+- chat (AIM, Skype)
+- repositories (cvs, svn, git)
+- wikis
+- bug trackers
+- telephone conferencing
+- video conferencing (Skype, EVO)
+- Google docs (live editing)
+}
+      
+ \end{enumerate}
+
+\newpage
+
+\section*{\center Module D. Scientific Visualization}
+
+\begin{enumerate}
+  \item Define and describe a ``Visualization Pipeline''.
+%        {\em Answer: A concept that describes how data is processed for scientific visualization.}
+\answerspace
+
+  \item What is the difference between the ``push model'' and the ``pull model''?
+%	{\em Answer: Push model processes data even if not visualized, pull model only processes
+%	data that are visualized. 
+%	}
+\answerspace
+
+  \item Describe the three atomic elements (``building blocks'') in a visualization network.
+  %    {\em Answer: Data Source, Data Filter, Data Sink}
+\answerspace
+
+  \item Define and describe the purpose of a bi-vector.
+ %     {\em Answer (multiple answers possible): An oriented area element; the combination of two vectors describing a plane;
+ %    the anti-symmetric (wedge) product of two vectors;
+ %    an operation that rotates a vector by 90 degrees in a plane
+ %     }
+\answerspace
+
+  \item Which are the three property objects (``communication types'' ) in the ``F5'' fiber bundle data model that are visible to the end user?
+ %       {\em Answer: Bundle, Grid, Field..}
+
+ \end{enumerate}
+
+
+
+\newpage
+
+\section*{Module E: Distributed Scientific Computing}
+
+
+\begin{enumerate}
+
+\item We discussed five applications -- Montage, Nektar,
+  Climateprediction.net, SCOOP and Ensemble-based/Replica-Exchange
+  simulations. For any THREE of these (you choose which three), answer
+  any ONE of the following: Why they were distributed? How they were
+  distributed? The Challenges \&/or success in distributing them?
+
+\answerspace
+
+\item Estimate to within an order of magnitude the number of jobs that
+  are executed in the Worldwide LHC Computing Grid (WLCG) {\it per
+    day}. Estimate to within an order of magnitude the number of bytes
+  of data generated (overall) by the WLCG. Estimate the cost of the
+  LHC Experiment. Therefore what is the cost of generating a byte of
+  data from the LHC experiment?
+
+\answerspace
+
+\item Using your estimate (whatever it was) of number of jobs (on
+   the WLCG) from the previous answer, given that there are
+   approximately 250,000 cores as part of the WLCG, and that it has a
+   typical utilization factor of 50\%, estimate the average time each
+   job takes. (assume: each job is a single-core job).
+\answerspace
+
+\item List two factors -- technological or non-technological, driving
+  Cloud Computing. Provide a ``real production'' example of a Cloud
+  offering. Is the Cloud offering an example of IaaS, PaaS or SaaS?
+  \answerspace
+
+\item Provide one difference between predominantly HTC and
+  HPC Grids.  Provide a ``real production'' example of a HPC and HTC
+  Grid.
+
+\answerspace
+
+\end{enumerate}
+
+\newpage
+
+
+.\vskip 10cm
+{\centering{\Huge Part II}}
+
+\newpage
+
+\section*{Networks and Data}
+
+\subsection*{Question 1}
+
+\begin{itemize}
+
+\item A) How are layers used in network implementations?
+
+\vskip 8cm
+
+\item B) What are the major differences between TCP
+and UDP?
+
+\end{itemize}
+
+\newpage
+
+\subsection*{Question 2}
+
+\begin{itemize}
+
+\item A) What data transmission protocol would you use
+for bulk data transmission and why? 
+What protocol would you use for video or audio conference and why?
+
+\vskip 8cm
+
+\item B) Describe circuit network services and their advantage.
+
+\end{itemize}
+
+\newpage
+
+\subsection*{Question 3}
+
+\begin{itemize}
+
+\item A) Describe what a naming service is (in middleware
+implementations) and what is it used for.
+
+\vskip 8cm
+
+\item B) In your own words, describe the "end-to-end" argument.
+
+\end{itemize}
+
+\newpage
+
+\subsection*{Question 4}
+
+\begin{itemize}
+
+\item A) List the usual sequence of operations
+for accessing data in a distributed file system.
+
+\vskip 8cm
+
+\item B) Briefly describe the two possible (and sometimes conflicting) 
+optimization goals of a scheduling system.
+
+\end{itemize}
+
+\newpage
+
+
+\subsection*{Question 5}
+
+\begin{itemize}
+
+\item A) Describe use case scenarios where remote visualization
+is useful or needed.
+
+\vskip 8cm
+
+\item B) Describe some of the possible benefits of distributed 
+visualization.
+
+\end{itemize}
+
+\end{document}
