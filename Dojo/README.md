@@ -38,6 +38,7 @@ Running list of things to eventually cover:
 - [ ] Geometrical Methods in ODEs
 
 ### Julia
+
 - [ ] CS 161 Harvard - Doeppner
 - [ ] Introduction to HPC
 - [ ] Digital Systems
@@ -47,6 +48,23 @@ Running list of things to eventually cover:
 - [ ] Massively Parallel Programming CUDA
 - [ ] Algos for optimization
 - [ ] HPC Pearls I, II
+- [ ] OpenMP
+- [ ] MPI I, II
+- [ ] JuliaBlas
+
+### Package Love
+- [ ] Unitful
+- [ ] ValidatedNumerics
+- [ ] Flux
+- [ ] MakiE
+- [ ] DynamicalSystems
+- [ ] DiffEqDevDocs
+- [ ] Tensors
+- [ ] LightGraphs
+- [ ] LLVM
+- [ ] CUDAnative
+- [ ] CoordinateTransformations
+- [ ] Cassette
 
 ### Numerical Analysis and Numerical Methods
 
@@ -57,6 +75,10 @@ Running list of things to eventually cover:
 - [ ] Homer Reid course
 - [ ] Matrix Computations
 - [ ] Trascribe Ursula
+- [ ] Dynamical Systems and Numerical Analysis
+- [ ] CS267 Parallel Linear Algebra
+- [ ] Math 221 Kahan Numerical Linear Algebra
+- [ ] Kahan Linear Algebras
 
 ### Math
 
@@ -68,6 +90,7 @@ Running list of things to eventually cover:
 - [ ] Sneddon Fourier
 - [ ] Sneddon Special Funcs
 - [ ] Stochastic Diffs
+- [ ] Kahan Putnam Course
 
 ### Physics
 
@@ -105,6 +128,7 @@ Running list of things to eventually cover:
 - [ ] All of Non Parametric Stats
 - [ ] Learn Stats by Example
 - [ ] Incerto
+- [ ] Olav Stochastic Calculus
 
 ### Side Projects
 
@@ -121,6 +145,10 @@ Running list of things to eventually cover:
 - [ ] Twitter Shenanigans
 - [ ] IEEE Subsuper Suggestion
 - [ ] Makie and Mandelbrot || Hyperbolic Geometry in Makie
+- [ ] FGMPI Port
+- [ ] Terence Tao Widgets
+- [ ] William Kaham papers
+- [ ] VirtualSlowdownsAndSpeedups
 
 ### Topology
 
