@@ -1,0 +1,540 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no">
+<title>Lecture Summaries | Introduction to Numerical Methods | Mathematics | MIT OpenCourseWare</title>
+<!-- Begin Automatic Metadata Insertion --><meta content="18-335j-introduction-to-numerical-methods-fall-2010" name="WT.cg_n">
+<meta content="Lecture Summaries" name="WT.cg_s">
+<meta content="This section provides the schedule of lecture topics along with lecture summaries and related handouts." name="Description">
+<meta content="Johnson, Steven G." name="Author">
+<meta content="18.335J,18.335,6.337J,6.337,numerical linear algebra,linear systems,eigenvalue decomposition,QR/SVD factorization,numerical algorithms,IEEE floating point standard,sparse matrices,structured matrices,preconditioning,linear algebra software,Matlab,Linear Algebra,Algorithms and Data Structures,Numerical Simulation" name="keywords">
+<meta content="18.335J Introduction to Numerical Methods | Lecture Summaries" name="Search_Display">
+<meta content="Linear Algebra" itemprop="about">
+<meta content="Algorithms and Data Structures" itemprop="about">
+<meta content="Numerical Simulation" itemprop="about">
+<!-- End Automatic Metadata Insertion --><link title="default" rel="stylesheet" type="text/css" href="../../common/styles/grid.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../common/styles/base.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../common/styles/menu.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../common/styles/jquery.bubblepopup.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../common/styles/courses.css">
+<link title="default" rel="stylesheet" type="text/css" href="../../common/styles/courses_new.css">
+<link href="https://ocw.mit.edu/xml/ocwcc.rdf" type="application/rdf+xml" rel="metadata">
+<link rel="canonical" href="https://ocw.mit.edu/courses/mathematics/18-335j-introduction-to-numerical-methods-fall-2010/lecture-notes/">
+<link rel="apple-touch-icon" href="../../common/images/apple-touch-icon.png">
+<script type="text/javascript" src="../../common/scripts/jquery.js"></script><script type="text/javascript" src="../../common/scripts/ocw-media-utils-offline.js"></script><script type="text/javascript" src="../../common/scripts/ocw-offline.js"></script><script type="text/javascript" src="../../common/scripts/jquery.bubblepopup.min.js"></script><script type="text/javascript" src="../../common/scripts/expandy.js"></script><script type="text/javascript" src="https://ocw.mit.edu//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US&amp;adInstanceId=70ac07d7-b28f-4071-816f-d292aba4849f"></script><script type="text/javascript" src="../../common/scripts/bubble-popup-offline.js"></script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+        
+	
+
+        <header id="top"><div id="grid">
+				
+				
+					
+<div id="portletwrapper-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572" class="portletWrapper kssattr-portlethash-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d686561646572">
+<div class="portletStaticText portlet-static-site-header">
+<!--googleoff: index-->
+<div class="grid_6 alpha" id="banner"><a href="https://ocw.mit.edu/"><img src="../../common/images/ocw_mast.png" class="logo" alt="MIT OpenCourseWare, Massachusetts Institute of Technology"></a></div>
+<div class="grid_6 omega" id="subscribe">
+<aside class="module" aria-label="Connect with OCW"><table class="social"><tbody><tr>
+<td class="socialbutton"><a aria-label="Subscribe to the OCW Newsletter" href="https://ocw.mit.edu/subscribe/index.htm?utm_source=header"><img src="../../common/images/trans.gif" alt="An icon depicting an envelope.">Subscribe to the OCW Newsletter</a></td>
+            <td>
+<a aria-label="Facebook" href="https://facebook.com/mitocw"><img src="../../common/images/icon_fb.png" alt="Click to visit our Facebook page."></a>   <a aria-label="Twitter" href="https://twitter.com/mitocw"><img src="https://ocw.mit.edu/images/icon_twitter.png" alt="Click to visit our Twitter feed."></a>   <a aria-label="YouTube" href="https://www.youtube.com/mitocw"><img src="https://ocw.mit.edu/images/icon_yt.png" alt="Click to visit our YouTube page."></a>   <a aria-label="Open Matters blog on WordPress" href="https://mitopencourseware.wordpress.com/"><img src="https://ocw.mit.edu/images/icon_wp.png" alt="Click to visit our blog on WordPress."></a>
+</td>
+        </tr></tbody></table></aside><nav aria-label="Help Links" class="helplinks"><a aria-label="OCW Site Help" href="https://ocw.mit.edu/help">Help</a><span aria-hidden="true">|</span>     <a href="../../common/jsp/feedback.htm">Contact Us</a>   </nav>
+</div>
+<div class="clear"> </div>
+<!--googleon: index-->
+</div>
+
+</div>
+
+<div id="portletwrapper-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a6d6567612d6d656e75" class="portletWrapper kssattr-portlethash-6f63772e746f70706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a6d6567612d6d656e75">
+<div class="portletStaticText portlet-static-mega-menu"><div><nav id="mega" class="grid_8 alpha" aria-label="Site"><ul id="menu" role="presentation">
+<li id="menu_home">
+<a href="https://ocw.mit.edu/" aria-label="Homepage"><img src="../../common/images/top-nav_home.png" class="home_icon" alt="Click for site home page."></a><!-- Begin Home Item -->
+</li>
+    <!-- End Home Item -->
+    <li id="drop_1" aria-label="Find Courses">
+<a href="#" aria-hidden="true">FIND COURSES</a><!-- Begin 5 columns Item -->
+    <div class="dropdown_5columns-a mega-courses">
+    <div class="col_1a">
+    <div class="row_1a">
+<nav aria-labelledby="mm-find-courses-by"><span id="mm-find-courses-by" class="nav" aria-hidden="true">Find courses by:</span>
+    <ul class="find_by" role="presentation">
+<li><a href="https://ocw.mit.edu/courses/find-by-topic/">Topic</a></li>
+        <li><a href="https://ocw.mit.edu/courses/find-by-number/">MIT Course Number</a></li>
+        <li><a href="https://ocw.mit.edu/courses/find-by-department/">Department</a></li>
+        <li><a href="https://ocw.mit.edu/educator/?view=instructional&amp;utm_campaign=Educator&amp;utm_source=megamenu&amp;utm_medium=find-courses&amp;utm_content=approaches">Instructional Approach</a></li>
+        <li><a href="https://ocw.mit.edu/educator/?view=teaching&amp;utm_campaign=Educator&amp;utm_source=megamenu&amp;utm_medium=find-courses&amp;utm_content=materials">Teaching Materials</a></li>
+    </ul></nav><nav aria-labelledby="mm-collections"><span id="mm-collections" class="nav" aria-hidden="true">Collections</span>
+    <ul role="presentation">
+<li><a href="https://ocw.mit.edu/courses/new-courses/">New Courses</a></li>
+        <li><a href="https://ocw.mit.edu/courses/most-visited-courses/">Most Visited Courses</a></li>
+        <li><a href="https://ocw.mit.edu/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+        <li><a href="https://ocw.mit.edu/courses/audio-video-courses/">Audio/Video Lectures</a></li>
+        <li><a href="https://ocw.mit.edu/courses/online-textbooks/">Online Textbooks</a></li>
+        <li><a href="https://ocw.mit.edu/courses/instructor-insights/">Instructor Insights</a></li>
+        <li><a href="https://ocw.mit.edu/resources/">Supplemental Resources</a></li>
+    </ul></nav><nav class="col_1b" aria-labelledby="mm-translated-courses"><span id="mm-translated-courses" class="nav" aria-hidden="true" style="line-height: 1.3;">Cross-Disciplinary Topic Lists</span>
+    <ul role="presentation">
+<li><a href="https://ocw.mit.edu/courses/energy-courses">Energy</a></li>
+        <li><a href="https://ocw.mit.edu/courses/entrepreneurship">Entrepreneurship</a></li>
+        <li><a href="https://ocw.mit.edu/courses/environment-courses">Environment</a></li>
+        <li><a href="https://ocw.mit.edu/courses/intro-programming">Introductory Programming</a></li>
+        <li><a href="https://ocw.mit.edu/courses/life-sciences">Life Sciences</a></li>
+        <li><a href="https://ocw.mit.edu/courses/transportation-courses">Transportation</a></li>
+    </ul></nav>
+</div>
+    <div class="row_1b"><nav aria-labelledby="mm-cross-disciplinary-topic-lists"><span id="mm-cross-disciplinary-topic-lists" class="nav" aria-hidden="true">Translated Courses</span>
+    <ul role="presentation">
+<li><a href="https://ocw.mit.edu/courses/translated-courses/traditional-chinese" aria-label="Traditional Chinese">繁體字 / Traditional Chinese</a></li>
+        <li><a href="https://ocw.mit.edu/courses/translated-courses/spanish" aria-label="Spanish">Español / Spanish</a></li>
+        <li><a href="https://ocw.mit.edu/courses/translated-courses/portuguese" aria-label="Portuguese">Português / Portuguese</a></li>
+        <li><a href="https://ocw.mit.edu/courses/translated-courses/persian" aria-label="Persian">فارسی / Persian</a></li>
+        <li><a href="https://ocw.mit.edu/courses/translated-courses/turkish" aria-label="Turkish">Türkçe / Turkish</a></li>
+        <li><a href="https://ocw.mit.edu/courses/translated-courses/korean" aria-label="Korean">(비디오)한국 / Korean</a></li>
+    </ul></nav></div>
+    </div>
+    </div>
+    </li>
+    <li id="drop_2">
+<a href="" aria-hidden="true">About</a>
+    <div class="dropdown_1column-a"><nav class="col_1" aria-label="About"><ul role="presentation">
+<li><a href="https://ocw.mit.edu/about/">About MIT OpenCourseWare</a></li>
+        <li><a href="https://ocw.mit.edu/about/site-statistics/">Site Statistics</a></li>
+        <li><a href="https://ocw.mit.edu/about/ocw-stories/">OCW Stories</a></li>
+        <li><a href="https://ocw.mit.edu/about/newsletter/">News</a></li>
+    </ul></nav></div>
+    </li>
+    <li id="drop_3">
+<a href="" aria-hidden="true">Give Now</a>
+    <div class="dropdown_1column-a"><nav class="col_1" aria-label="Donate"><ul role="presentation">
+<li><a href="https://ocw.mit.edu/give/">Make a Donation</a></li>
+        <li><a href="https://ocw.mit.edu/give/why-give/">Why Give?</a></li>
+        <li><a href="https://ocw.mit.edu/give/our-supporters/">Our Supporters</a></li>
+        <li><a href="https://ocw.mit.edu/give/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+        <li><a href="https://ocw.mit.edu/give/shop-ocw">Shop OCW</a></li>
+        <li><a href="https://ocw.mit.edu/support/">Become a Corporate Sponsor</a></li>
+    </ul></nav></div>
+    </li>
+    <li id="drop_4">
+<a href="" aria-hidden="true">Featured Sites</a>
+    <div class="dropdown_1column-a">
+<nav class="col_1" aria-labelledby="mm-featured-sites"><span id="mm-featured-sites" class="nav" aria-hidden="true">OCW Initiatives</span>
+    <ul role="presentation">
+<li><a href="https://ocw.mit.edu/high-school/">Highlights for High School</a></li>
+        <li><a href="https://ocw.mit.edu/educator/?utm_campaign=Educator&amp;utm_source=megamenu&amp;utm_medium=featured-sites">OCW Educator</a></li>
+        <li><a href="https://ocw.mit.edu/courses/crosslinks/">MIT Crosslinks and OCW</a></li>
+        <li><a href="https://ocw.mit.edu/courses/mitx-related-courseware/">MITx and Related OCW Courses</a></li>
+    </ul></nav><nav class="col_1" aria-labelledby="mm-featured-external-links"><span id="mm-featured-external-links" class="nav" aria-hidden="true">Beyond OCW</span>
+    <ul>
+<li><a href="https://www.k12videos.mit.edu/videos" aria-label="External Link: MIT Plus K12 Videos">MIT+K12 Videos</a></li>
+        <li><a href="http://climatex.mit.edu/" aria-label="External Link: MIT ClimateX">MIT ClimateX</a></li>
+        <li><a href="https://teachingexcellence.mit.edu/" aria-label="External Link: Teaching Excellence at MIT">Teaching Excellence at MIT</a></li>
+        <li><a href="https://outreach.mit.edu" aria-label="External Link: Outreach at MIT">Outreach @ MIT</a></li>
+        <li><a href="http://www.oeconsortium.org/" aria-label="External Link: Open Education Consortium">Open Education Consortium</a></li>
+    </ul></nav>
+</div>
+    </li>
+</ul></nav></div></div>
+
+</div>
+
+
+
+
+
+<!--googleoff: index-->
+
+<div id="search" role="search" class="grid_4 omega">
+  
+    <form aria-label="Advanced Search" method="get" action="../../common/search/AdvancedSearch.htm">
+		  <table class="search"><tbody><tr>
+<td class="black"><input type="text" onblur="fillSearchBox()" onfocus="clearSearchBox()" maxlength="255" value="Search" name="q" class="greytext searchField" id="terms"></td>
+            <td class="black"><input type="image" src="../../common/images/button_search.png" name="btnG" class="sub_button"></td>
+            <td class="text2"><a href="../../common/search/AdvancedSearch.htm">Advanced<br>Search</a></td>
+          </tr></tbody></table>
+</form>
+</div>
+<div class="clear"></div>
+<!--googleon: index-->
+<!-- *end header* -->
+
+				
+				
+			</div>
+<!-- top grid end -->
+		</header><!-- top end --><div id="center">
+         <div id="grid">
+		         <div id="left-section">
+                 <nav aria-label="Breadcrumb" id="breadcrumb"><p>
+
+    <a href="https://ocw.mit.edu/">Home</a>
+    
+        »
+        
+    
+    
+        
+            <a href="https://ocw.mit.edu/courses">Courses</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            <a href="https://ocw.mit.edu/courses/mathematics">Mathematics</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            <a href="../../contents/index.htm">Introduction to Numerical Methods</a>
+            
+                »
+                
+            
+            
+         
+    
+    
+        
+            
+            
+            Lecture Summaries
+         
+    
+</p>
+
+                 </nav><div class="clear"></div>
+                   <div id="section_title">
+           			     <h1 class="title" itemprop="name" property="dct:title">
+        <span class="" id="parent-fieldname-title">
+            Lecture Summaries
+        </span>
+    </h1>
+             	     </div>
+             	     <div class="clear"></div>
+             	     <div id="course_wrapper_section">
+           	     	 <nav id="course_nav" aria-label="Course"><script language="javascript" type="text/javascript">
+function toggleMenu(objID) {
+  if (!document.getElementById) return;
+  var ob = document.getElementById(objID);
+  ob.className = (ob.className == 'selected')?'': 'selected';
+}
+function toggleClass(id)
+{
+  var divtoggleClass= document.getElementById(id);
+  divtoggleClass.className = (divtoggleClass.className == 'mO')?'mC': 'mO';
+  return false;
+}
+function changeAlt(id)
+{
+  id.alt = (id.alt == 'Expand Menu')?'Collapse Menu' : 'Expand Menu';
+  id.title = (id.title == 'Expand Menu')?'Collapse Menu' : 'Expand Menu';
+}
+</script><!--Left Nav Starts --><ul>
+<li class="">
+			   			<a href="../../contents/index.htm">
+		                  Course Home  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../contents/syllabus/index.htm">
+		                  Syllabus  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../contents/calendar/index.htm">
+		                  Calendar  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../contents/readings/index.htm">
+		                  Readings  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="selected">
+			   			<a href="../../contents/lecture-notes/index.htm">
+		                  Lecture Summaries  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../contents/assignments/index.htm">
+		                  Assignments  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    <li class="">
+			   			<a href="../../contents/exams/index.htm">
+		                  Exams  			                
+	                    </a>
+		        </li>
+		    
+         	
+	
+	
+	    	
+	    	    
+		    
+         	
+	<!--second tal block close-->  
+	
+</ul>
+<!--Left Nav Ends --></nav><main id="course_inner_section" aria-labelledby="section_title"><div class="maintabletemplate"><table class="tablewidth75" summary="See table caption for summary.">
+<caption class="invisible">Lecture notes files.</caption>     <thead><tr>
+<th scope="col">SES #</th>             <th scope="col" style="width: 44%;">Lecture summaries</th>             <th scope="col" style="width: 44%;">HANDOUTs</th>         </tr></thead>
+<tbody>
+<tr class="row">
+<td>1</td>             <td><p><a href="../../contents/lecture-notes/lecture-1-summary/index.htm">Key concerns of numerical methods</a><a href="../../contents/lecture-notes/lecture-1-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>2</td>             <td><p><a href="../../contents/lecture-notes/lecture-2-summary/index.htm">Performance: Arithmetic vs. memory</a><a href="../../contents/lecture-notes/lecture-2-summary/index.htm"><br></a></p></td>             <td>
+<p>Performance experiments with matrix multiplication (<a href="../../contents/lecture-notes/MIT18_335JF10_lec2a_hand.pdf">PDF</a>)</p>             <p>Ideal-cache terminology (<a href="../../contents/lecture-notes/MIT18_335JF10_lec2b_hand.pdf">PDF</a>)</p>
+</td>         </tr>
+<tr class="row">
+<td>3</td>             <td>
+<p><a href="../../contents/lecture-notes/lecture-3-summary/index.htm">Memory optimization and cache obliviousness</a></p>             <p><a href="../../contents/lecture-notes/lecture-3-summary/index.htm"><br></a></p>
+</td>             <td>Experiments with cache-oblivious matrix-multiplication (<a href="../../contents/lecture-notes/MIT18_335JF10_lec3_hand.pdf">PDF</a>)</td>         </tr>
+<tr class="alt-row">
+<td>4</td>             <td><p><a href="../../contents/lecture-notes/lecture-4-summary/index.htm">Accuracy and floating-point arithmetic</a></p></td>             <td>
+<p>Notes on floating-point (<a href="../../contents/lecture-notes/MIT18_335JF10_lec4_hand.pdf">PDF</a>)</p>             <p>*Note: Files in this section are from a previous version of the course.</p>
+</td>         </tr>
+<tr class="row">
+<td>5</td>             <td><p><a href="../../contents/lecture-notes/lecture-5-summary/index.htm">Floating-point and numerical stability</a></p></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>6</td>             <td><p><a href="../../contents/lecture-notes/lecture-6-summary/index.htm">Backwards stability of summation, norms</a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>7</td>             <td><p><a href="../../contents/lecture-notes/lecture-7-summary/index.htm">Condition numbers and eigenvalues</a></p></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>8</td>             <td><p><a href="../../contents/lecture-notes/lecture-8-summary/index.htm">The singular-value decomposition</a><a href="../../contents/lecture-notes/lecture-8-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>9</td>             <td><p><a href="../../contents/lecture-notes/lecture-9-summary/index.htm">Least-square problems and QR factors</a><a href="../../contents/lecture-notes/lecture-9-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>10</td>             <td><p><a href="../../contents/lecture-notes/lecture-10-summary/index.htm">Gram-Schmidt stability and householder QR</a><a href="../../contents/lecture-notes/lecture-10-summary/index.htm"><br></a></p></td>             <td>
+<p>Gram-Schmidt notes (<a href="../../contents/lecture-notes/MIT18_335JF10_lec10a_hand.pdf">PDF</a>)</p>             <p>Householder notes  (<a href="../../contents/lecture-notes/MIT18_335JF10_lec10b_hand.pdf">PDF</a>)</p>             <p>*Note: Files in this section are from a previous version of the course.</p>
+</td>         </tr>
+<tr class="row">
+<td>11</td>             <td><p><a href="../../contents/lecture-notes/lecture-11-summary/index.htm">Householder, Gaussian, and Cholesky factorization</a><a href="../../contents/lecture-notes/lecture-11-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>12</td>             <td><p><a href="../../contents/lecture-notes/lecture-12-summary/index.htm">Eigenproblems, characteristic polynomials, and Shur factors</a><a href="../../contents/lecture-notes/lecture-12-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>13</td>             <td><p><a href="../../contents/lecture-notes/lecture-13-summary/index.htm">Hessenberg factorization and its applications, power methods</a><a href="../../contents/lecture-notes/lecture-13-summary/index.htm"><br></a></p></td>             <td>
+<p>Hessenberg handout (<a href="../../contents/lecture-notes/MIT18_335JF10_lec13_hand.pdf">PDF</a>)</p>             <p>*Note: Files in this section are from a previous version of the course.</p>
+</td>         </tr>
+<tr class="alt-row">
+<td>14</td>             <td><p><a href="../../contents/lecture-notes/lecture-14-summary/index.htm">QR iteration for eigenproblems</a><a href="../../contents/lecture-notes/lecture-14-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>15</td>             <td><p><a href="../../contents/lecture-notes/lecture-15-summary/index.htm">Overview of iterative and sparse solvers</a><a href="../../contents/lecture-notes/lecture-15-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>16</td>             <td><p><a href="../../contents/lecture-notes/lecture-16-summary/index.htm">Arnoldi and Lanczos iterations</a><a href="../../contents/lecture-notes/lecture-16-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>17</td>             <td><p><a href="../../contents/lecture-notes/lecture-17-summary/index.htm">Restarting Lanczos iterations</a><a href="../../contents/lecture-notes/lecture-17-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>18</td>             <td><p><a href="../../contents/lecture-notes/lecture-18-summary/index.htm">GMRES and MINRES</a><a href="../../contents/lecture-notes/lecture-18-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>19</td>             <td><p><a href="../../contents/lecture-notes/lecture-19-summary/index.htm">Steepest-descent and conjugate-gradient methods</a><a href="../../contents/lecture-notes/lecture-19-summary/index.htm"><br></a></p></td>             <td><p>Shewchuk, Jonathan Richard. "An Introduction to the Conjugate Gradient Method Without the Agonizing Pain." August 4, 1994. Pages 8, and 20. (<img src="../../common/images/inacessible.gif" alt="This resource may not render correctly in a screen reader."><a href="http://www.cs.cmu.edu/~quake-papers/painless-conjugate-gradient.pdf">PDF</a>)</p></td>         </tr>
+<tr class="alt-row">
+<td>20</td>             <td><p><a href="../../contents/lecture-notes/lecture-20-summary/index.htm">Preconditioning and condition numbers of PDE-like matrices</a><a href="../../contents/lecture-notes/lecture-20-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>21</td>             <td><p><a href="../../contents/lecture-notes/lecture-21-summary/index.htm">Biconjugate-gradient methods, sparse-direct solvers</a><a href="../../contents/lecture-notes/lecture-21-summary/index.htm"><br></a></p></td>             <td>
+<p>Summary of options for solving linear systems (<a href="../../contents/lecture-notes/MIT18_335JF10_lec21a_hand.pdf">PDF</a>)</p>             <p>Notes on sparse-direct solvers (<a href="../../contents/lecture-notes/MIT18_335JF10_lec21b_hand.pdf">PDF</a>)</p>             <p>*Note: Second file in this section is from a previous version of the course.</p>
+</td>         </tr>
+<tr class="alt-row">
+<td>22</td>             <td><p><a href="../../contents/lecture-notes/lecture-22-summary/index.htm">Nonlinear conjugate gradient, and conjugate-gradient eigensolvers</a><a href="../../contents/lecture-notes/lecture-22-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>23</td>             <td><p><a href="../../contents/lecture-notes/lecture-23-summary/index.htm">Overview of optimization problems</a><a href="../../contents/lecture-notes/lecture-23-summary/index.htm"><br></a></p></td>             <td>
+<p>Overview of optimization (<a href="../../contents/lecture-notes/MIT18_335JF10_lec23a_hand.pdf">PDF</a>)</p>             <p>Notes on adjoint methods (<a href="../../contents/lecture-notes/MIT18_335JF10_lec23b_hand.pdf">PDF</a>)</p>
+</td>         </tr>
+<tr class="alt-row">
+<td>24</td>             <td><p><a href="../../contents/lecture-notes/lecture-24-summary/index.htm">Adjoint methods and sensitivity analysis</a><a href="../../contents/lecture-notes/lecture-24-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>25</td>             <td>
+<p><a href="../../contents/lecture-notes/lecture-25-summary/index.htm">Adjoint methods for recurrences, CCSA algorithms</a></p>             <p> </p>
+</td>             <td>
+<p>Adjoint methods for recurrence relations (<a href="../../contents/lecture-notes/MIT18_335JF10_lec25a_hand.pdf">PDF</a>)</p>             <p>Svanberg, Krister. "<a href="http://epubs.siam.org/siopt/resource/1/sjope8/v12/i2/p555_s1?isAuthorized=no">A Class of Globally Convergent Optimization Methods Based on Conservative Convex Separable Approximations</a>." <em>SIAM Journal on Optimization</em> 12, no. 2 (2002): 555-573. Pages 1-10.</p>
+</td>         </tr>
+<tr class="alt-row">
+<td>26</td>             <td><p><a href="../../contents/lecture-notes/lecture-26-summary/index.htm">Lagrange dual functions and KKT conditions</a><a href="../../contents/lecture-notes/lecture-26-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>27</td>             <td><a href="../../contents/lecture-notes/lecture-27-summary/index.htm">Quasi-Newton methods</a></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>28</td>             <td><p><a href="../../contents/lecture-notes/lecture-28-summary/index.htm">BFGS updates</a><a href="../../contents/lecture-notes/lecture-28-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+<tr class="row">
+<td>29</td>             <td><p><a href="../../contents/lecture-notes/lecture-29-summary/index.htm">Derivative-free optimization: Linear and quadratic models</a></p></td>             <td>No handouts</td>         </tr>
+<tr class="alt-row">
+<td>30</td>             <td>
+<p><a href="../../contents/lecture-notes/lecture-30-summary/index.htm">Global optimization and the DIRECT algorithm</a></p>             <p><a href="../../contents/lecture-notes/lecture-30-summary/index.htm"><br></a></p>
+</td>             <td>Jones, D. R., C. D. Perttunen, and B. E. Stuckman. "Lipschitzian Optimization Without the Lipschitz Constance." <em>Journal of Optimization Theory and Application</em> 79 no. 1 (1993): 157. First few pages. <span class="nobr">(<img src="../../common/images/inacessible.gif" alt="This resource may not render correctly in a screen reader."><a href="http://www.ressources-actuarielles.net/EXT/ISFA/1226.nsf/9c8e3fd4d8874d60c1257052003eced6/f9ca730ca27def69c12576d8002ed895/%24FILE/Jones93.pdf">PDF - 1.5MB</a>)</span>
+</td>         </tr>
+<tr class="row">
+<td>31</td>             <td>
+<p><a href="../../contents/lecture-notes/lecture-31-summary/index.htm">Numerical integration and accuracy of the trapezoidal rule</a></p>             <p><a href="../../contents/lecture-notes/lecture-31-summary/index.htm"><br></a></p>
+</td>             <td>
+<p>Notes on error analysis of the trapezoidal rule and Clenshaw-Curtis quadrature in terms of Fourier series. (<a href="../../contents/lecture-notes/MIT18_335JF10_Lec31a_hand.pdf">PDF</a>)</p>             <p>Two numerical experiments with trapezoidal rule (<img src="../../common/images/inacessible.gif" alt="This resource may not render correctly in a screen reader."><a href="../../contents/lecture-notes/MIT18_335JF10_Lec31b_hand.pdf">PDF</a>)</p>
+</td>         </tr>
+<tr class="alt-row">
+<td>32</td>             <td><p><a href="../../contents/lecture-notes/lecture-32-summary/index.htm">Clenshaw-Curtis quadrature</a><a href="../../contents/lecture-notes/lecture-32-summary/index.htm"><br></a></p></td>             <td>"<a href="http://en.wikipedia.org/wiki/Clenshaw%E2%80%93Curtis_quadrature">Clenshaw-Curtis Quadrature</a>." Wikipedia.</td>         </tr>
+<tr class="row">
+<td>33</td>             <td><p><a href="../../contents/lecture-notes/lecture-33-summary/index.htm">Chebyshev approximation</a><a href="../../contents/lecture-notes/lecture-33-summary/index.htm"><br></a></p></td>             <td>No handouts</td>         </tr>
+</tbody>
+</table></div> <p> </p>
+	                    
+
+	        			
+	                    
+	                    
+	                    	
+	                    
+
+            		 </main><!--Course_inner_section tag close --><div class="clear"></div>
+ 				 </div>
+<!--Course_wrapper tag close -->             
+ 			 </div>
+<!--left tag close -->
+ 			
+         </div>
+<!--grid tag close -->
+      </div>
+		
+		<footer id="bottom"><div id="grid">
+				
+<div id="portletwrapper-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572" class="portletWrapper kssattr-portlethash-6f63772e626f74746f6d706f72746c65746d616e616765720a636f6e746578740a2f506c6f6e650a736974652d666f6f746572">
+<div class="portletStaticText portlet-static-site-footer"><div id="footer">
+<nav aria-label="Footer"><nav id="foot-c1" class="grid_2 alpha" aria-labelledby="f-find-courses"><span class="footer" id="f-find-courses" aria-hidden="true">Find Courses</span>
+<ul class="foot-bullet" role="presentation">
+<li><a href="https://ocw.mit.edu/courses/find-by-topic/">Find by Topic</a></li>
+    <li><a href="https://ocw.mit.edu/courses/find-by-number/">Find by Course Number</a></li>
+    <li><a href="https://ocw.mit.edu/courses/find-by-department/">Find by Department</a></li>
+    <li><a href="https://ocw.mit.edu/educator/?view=instructional&amp;utm_campaign=Educator&amp;utm_source=footer&amp;utm_medium=find-courses&amp;utm_content=approaches">Instructional Approach</a></li>
+    <li><a href="https://ocw.mit.edu/educator/?view=teaching&amp;utm_campaign=Educator&amp;utm_source=footer&amp;utm_medium=find-courses&amp;utm_content=materials">Teaching Materials</a></li>
+    <li><a href="https://ocw.mit.edu/courses/new-courses/">New Courses</a></li>
+    <li><a href="https://ocw.mit.edu/courses/most-visited-courses/">Most Visited Courses</a></li>
+    <li><a href="https://ocw.mit.edu/courses/ocw-scholar/">OCW Scholar Courses</a></li>
+    <li><a href="https://ocw.mit.edu/courses/audio-video-courses/">Audio/Video Courses</a></li>
+    <li><a href="https://ocw.mit.edu/courses/subtitled/">Courses with Subtitles</a></li>
+    <li><a href="https://ocw.mit.edu/courses/online-textbooks/">Online Textbooks</a></li>
+    <li><a href="https://ocw.mit.edu/courses/instructor-insights/">Instructor Insights</a></li>
+    <li><a href="https://ocw.mit.edu/resources/">Supplemental Resources</a></li>
+    <li><a href="https://ocw.mit.edu/courses/translated-courses/">Translated Courses</a></li>
+</ul></nav><div id="foot-c2" class="grid_2">
+<nav aria-labelledby="f-about"><span id="f-about" class="footer" aria-hidden="true">About</span>
+<ul class="foot-bullet" role="presentation">
+<li><a href="https://ocw.mit.edu/about/">About OpenCourseWare</a></li>
+    <li><a href="https://ocw.mit.edu/about/site-statistics/">Site Statistics</a></li>
+    <li><a href="https://ocw.mit.edu/about/ocw-stories/">OCW Stories</a></li>
+    <li><a href="https://ocw.mit.edu/about/newsletter/">News</a></li>
+    <li><a href="https://ocw.mit.edu/about/media-coverage/press-releases/">Press Releases</a></li>
+</ul></nav><!--about--><nav aria-labelledby="f-tools"><span id="f-tools" class="footer" aria-hidden="true">Tools</span>
+<ul class="foot-bullet" role="presentation">
+<li><a href="https://ocw.mit.edu/help/">Help &amp; FAQs</a></li>
+    <li><a href="../../common/jsp/feedback.htm">Contact Us</a></li>
+    <li><a href="../../common/search/AdvancedSearch.htm">Advanced Search</a></li>
+    <li><a href="https://ocw.mit.edu/help/site-map/">Site Map</a></li>
+    <li><a href="../../common/terms/index.htm">Privacy &amp; Terms of Use</a></li>
+    <li><a href="https://ocw.mit.edu/help/rss/">RSS Feeds</a></li>
+</ul></nav><!--tools-->
+</div>
+<nav class="grid_2" id="foot-c3" aria-labelledby="f-donate"><span id="f-donate" class="footer" aria-hidden="true">Give Now</span>
+<ul class="foot-bullet" role="presentation">
+<li><a href="https://ocw.mit.edu/give/">Make a Donation</a></li>
+    <li><a href="https://ocw.mit.edu/give/why-give/">Why Give?</a></li>
+    <li><a href="https://ocw.mit.edu/give/our-supporters/">Our Supporters</a></li>
+    <li><a href="https://ocw.mit.edu/give/other-ways-to-contribute/">Other Ways to Contribute</a></li>
+    <li><a href="https://ocw.mit.edu/give/shop-ocw/">Shop OCW</a></li>
+    <li><a href="https://ocw.mit.edu/support/">Become a Corporate Sponsor</a></li>
+</ul></nav><div class="grid_2" id="foot-c4"><nav aria-labelledby="f-featured-sites"><span id="f-featured-sites" class="footer" aria-hidden="true">Featured Sites</span>
+<ul class="foot-bullet" role="presentation">
+<li><a href="https://ocw.mit.edu/high-school/">Highlights for High School</a></li>
+    <li><a href="https://ocw.mit.edu/educator/?utm_campaign=Educator&amp;utm_source=footer&amp;utm_medium=featured-sites">OCW Educator</a></li>
+    <li><a href="https://ocw.mit.edu/courses/crosslinks/">MIT Crosslinks and OCW</a></li>
+    <li><a href="https://ocw.mit.edu/courses/mitx-related-courseware/">MITx and Related OCW Courses</a></li>
+    <li><a href="http://k12videos.mit.edu" aria-label="External Link: MIT+K12 Videos">MIT+K12 Videos</a></li>
+    <li><a href="http://teachingexcellence.mit.edu/" aria-label="External Link: Teaching Excellence at MIT">Teaching Excellence at MIT</a></li>
+    <li><a href="https://outreach.mit.edu/" aria-label="External Link: Outreach at MIT">Outreach@MIT</a></li>
+    <li><a href="http://www.oeconsortium.org/" aria-label="External Link: Open Education Consortium">Open Education Consortium</a></li>
+</ul></nav></div>
+</nav><aside style="min-height: 289px;" aria-labelledby="f-our-corporate-supporters" class="grid_4 omega" id="foot-c5"><span aria-hidden="true" class="footer" id="f-our-corporate-supporters">Our Corporate Supporters</span>           <!-- HOME_CORP_LOGO_1 -->
+<div id="div-gpt-ad-1388181177156-0" class="sponsors_google_ads_even"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-0'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_2 -->
+<div id="div-gpt-ad-1388181177156-1" class="sponsors_google_ads_odd"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-1'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_3 -->
+<div id="div-gpt-ad-1388181177156-2" class="sponsors_google_ads_even"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-2'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_4 -->
+<div id="div-gpt-ad-1388181177156-3" class="sponsors_google_ads_odd"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-3'); });
+            </script></div>
+<!-- HOME_CORP_LOGO_5 -->
+<div id="div-gpt-ad-1388181177156-4" class="sponsors_google_ads_even"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-4'); });
+              </script></div>
+<!-- HOME_CORP_LOGO_6 -->
+<div id="div-gpt-ad-1388181177156-5" class="sponsors_google_ads_odd"><script type="text/javascript">
+              googletag.cmd.push(function() { googletag.display('div-gpt-ad-1388181177156-5'); });
+              </script></div>
+</aside><div class="grid_12 alpha omega" itemprop="publisher" itemscope="" itemtype="http://schema.org/CollegeOrUniversity">
+<h4 class="footer" style="border-top: thin solid #d5c9ba; padding-top: 10px; margin-bottom: 10px;">About <span itemprop="name">MIT OpenCourseWare</span>
+</h4>
+<p style="color: #999; font-size: 1em; line-height: 1.5em; margin-top: 10px;" itemprop="description">MIT OpenCourseWare makes the materials used in the teaching of almost all of MIT's subjects available on the Web, free of charge. With more than 2,400 courses available, OCW is delivering on the promise of open sharing of knowledge. <a href="http://ocw.mit.edu/about/">Learn more »</a></p>
+</div>
+<div id="foot-copy" class="grid_12 alpha omega" style="border-top: none;">
+<a href="http://web.mit.edu"><img src="../../common/images/logo_mit.png" alt="Massachusetts Institute of Technology logo and name." style="width: 195; height: 44;"></a><a href="http://odl.mit.edu"><img src="https://ocw.mit.edu/images/logo_odl.png" alt="MIT Office of Digital Learning logo and name." style="width: 289; height: 54; vertical-align: top;"></a><a href="http://www.oeconsortium.org/"><img src="https://ocw.mit.edu/images/logo_oec.png" alt="Open Education Consortium logo." style="width: 219px; height: 59px; vertical-align: top;"></a><a rel="license" itemprop="useRightsUrl" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="../../common/images/cc_by-nc-sa.png" alt="Creative Commons logo with terms BY-NC-SA." style="width: 126px; height: 44px; margin-right: 0; margin-left: 13px;"></a>
+<p class="copyright">© 2001–2017<br>
+Massachusetts Institute of Technology</p>
+<p style="font-size: 0.9em; margin-bottom: 15px;">Your use of the MIT OpenCourseWare site and materials is subject to our <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">Creative Commons License</a> and other <a href="../../common/terms/index.htm" rel="cc:morePermissions">terms of use</a>.</p>
+</div>
+</div></div>
+
+</div>
+
+
+
+
+
+                
+			</div> <!-- bottom grid end -->
+		</footer><!-- footer bottom end -->
+</body>
+</html>

@@ -79,6 +79,8 @@ Running list of things to eventually cover:
 - [ ] CS267 Parallel Linear Algebra
 - [ ] Math 221 Kahan Numerical Linear Algebra
 - [ ] Kahan Linear Algebras
+- [ ] Numerical Linear Algebra Trefethen
+- [ ] Matrix Computations Golub Van Loan
 
 ### Math
 
@@ -149,6 +151,7 @@ Running list of things to eventually cover:
 - [ ] Terence Tao Widgets
 - [ ] William Kaham papers
 - [ ] VirtualSlowdownsAndSpeedups
+- [ ] BigNumFuzzer.jl
 
 ### Topology
 
