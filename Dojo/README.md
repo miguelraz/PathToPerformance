@@ -121,6 +121,8 @@ Running list of things to eventually cover:
 - [ ] Advanced Unix Programming
 - [ ] Advanced Bash Scripting Guide
 - [ ] Fundamentals of Algorithms
+- [ ] [Intro to Programming Contests](http://web.stanford.edu/class/cs97si/) and [Competitive Programming]()
+- [ ] Mastering Regex O'Reilly
 
 ### Probs n Stats
 
@@ -152,8 +154,25 @@ Running list of things to eventually cover:
 - [ ] William Kaham papers
 - [ ] VirtualSlowdownsAndSpeedups
 - [ ] BigNumFuzzer.jl
+- [ ] Millionaire Blockchain solidity ETH
+- [ ] Named Graphs into LG
+- [ ] Static Vectors and validated numerics
+- [ ] LIGO Julia
 
 ### Topology
 
 - [ ] Tadashi YT lecture, Milnor YT Lecture
 
+### Number Theory
+- [ ] An illustrated theory of numbers
+
+
+### Languages
+- [ ] Memory palace!
+- [ ] Sign Language
+- [ ] Arbeits Kurs A1 A2 B1 B2 C1 C2
+- [ ] German Grammar
+- [ ] Russian Grammar
+- [ ] Learn Korean in 15 minutes
+- [ ] Arabic
+- [ ] Hebrew
