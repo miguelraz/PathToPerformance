@@ -4,7 +4,104 @@ __Stuff I've learned: Annotations on the path to Julia Nirvana__
 Scientific Day Logger
 ---------------------
 
-A trillion points of altruism to Julia's Gitter chat and its benign and helpful netizens.
+A trillion points of altruism to Julia's Gitter/Slack/Discourse chat and its benign and helpful netizens.
+
+### 23/04/2020
+114. STOP. OVER. CONSTRAINING. TYPES. Be the type. Let it duck.
+115. For string processing with ascii conditionals: Don't do filters first, then a loop. Just check the string in the loop and exit early if conditions don't hold.
+116. STOP: using this `str = ""; if ... str = str * "foo"` pattern. best to use an `io = IOBuffer`, `write(io, char)` into the buffer, and then `String(take!(io))`.
+117. Consider also using `string(a, b, c ? x : y, d)` to construct the last string to return the last string.
+118. Overload `sprint` to get custom pretty printing for your types.
+
+### 22/04/2020
+113. `length(n)` on `String` FROM BASE JULIA or UTF8 is a `O(n)` operation wheareas `sizeof(str)` is `O(1)`
+
+### 21/04/2020
+108. Looking up the documentation for `pairs` made me wonder if there isn't a `Base` method for counting appearances of elements. I kept digging into `Base.Iterators` and found a whole word to rewrite Exercism with.
+There was `Iterators.accumulate`, which is a lazy `foreach`, `Iterators.takewhile(pred,collection)`, `Iterators.product, Iterators.cycle` and many friends. Must investigate and brush up on `IterTools.jl` and `Transducers.jl`
+109. Colin M. Caine recommends avoiding a bitsting altogether and using binary literals like `0b01 & 0b01` and such.
+110. YES!!! There exists a `ndigits` function, which gives you the number of digits of the argument.
+111. Damn... you can add `Chars` like in `@taigua`'s *Atbash cipher* submission: `cipher(c::Char) = isdigit(c) ? c : 'a' + ('z' - c)`
+112. Don't forget you can `strip` trailing characters from a string!
+113. Try the `get!(key, val) do ... end` syntax at some point.
+114. Remember to use `1 + Ctrl+q` on the REPL to jump into the stacktrace directly.
+115. Setup vim as default editor with `EDITOR` or `JULIA_EDITOR` on the `env`.
+
+
+
+
+### 20/04/2020
+97. `filter(isdigit, str)` seems much cleaner than `join(isdigit(i) ? i : "" for i in str)` when working with strings. (Exercism phone-number)
+98. `rot180` function in base exists and helps to solve problems like (Exercism spiral matrix)
+99. Preallocating with `undef` can have huge performance speedups from saving allocations: see ([Exercism Pascal's triangle](https://exercism.io/my/solutions/0fab35544e764c3dab440ff418d76210))
+```
+  # credit to shybyte - 
+function triangle2(n::Int)
+    n >= 0 || throw(DomainError())
+    n > 0 || return [] 
+    rows = Array{Array{Int64,1},1}(undef, n) 
+    rows[1] = [1]
+        @inbounds for row_index in 2:n
+            previous_row = rows[row_index - 1]
+            row = Array{Int,1}(undef,row_index)
+            row[1] = 1
+            @inbounds for i in 2:row_index-1
+                row[i] = previous_row[i-1] + previous_row[i]
+            end
+        row[row_index] = 1
+        rows[row_index] = row;
+    end
+    rows
+end
+```
+100. Remember the `allunique` function with generators and `ifs` is super spiffy! (Exercism isogram)
+- `isisogram(s) = allunique(c for c in lowercase(s) if isletterc)` 
+101. cmcaine suggested I use `any(rem.(n,(3,5,7) .== 0))` instead of the clunky
+` if !(n % 3 == 0 || n % 5 == 0 || n % 7 == 0)` on (Exercism Raindrops)
+
+And for a super extra added punch, you can just do
+```
+acc = join( s for (d, s) in ((3, "Pling"), (5, "Plang"), (7, "Plong")) if n % d == 0)
+acc = "" ? string(n) : acc
+```
+
+102. When short-circuiting expressions, remember to use parenthesis for side effects.
+```
+# credit to icweave, the solution I wanted to write but couldn't figure out
+function raindrops(number::Int)
+    s = ""
+    number % 3 == 0 && (s *= "Pling")
+    number % 5 == 0 && (s *= "Plang")
+    number % 7 == 0 && (s *= "Plong")
+    s == "" ? string(number) : s
+end
+```
+103. Remember that when indexing into strings, you get out chars. Gotta be careful when pulling out the `s = bitstring(3)` and checking for `'1' == s[1]` and not for `"1"`.
+104. `using Base.Cartesian; @nexprs i 10 -> x_i = A[i]` for defining 10 variables at a time
+105. Remember to use *non-standard string literals* like [r" and friends"](https://docs.julialang.org/en/v1/manual/strings/index.html#man-raw-string-literals-1)
+```
+macro r_str(p)
+    Regex(p)
+end
+```
+And also the *read only* byte array:
+```
+julia> x = b"123"
+3-element Base.CodeUnits{UInt8,String}:
+ 0x31
+ 0x32
+ 0x33
+```
+106. Macros *MUST* return expressions, which are then evaluated by the compiler
+```
+julia> macro sayhello(name)
+           return :( println("Hello, ", $name) )
+       end
+```
+
+107. Simeon Schaub has a nasty way of building up an empty named tuple... `(;()...)`. Until we get `(;)` that is.
+
+
 
 :shipit:
 
