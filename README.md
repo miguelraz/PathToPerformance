@@ -6,12 +6,64 @@ Scientific Day Logger
 
 A trillion points of altruism to Julia's Gitter/Slack/Discourse chat and its benign and helpful netizens.
 
+### 29/04/2020
+132. Don't use a `@goto` when a `while true` will do!
+133. You can use comprehensions and Dictionaries! (Though they still allocate a bit):
+```
+function transform(input::Dict)
+    Dict(
+         letter => value
+         for (value, letters) in input
+         for letter in lowercase.(letters)
+    )
+end
+```
+134. `get` can take a defualt value, so `get(dict,key, 0)` will return 0 if the key is not found!
+135. Rewrite functions as single lines with a parenthesis to make it an expression: `foo(arg) = (arg.name = newname())`. [Exercism Robot-name]
+
+
+
+### 28/04/2020
+125. There is no need for an `io = IOBuffer()` if you aren't writing to it constantly.
+126. You can use the `divrem` function to get around remainders and such [Exercism Resistors]()
+127. Be ready to store a `divrem` call into `d, r = divrem(x,y)` to save some flops (divisions are costly!)
+128. No need to specify `Int64` when `Int` will do - think of the poor Raspberry Pi's!
+129. To prevent people from using invalid initializations, use inner constructors [Exercism Robot-name]
+130. A non-mutating version of `String(take!(io))` was given by Ying Bo Ma in #helpdesk:
+```
+julia> io = IOBuffer(); println(io, "hello!");
+julia> seekstart(io); read(io, String)
+"hello!\n"
+julia> seekstart(io); read(io, String)
+"hello!\n"
+```
+131. Don't use `string(.., ..., ...)` where a `"$..."` will do in a `return`.
+
+
+
+### 27/04/2020
+124. Use functions to access fields of structs in order to have generic codes.
+
+### 25/04/2020
+123. You can use a `function foo(x) ... end` form in a `new` internal constructor!
+
+### 24/04/2020
+120. Sister's bday. Had a sweet dance party and setup her room in a cool way.
+121. Rereading Scott's comment on `Clock` in Exercism: Don't overparametrize - (also respecting tabbing sheesh).
+122. Use boolean evaluations in a `( ...) ` to save you an assignment if you have to add `1 V 0`: 
+```
+Base.:+(x :: AbstractClock, y :: AbstractClock) = Clock(x.h + y.h + (x.m + y.m >= 60), x.m + y.m)
+```
+
+
 ### 23/04/2020
 114. STOP. OVER. CONSTRAINING. TYPES. Be the type. Let it duck.
 115. For string processing with ascii conditionals: Don't do filters first, then a loop. Just check the string in the loop and exit early if conditions don't hold.
 116. STOP: using this `str = ""; if ... str = str * "foo"` pattern. best to use an `io = IOBuffer`, `write(io, char)` into the buffer, and then `String(take!(io))`.
 117. Consider also using `string(a, b, c ? x : y, d)` to construct the last string to return the last string.
 118. Overload `sprint` to get custom pretty printing for your types.
+119. `'0' <= x <= '2'` is better than `'1' == x || x  ==  '2'` , as it avoids a branch. [Exercism Trinary](https://exercism.io/my/solutions/e90387740d8f4da28c6285b93e21aa3c?iteration_idx=4)
+
 
 ### 22/04/2020
 113. `length(n)` on `String` FROM BASE JULIA or UTF8 is a `O(n)` operation wheareas `sizeof(str)` is `O(1)`
