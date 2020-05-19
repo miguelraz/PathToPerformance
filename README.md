@@ -6,20 +6,47 @@ Scientific Day Logger
 
 A trillion points of altruism to Julia's Gitter/Slack/Discourse chat and its benign and helpful netizens.
 
+### 18/05/2020
+139. Lost a couple of days notes... grrr. Gotta remember to push after every day.
+140. Do not try to beat `Parsers` by Jacob Quinn. That memory mapping and dealing with streams by byte arrays is just wickedly fast.
+You can memory map a file from disk into RAM to make access MUCH faster with `Mmap.mmap("path/to/file/name")` and then feed the `byte Array` onto a capable function.
+141. Ran into the `CelestialCartographers` and `Ahorn` creators - a Celeste videogame map making program in Julia. They are really cool, and crushed my code performance because
+I didn't remember to use `Array{Char,1}(undef,n)`. Never again!
+142. The expression `symbol(:123)` is typed as `Int`, turns out the parser is not that silly and knows a bit before assigning to symbols.
+143. Remember to use install scripts with `using Pkg; Pkg.add("Foo")`, and not `] add Foo` Because terminals break easier than the standard API.
+144. `ImmutableDict` in Julia 1.5 is faaaast and allows one to use dicts in a performant manner, so long as you do not seek to delete keys (but you can overwrite them).
+145. Starting Julia with `-p ` or `-t` will give you 1 process `p`er core  vs `-t` threads per core.
+146. `Base.parse_input_line` exists to parse a Julia expression
+147. Perhaps there is some clever `@ndefs` kinda stuff one can do to speed up competitive programming reading in from file shenanigans...
+148. Z3.jl exists and has amazing bindings to the Z3 solver.
+149. Ledecka.jl can probably be used (or some other property based testing framework) to add `@pre! issorted` `@post! issorted` to functions and compiles without them but generates test suite and helps you track down bugs
+150. Need to get on cracking with Gtk.jl and GraphsIO.jl...
+
+### 04/05/2020
+136. Write stuff down!
+137. Prefer `ncodeunits` over `sizeof` to avoid UTF32Strings problems - same performance on ASCII characters. (Credit to Colin M. Caine)
+138. You can declare variables as `local` and not assign them. [Exercism Run-Length-Encoding]
+139. Write `Base.:+` so that Julia doesn't think you are overloading broadcasting.
+140. Remember to `throw` your `Error` so that `catch-try` can help handle it.
+
 ### 29/04/2020
 132. Don't use a `@goto` when a `while true` will do!
 133. You can use comprehensions and Dictionaries! (Though they still allocate a bit):
 ```
 function transform(input::Dict)
     Dict(
-         letter => value
+         lowercase(letter) => value
          for (value, letters) in input
          for letter in lowercase.(letters)
     )
 end
 ```
-134. `get` can take a defualt value, so `get(dict,key, 0)` will return 0 if the key is not found!
+134. `get` can take a default value, so `get(dict,key, 0)` will return 0 if the key is not found!
 135. Rewrite functions as single lines with a parenthesis to make it an expression: `foo(arg) = (arg.name = newname())`. [Exercism Robot-name]
+136. Don't write `x == 1 || x == 0` if you can write `x <= 1`. Avoid `||` when possible.
+137. Prefer to use `print(io, char)` rather than `write(io, char)` because "print goes from a Char to one or more UTF8-bytes, or one or more UTF-16 words", and `write`
+does not, says SPJ. `write` outpus the binary representation of the char, not the ASCII digits.
+138. Avoid indexing into strings, avoid `ncodeunits`, avoid `codeunits`. There be dragons there... stick with `for ch in str`. Iterators are your friends! Indexing into strings causes too many headaches for people.
 
 
 
